@@ -1,0 +1,54 @@
+{
+    "name": "controls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "19d58b3f-6028-4991-979e-ae95d61d581f",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "e3ccaac7-27e1-41d8-9283-c38f4a20dd73",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Rotate",
+                    "type": "Value",
+                    "id": "605630f8-ce8d-4a2c-91bb-ac8ed4251404",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a17b4564-072f-4515-adda-1243e51e5de8",
+                    "path": "<Gamepad>/leftStick/",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c72dd6c3-0bae-499f-a532-3f554a053559",
+                    "path": "<Gamepad>/rightStick/",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
