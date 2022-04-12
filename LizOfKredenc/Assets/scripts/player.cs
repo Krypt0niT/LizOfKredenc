@@ -11,6 +11,8 @@ public class player : MonoBehaviour
     Vector2 move;
     Vector2 rotate;
 
+    
+
     private void Awake()
     {
 
@@ -24,6 +26,8 @@ public class player : MonoBehaviour
 
         controls.Gameplay.Rotate.performed += ctx => rotate = ctx.ReadValue<Vector2>();
 
+        controls.Gameplay.RB.performed += ctx => basicAttack();
+
     }
     void Start()
     {
@@ -36,7 +40,8 @@ public class player : MonoBehaviour
 
         float angle = Mathf.Atan2(rotate.x, rotate.y) * Mathf.Rad2Deg; 
         t.rotation = Quaternion.Euler(new Vector3(0, 180 + angle, 0));
-        print(angle); 
+
+
     }
     private void OnEnable()
     {
@@ -46,4 +51,9 @@ public class player : MonoBehaviour
     {
         controls.Gameplay.Disable();
     }
+    void basicAttack()
+    {
+        print("utok");
+    }
+
 }
