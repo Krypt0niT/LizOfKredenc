@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class player : MonoBehaviour
 {
+    Transform t;
     CharacterController chc;
     Controls controls;
     Vector2 move;
@@ -12,8 +13,9 @@ public class player : MonoBehaviour
 
     private void Awake()
     {
-        chc = GetComponent<CharacterController>();
 
+        chc = GetComponent<CharacterController>();
+        t = GetComponent<Transform>();
 
         controls = new Controls();
 
@@ -21,7 +23,6 @@ public class player : MonoBehaviour
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
 
         controls.Gameplay.Rotate.performed += ctx => rotate = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Rotate.canceled += ctx => rotate = Vector2.zero;
 
     }
     void Start()
@@ -31,9 +32,11 @@ public class player : MonoBehaviour
 
     void Update()
     {
-        chc.Move(new Vector3(move.x, 0, move.y)* Time.deltaTime * 5);
-        print(move);
-        transform.Rotate(new Vector3(0,rotate.y,0)* 10);
+        chc.Move(new Vector3(-move.x, 0, -move.y)* Time.deltaTime * 5);
+
+        float angle = Mathf.Atan2(rotate.x, rotate.y) * Mathf.Rad2Deg; 
+        t.rotation = Quaternion.Euler(new Vector3(0, 180 + angle, 0));
+        print(angle); 
     }
     private void OnEnable()
     {
