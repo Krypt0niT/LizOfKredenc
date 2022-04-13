@@ -363,6 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1166704231}
+  manager: {fileID: 0}
 --- !u!64 &724050768
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -539,6 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1166704231}
+  manager: {fileID: 891586050}
 --- !u!1 &891586050
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +570,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b7e6fbf5d266f243b17bdd288302ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1_Maxhealth: 1000
+  player2_Maxhealth: 1000
+  player1_health: 1000
+  player2_health: 1000
 --- !u!4 &891586052
 Transform:
   m_ObjectHideFlags: 0

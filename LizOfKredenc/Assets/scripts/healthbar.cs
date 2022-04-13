@@ -8,6 +8,10 @@ public class healthbar : MonoBehaviour
     Quaternion startRotation;
     [SerializeField]
     GameObject playerTransform;
+    [SerializeField]
+    GameObject manager;
+    //manager managerscript = manager.GetComponent<manager>();
+
 
     void Start()
     {
