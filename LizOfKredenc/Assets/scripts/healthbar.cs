@@ -9,16 +9,20 @@ public class healthbar : MonoBehaviour
     [SerializeField]
     GameObject playerTransform;
     [SerializeField]
-    GameObject manager;
-    //manager managerscript = manager.GetComponent<manager>();
+    GameObject Manager;
 
+    manager ManagerVariables;
+    int player1_health;
+    
 
     void Start()
     {
         t = GetComponent<Transform>();
         startRotation = t.rotation;
         playerTransform.GetComponent<Transform>();
-        print(playerTransform);
+        ManagerVariables = GetComponent<manager>();
+        player1_health = ManagerVariables.player1_health;   
+        print(player1_health);
     }
 
     void Update()
@@ -28,7 +32,7 @@ public class healthbar : MonoBehaviour
         {
             if(this.name == "health")
             {
-               // t.localScale = new Vector3();
+                //t.localScale = new Vector3();
             }
         }
     }
