@@ -12,7 +12,7 @@ public class healthbar : MonoBehaviour
     Manazer variables;
     [SerializeField]
     Material healthMaterial;
-    float red = 0;
+    float red;
     float green;
     
     
@@ -30,21 +30,38 @@ public class healthbar : MonoBehaviour
         
         
         t.position = new Vector3(playerTransform.transform.position.x,transform.position.y,playerTransform.transform.position.z);
+        if(name == "mana")
+        {
+            t.position = new Vector3(playerTransform.transform.position.x, transform.position.y, playerTransform.transform.position.z + 0.14063f);
+        }
+        if (name == "healthBarFrame")
+        {
+            t.position = new Vector3(playerTransform.transform.position.x, transform.position.y, playerTransform.transform.position.z + 0.03463f);
+        }
         if (transform.parent.name == "P1_healthBar")
         {
             if(this.name == "health")
             {
-                t.localScale = new Vector3(variables.player1_health/5000, t.localScale.y,t.localScale.z);
-                float pocet_dielikov = variables.player1_Maxhealth / variables.player1_health;
-                float percenta = 100 / pocet_dielikov;
+                t.localScale = new Vector3(variables.player1_health/(variables.player1_Maxhealth / 0.2f), t.localScale.y,t.localScale.z);
+                float Hpocet_dielikov = variables.player1_Maxhealth / variables.player1_health;
+                float Hpercenta = 100 / Hpocet_dielikov;
                
-                t.position = new Vector3(t.position.x + ((100f-percenta)/100), t.position.y, t.position.z);
-                green =  percenta/100;
-                red = 1-(percenta/100);
-                print(green);
+                t.position = new Vector3(t.position.x + ((100f-Hpercenta)/100), t.position.y, t.position.z);
+                green =  Hpercenta/100;
+                red = 1-(Hpercenta/100);
                 healthMaterial.color = new Color(red,green, 0, 255);
                 
        
+            }
+            if(this.name == "mana")
+            {
+                t.localScale = new Vector3(variables.player1_mana / (variables.player1_Maxmana / 0.2f), t.localScale.y, t.localScale.z);
+                float Mpocet_dielikov = variables.player1_Maxmana / variables.player1_mana;
+                float Mpercenta = 100 / Mpocet_dielikov;
+
+                t.position = new Vector3(t.position.x + ((100f - Mpercenta) / 100), t.position.y, t.position.z);
+                
+                //healthMaterial.color = new Color(red, green, 0, 255);
             }
         }
     }

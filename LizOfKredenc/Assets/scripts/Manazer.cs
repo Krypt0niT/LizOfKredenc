@@ -5,18 +5,22 @@ using UnityEngine;
 public class Manazer : MonoBehaviour
 {
     public float player1_Maxhealth = 1000;
-    public float player2_Maxhealth = 1000;
-
     public float player1_health = 1000;
+    public float player1_speed = 5;
+    public float player1_Maxmana = 250;
+    public float player1_mana = 250;
+    public float player1_manaRegen = 20;
+
+
+    public float player2_Maxhealth = 1000;
     public float player2_health = 1000;
-    void Start()
-    {
-        
-    }
+    public float player2_speed = 5;
+    public float player2_Maxmana = 250;
+    public float player2_mana = 250;
+    public float player2_manaRegen = 20;
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
+
+    //vseobecne pravidla hry
+    public float manaCost_flash = 100;
 }

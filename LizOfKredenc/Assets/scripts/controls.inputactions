@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LB",
+                    "type": "Button",
+                    "id": "8f3c6876-a451-4993-b414-2176889f0254",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -64,6 +73,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72ffb2d4-5838-4125-b107-21b86bfe1e3c",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

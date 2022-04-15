@@ -53,6 +53,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LB"",
+                    ""type"": ""Button"",
+                    ""id"": ""8f3c6876-a451-4993-b414-2176889f0254"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -88,6 +97,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""RB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72ffb2d4-5838-4125-b107-21b86bfe1e3c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +119,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
         m_Gameplay_RB = m_Gameplay.FindAction("RB", throwIfNotFound: true);
+        m_Gameplay_LB = m_Gameplay.FindAction("LB", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,6 +182,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Rotate;
     private readonly InputAction m_Gameplay_RB;
+    private readonly InputAction m_Gameplay_LB;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -168,6 +190,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Rotate => m_Wrapper.m_Gameplay_Rotate;
         public InputAction @RB => m_Wrapper.m_Gameplay_RB;
+        public InputAction @LB => m_Wrapper.m_Gameplay_LB;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -186,6 +209,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @RB.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRB;
                 @RB.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRB;
                 @RB.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRB;
+                @LB.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLB;
+                @LB.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLB;
+                @LB.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLB;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -199,6 +225,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @RB.started += instance.OnRB;
                 @RB.performed += instance.OnRB;
                 @RB.canceled += instance.OnRB;
+                @LB.started += instance.OnLB;
+                @LB.performed += instance.OnLB;
+                @LB.canceled += instance.OnLB;
             }
         }
     }
@@ -208,5 +237,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnRB(InputAction.CallbackContext context);
+        void OnLB(InputAction.CallbackContext context);
     }
 }
