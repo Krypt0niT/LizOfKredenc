@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Manazer : MonoBehaviour
 {
-    public int player1_Maxhealth = 1000;
-    public int player2_Maxhealth = 1000;
+    public float player1_Maxhealth = 1000;
+    public float player2_Maxhealth = 1000;
 
-    public int player1_health = 1000;
-    public int player2_health = 1000;
+    public float player1_health = 1000;
+    public float player2_health = 1000;
     void Start()
     {
         
