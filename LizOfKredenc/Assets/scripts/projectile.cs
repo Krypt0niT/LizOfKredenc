@@ -6,7 +6,7 @@ public class projectile : MonoBehaviour
 {
     float timeAlive = 0;
     [SerializeField]
-    float DlzkaZivota = 3;
+    float DlzkaZivota = 5;
     float projectileSpeed = 10;
 
 
