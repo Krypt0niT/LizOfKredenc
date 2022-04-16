@@ -62,13 +62,22 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""cross"",
+                    ""type"": ""Button"",
+                    ""id"": ""caaeb8d5-7d0c-43a1-90e9-f9726843f9bb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""a17b4564-072f-4515-adda-1243e51e5de8"",
-                    ""path"": ""<Gamepad>/leftStick/"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -108,6 +117,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""LB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5071a65d-3239-4a6d-b9ea-028518af67e0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""cross"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +140,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
         m_Gameplay_RB = m_Gameplay.FindAction("RB", throwIfNotFound: true);
         m_Gameplay_LB = m_Gameplay.FindAction("LB", throwIfNotFound: true);
+        m_Gameplay_cross = m_Gameplay.FindAction("cross", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +204,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Rotate;
     private readonly InputAction m_Gameplay_RB;
     private readonly InputAction m_Gameplay_LB;
+    private readonly InputAction m_Gameplay_cross;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -191,6 +213,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @Rotate => m_Wrapper.m_Gameplay_Rotate;
         public InputAction @RB => m_Wrapper.m_Gameplay_RB;
         public InputAction @LB => m_Wrapper.m_Gameplay_LB;
+        public InputAction @cross => m_Wrapper.m_Gameplay_cross;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +235,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @LB.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLB;
                 @LB.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLB;
                 @LB.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLB;
+                @cross.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCross;
+                @cross.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCross;
+                @cross.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCross;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -228,6 +254,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @LB.started += instance.OnLB;
                 @LB.performed += instance.OnLB;
                 @LB.canceled += instance.OnLB;
+                @cross.started += instance.OnCross;
+                @cross.performed += instance.OnCross;
+                @cross.canceled += instance.OnCross;
             }
         }
     }
@@ -238,5 +267,6 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnRotate(InputAction.CallbackContext context);
         void OnRB(InputAction.CallbackContext context);
         void OnLB(InputAction.CallbackContext context);
+        void OnCross(InputAction.CallbackContext context);
     }
 }

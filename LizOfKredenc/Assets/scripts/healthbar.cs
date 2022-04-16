@@ -49,7 +49,8 @@ public class healthbar : MonoBehaviour
                 t.position = new Vector3(t.position.x + ((100f-Hpercenta)/100), t.position.y, t.position.z);
                 green =  Hpercenta/100;
                 red = 1-(Hpercenta/100);
-                healthMaterial.color = new Color(red,green, 0, 255);
+    
+                healthMaterial.color = new Color(red,green, 0f, 255);
                 
        
             }
