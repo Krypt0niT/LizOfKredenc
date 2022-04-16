@@ -127,6 +127,7 @@ public class player : MonoBehaviour
             chc.Move(new Vector3(-move.x * 3, 0, -move.y * 3));
             flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
             flash.Play();
+            
             variables.player1_mana -= variables.manaCost_flash;
         }
 

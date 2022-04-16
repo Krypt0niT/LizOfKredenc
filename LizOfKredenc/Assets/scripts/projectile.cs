@@ -23,7 +23,7 @@ public class projectile : MonoBehaviour
     {
 
         transform.position += transform.forward * Time.deltaTime * projectileSpeed;
-
+        
 
         timeAlive += Time.deltaTime;
         if (timeAlive >= DlzkaZivota)
