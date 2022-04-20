@@ -37,10 +37,12 @@ public class player : MonoBehaviour
         controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
 
         controls.Gameplay.Rotate.performed += ctx => rotate = ctx.ReadValue<Vector2>();
-
+    
         controls.Gameplay.RB.performed += ctx => rightButton();
 
         controls.Gameplay.LB.performed += ctx => leftButton();
+
+        controls.Gameplay.RBB.performed += ctx => rightBackButton();
 
         controls.Gameplay.cross.performed += ctx => cross();
 
@@ -116,6 +118,10 @@ public class player : MonoBehaviour
         
         
         
+    }
+    void rightBackButton()
+    {
+
     }
     void leftButton()
     {

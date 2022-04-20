@@ -42,9 +42,27 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "RBB",
+                    "type": "Button",
+                    "id": "c19ed8c5-2635-4cc8-b0d5-445de4b4a197",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "cross",
                     "type": "Button",
                     "id": "caaeb8d5-7d0c-43a1-90e9-f9726843f9bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "circle",
+                    "type": "Button",
+                    "id": "4562e9fd-9166-4735-a59b-5bf0f66d5e0f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -98,12 +116,34 @@
                 },
                 {
                     "name": "",
+                    "id": "3ef6278f-0ea8-4e8e-a6d3-898c9c1bda06",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RBB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5071a65d-3239-4a6d-b9ea-028518af67e0",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "cross",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff06f194-8032-4e1b-a60e-8b6475de04dd",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "circle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
