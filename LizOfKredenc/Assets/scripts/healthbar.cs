@@ -63,7 +63,8 @@ public class healthbar : MonoBehaviour
                 float Mpercenta = 100 / Mpocet_dielikov;
 
                 t.position = new Vector3(t.position.x + ((100f - Mpercenta) / 100), t.position.y, t.position.z);
-                
+
+
             }
         }
         if (transform.parent.name == "P2_healthBar")
@@ -90,7 +91,9 @@ public class healthbar : MonoBehaviour
 
                 t.position = new Vector3(t.position.x + ((100f - Mpercenta) / 100), t.position.y, t.position.z);
 
+
             }
         }
+
     }
 }

@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 5636682794857180946}
   - component: {fileID: 6464548281474059975}
   - component: {fileID: 5516076845384548374}
-  - component: {fileID: 3944738601008750461}
   - component: {fileID: 2312964622272843508}
   - component: {fileID: 8963501590204332473}
   - component: {fileID: 5963126425220903574}
   - component: {fileID: 8103016883933682800}
+  - component: {fileID: 283293718209361563}
   m_Layer: 0
-  m_Name: projectile
+  m_Name: projectileP1
   m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 9138526412366840579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.01, y: 0.46, z: 2.76}
-  m_LocalScale: {x: 0.2487, y: 0.2487, z: 0.2487}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -88,19 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3944738601008750461
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9138526412366840579}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2312964622272843508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DlzkaZivota: 3
+  projectileSpeed: 15
 --- !u!108 &8963501590204332473
 Light:
   m_ObjectHideFlags: 0
@@ -5014,3 +5002,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!135 &283293718209361563
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138526412366840579}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}

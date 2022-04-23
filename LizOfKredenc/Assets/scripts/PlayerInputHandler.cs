@@ -15,24 +15,34 @@ public class PlayerInputHandler : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         var players = FindObjectsOfType<player>();
+
         var index = playerInput.playerIndex;
         Player = players.FirstOrDefault(p => p.GetPlayerIndex() == index);
     }
 
     public void OnMove(CallbackContext context)
     {
-        Player.SetMoveInputVector(context.ReadValue<Vector2>());
+        if (Player != null)
+            Player.SetMoveInputVector(context.ReadValue<Vector2>());
     }
     public void OnRotate(CallbackContext context)
     {
-        Player.SetRotateInputVector(context.ReadValue<Vector2>());
+        if (Player != null)
+            Player.SetRotateInputVector(context.ReadValue<Vector2>());
     }
     public void OnRB(CallbackContext context)
     {
-        Player.rightButton();
+        if (Player != null)
+            Player.rightButton();
     }
     public void OnLB(CallbackContext context)
     {
-        Player.leftButton();
+        if (Player != null)
+            Player.leftButton();
+    }
+    public void OnCross(CallbackContext context)
+    {
+        if (Player != null)
+            Player.cross();
     }
 }

@@ -11,9 +11,10 @@ public class Manazer : MonoBehaviour
     
     public float player1_Maxmana = 250;
     public float player1_mana = 250;
-    public float player1_manaRegen = 20;
+    public float player1_manaRegen = 50;
 
     public float player1_speed = 5;
+    public float player1_projectileDMG = 200;
 
 
 
@@ -27,14 +28,17 @@ public class Manazer : MonoBehaviour
     
     public float player2_Maxmana = 250;
     public float player2_mana = 250;
-    public float player2_manaRegen = 20;
+    public float player2_manaRegen = 50;
 
     public float player2_speed = 5;
+    public float player2_projectileDMG = 200;
+
 
 
 
     //vseobecne pravidla hry
     public float manaCost_flash = 100;
     public float manaCost_projectile = 20;
-    public float cooldown_projectile = 3    ;
+    public float cooldown_projectile = 3;
+    public float cooldown_flash = 0.5f;
 }

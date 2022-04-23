@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class projectile : MonoBehaviour
 {
+
+
     float timeAlive = 0;
     [SerializeField]
     float DlzkaZivota = 5 ;
     [SerializeField]
-    float projectileSpeed = 10;
+    float projectileSpeed = 15;
 
 
 
@@ -30,4 +32,5 @@ public class projectile : MonoBehaviour
             Destroy(gameObject);  
         }
     }
+
 }

@@ -25,7 +25,9 @@ public class player : MonoBehaviour
     float casMana = 0;
     float casHealth = 0;
 
+
     float projectile_time = 0;
+    float flash_time = 0;
 
     Vector2 MoveInputVector = Vector2.zero;
     Vector2 RotateInputVector = Vector2.zero;
@@ -42,9 +44,8 @@ public class player : MonoBehaviour
 
 
 
-        controls.Gameplay.RBB.performed += ctx => rightBackButton();
+        
 
-        controls.Gameplay.cross.performed += ctx => cross();
 
     }
     void Start()
@@ -54,14 +55,24 @@ public class player : MonoBehaviour
 
     void Update()
     {
-        chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player1_speed);
-        float angle = Mathf.Atan2(RotateInputVector.x, RotateInputVector.y) * Mathf.Rad2Deg; 
-        t.rotation = Quaternion.Euler(new Vector3(0, 180 + angle, 0));
+        if (RotateInputVector.x == 0 && RotateInputVector.y == 0)
+        {
+            t.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        }
+        else
+        {
+            float angle = Mathf.Atan2(RotateInputVector.x, RotateInputVector.y) * Mathf.Rad2Deg;
+            t.rotation = Quaternion.Euler(new Vector3(0, 180 + angle, 0));
+        }
+        
 
         projectile_time += Time.deltaTime;
+        flash_time += Time.deltaTime;
 
         if (GetPlayerIndex() == 0)
         {
+            //move
+            chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player1_speed);
             casHealth += Time.deltaTime;
             if (casHealth >= (1 / variables.player1_healthRegen))
             {
@@ -94,6 +105,8 @@ public class player : MonoBehaviour
         }
         else if (GetPlayerIndex() == 1)
         {
+            //move
+            chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player2_speed);
             casHealth += Time.deltaTime;
             if (casHealth >= (1 / variables.player2_healthRegen))
             {
@@ -123,18 +136,46 @@ public class player : MonoBehaviour
                 casMana = 0;
             }
 
+
+
         }
+        
 
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (this.name == "player1")
+        {
+            if (other.name == "ProjectilePlayer2(Clone)")
+            {
+                if(variables.player1_health >= variables.player2_projectileDMG)
+                {
+                    variables.player1_health -= variables.player2_projectileDMG;
+                }
+                else
+                {
+                    variables.player1_health = 0;
+                }
+                Destroy(other.gameObject);
+            }
+        }
+        if (this.name == "player2")
+        {
+            if (other.name == "ProjectilePlayer1(Clone)")
+            {
+                if (variables.player2_health >= variables.player1_projectileDMG)
+                {
+                    variables.player2_health -= variables.player1_projectileDMG;
+                }
+                else
+                {
+                    variables.player2_health = 0;
+                }
+                Destroy(other.gameObject);
+            }
+        }
+    }
 
-    }
-    private void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
-    private void OnDisable()
-    {
-        controls.Gameplay.Disable();
-    }
     public void rightButton()
     {
         if (GetPlayerIndex() == 0)
@@ -146,6 +187,7 @@ public class player : MonoBehaviour
                 {
                     Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
                     variables.player1_mana -= variables.manaCost_projectile;
+                    projectile.name = "ProjectilePlayer1";
                 }
                 projectile_time = 0;
             }
@@ -158,6 +200,7 @@ public class player : MonoBehaviour
                 if (variables.player2_mana >= variables.manaCost_projectile)
                 {
                     Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                    projectile.name = "ProjectilePlayer2";
                     variables.player2_mana -= variables.manaCost_projectile;
                 }
                 projectile_time = 0;
@@ -174,41 +217,60 @@ public class player : MonoBehaviour
     public void leftButton()
     {
         //if ability selected:....
-        print(GetPlayerIndex());
-
-        //flash
-        if (GetPlayerIndex()==0)
+        if (flash_time >= variables.cooldown_flash)
         {
 
-            if (variables.player1_mana >= variables.manaCost_flash) 
-            { 
-                chc.Move(new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3));
-                flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-                flash.Play();
-            
-                variables.player1_mana -= variables.manaCost_flash;
-                print("mana minus");
-            }
-        }
-        else if(GetPlayerIndex() == 1)
-        {
 
-            if (variables.player2_mana >= variables.manaCost_flash)
+            //flash
+            flash_time = 0;
+            if (GetPlayerIndex()==0)
             {
-                chc.Move(new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3));
-                flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-                flash.Play();
 
-                variables.player2_mana -= variables.manaCost_flash;
+                if (variables.player1_mana >= variables.manaCost_flash) 
+                {
+                    chc.enabled = false;
+                    t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                    chc.enabled = true;
+
+                    flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                    flash.Play();
+            
+                    variables.player1_mana -= variables.manaCost_flash;
+                }
             }
-        }
+            else if(GetPlayerIndex() == 1)
+            {
 
+                if (variables.player2_mana >= variables.manaCost_flash)
+                {
+                    chc.enabled = false;
+                    t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                    chc.enabled = true;
+
+                    flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                    flash.Play();
+
+                    variables.player2_mana -= variables.manaCost_flash;
+                }
+            }
+
+        }
     }
     public void cross()
     {
-        if (variables.player1_health > 0)
+        if (GetPlayerIndex() == 0)
         {
-            variables.player1_health -= 100f;
+            if (variables.player1_health > 100)
+            {
+                variables.player1_health -= 100f;
+            }
+        }
+        if (GetPlayerIndex() == 1)
+        {
+            if (variables.player2_health > 100)
+            {
+                variables.player2_health -= 100f;
+            }
         }
     }
     public void SetMoveInputVector(Vector2 direction)
