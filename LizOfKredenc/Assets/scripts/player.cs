@@ -18,12 +18,17 @@ public class player : MonoBehaviour
     ParticleSystem flash;
     [SerializeField]
     GameObject projectile;
+    [SerializeField]
+    private int playerIndex = 0;
 
 
     float casMana = 0;
     float casHealth = 0;
 
     float projectile_time = 0;
+
+    Vector2 MoveInputVector = Vector2.zero;
+    Vector2 RotateInputVector = Vector2.zero;
 
     private void Awake()
     {
@@ -33,14 +38,9 @@ public class player : MonoBehaviour
         variables = manager.GetComponent<Manazer>();
         controls = new Controls();
 
-        controls.Gameplay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
-        controls.Gameplay.Move.canceled += ctx => move = Vector2.zero;
+        
 
-        controls.Gameplay.Rotate.performed += ctx => rotate = ctx.ReadValue<Vector2>();
-    
-        controls.Gameplay.RB.performed += ctx => rightButton();
 
-        controls.Gameplay.LB.performed += ctx => leftButton();
 
         controls.Gameplay.RBB.performed += ctx => rightBackButton();
 
@@ -54,14 +54,13 @@ public class player : MonoBehaviour
 
     void Update()
     {
-        chc.Move(new Vector3(-move.x, 0, -move.y)* Time.deltaTime * variables.player1_speed);
-
-        float angle = Mathf.Atan2(rotate.x, rotate.y) * Mathf.Rad2Deg; 
+        chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player1_speed);
+        float angle = Mathf.Atan2(RotateInputVector.x, RotateInputVector.y) * Mathf.Rad2Deg; 
         t.rotation = Quaternion.Euler(new Vector3(0, 180 + angle, 0));
 
         projectile_time += Time.deltaTime;
 
-        if (name == "player1")
+        if (GetPlayerIndex() == 0)
         {
             casHealth += Time.deltaTime;
             if (casHealth >= (1 / variables.player1_healthRegen))
@@ -93,6 +92,38 @@ public class player : MonoBehaviour
             }
 
         }
+        else if (GetPlayerIndex() == 1)
+        {
+            casHealth += Time.deltaTime;
+            if (casHealth >= (1 / variables.player2_healthRegen))
+            {
+                if (variables.player2_health + 1 >= variables.player2_Maxhealth)
+                {
+                    variables.player2_health = variables.player2_Maxhealth;
+                }
+                else
+                {
+                    variables.player2_health++;
+                }
+                casHealth = 0;
+            }
+
+
+            casMana += Time.deltaTime;
+            if (casMana >= (1 / variables.player2_manaRegen))
+            {
+                if (variables.player2_mana + 1 >= variables.player2_Maxmana)
+                {
+                    variables.player2_mana = variables.player2_Maxmana;
+                }
+                else
+                {
+                    variables.player2_mana++;
+                }
+                casMana = 0;
+            }
+
+        }
 
 
     }
@@ -104,46 +135,110 @@ public class player : MonoBehaviour
     {
         controls.Gameplay.Disable();
     }
-    void rightButton()
+    public void rightButton()
     {
-        if (projectile_time >= variables.cooldown_projectile)
+        if (GetPlayerIndex() == 0)
         {
-            if (variables.player1_mana >= variables.manaCost_projectile)
+
+            if (projectile_time >= variables.cooldown_projectile)
             {
-                Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
-                variables.player1_mana -= variables.manaCost_projectile;
+                if (variables.player1_mana >= variables.manaCost_projectile)
+                {
+                    Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                    variables.player1_mana -= variables.manaCost_projectile;
+                }
+                projectile_time = 0;
             }
-            projectile_time = 0;
         }
-        
-        
-        
+        else if (GetPlayerIndex() == 1)
+        {
+
+            if (projectile_time >= variables.cooldown_projectile)
+            {
+                if (variables.player2_mana >= variables.manaCost_projectile)
+                {
+                    Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                    variables.player2_mana -= variables.manaCost_projectile;
+                }
+                projectile_time = 0;
+            }
+        }
+
+
+
     }
-    void rightBackButton()
+    public void rightBackButton()
     {
 
     }
-    void leftButton()
+    public void leftButton()
     {
         //if ability selected:....
+        print(GetPlayerIndex());
 
         //flash
-        if (variables.player1_mana >= variables.manaCost_flash) 
-        { 
-            chc.Move(new Vector3(-move.x * 3, 0, -move.y * 3));
-            flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-            flash.Play();
+        if (GetPlayerIndex()==0)
+        {
+
+            if (variables.player1_mana >= variables.manaCost_flash) 
+            { 
+                chc.Move(new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3));
+                flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                flash.Play();
             
-            variables.player1_mana -= variables.manaCost_flash;
+                variables.player1_mana -= variables.manaCost_flash;
+                print("mana minus");
+            }
+        }
+        else if(GetPlayerIndex() == 1)
+        {
+
+            if (variables.player2_mana >= variables.manaCost_flash)
+            {
+                chc.Move(new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3));
+                flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                flash.Play();
+
+                variables.player2_mana -= variables.manaCost_flash;
+            }
         }
 
     }
-    void cross()
+    public void cross()
     {
         if (variables.player1_health > 0)
         {
             variables.player1_health -= 100f;
         }
+    }
+    public void SetMoveInputVector(Vector2 direction)
+    {
+        MoveInputVector = direction;
+       
+       
+    }
+    public void SetRotateInputVector(Vector2 direction)
+    {
+        RotateInputVector = direction;
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public int GetPlayerIndex()
+    {
+        return playerIndex;
     }
 
 

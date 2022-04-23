@@ -172,7 +172,19 @@ public partial class @Controls : IInputActionCollection2, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Joistick"",
+            ""bindingGroup"": ""Joistick"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
@@ -319,6 +331,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         }
     }
     public GameplayActions @Gameplay => new GameplayActions(this);
+    private int m_JoistickSchemeIndex = -1;
+    public InputControlScheme JoistickScheme
+    {
+        get
+        {
+            if (m_JoistickSchemeIndex == -1) m_JoistickSchemeIndex = asset.FindControlSchemeIndex("Joistick");
+            return asset.controlSchemes[m_JoistickSchemeIndex];
+        }
+    }
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
