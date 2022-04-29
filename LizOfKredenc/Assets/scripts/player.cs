@@ -28,6 +28,8 @@ public class player : MonoBehaviour
 
     float projectile_time = 0;
     float flash_time = 0;
+    float speed_time = 0;
+    float speed_lengh = 0;
 
     Vector2 MoveInputVector = Vector2.zero;
     Vector2 RotateInputVector = Vector2.zero;
@@ -68,11 +70,40 @@ public class player : MonoBehaviour
 
         projectile_time += Time.deltaTime;
         flash_time += Time.deltaTime;
+        speed_time += Time.deltaTime;
+        
+       
 
         if (GetPlayerIndex() == 0)
         {
             //move
             chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player1_speed);
+            if (variables.player1_speedActive)
+            {
+                
+                speed_lengh += Time.deltaTime;
+                if (speed_lengh >= variables.lengh_speed)
+                {
+                    variables.player1_speedActive = false;
+                    variables.player1_speed = variables.player1_speed / 2;
+                    speed_lengh = 0;
+                }
+
+            }
+            if (variables.player2_speedActive)
+            {
+
+                speed_lengh += Time.deltaTime;
+                if (speed_lengh >= variables.lengh_speed)
+                {
+                    variables.player2_speedActive = false;
+                    variables.player2_speed = variables.player2_speed / 2;
+                    speed_lengh = 0;
+                }
+
+            }
+
+
             casHealth += Time.deltaTime;
             if (casHealth >= (1 / variables.player1_healthRegen))
             {
@@ -216,45 +247,116 @@ public class player : MonoBehaviour
     }
     public void leftButton()
     {
-        //if ability selected:....
-        if (flash_time >= variables.cooldown_flash)
-        {
+        
+        
 
-
-            //flash
-            flash_time = 0;
-            if (GetPlayerIndex()==0)
+        
+            if (flash_time >= variables.cooldown_flash)
             {
 
-                if (variables.player1_mana >= variables.manaCost_flash) 
-                {
-                    chc.enabled = false;
-                    t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-                    chc.enabled = true;
 
-                    flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-                    flash.Play();
+                //flash
+                
+                if (GetPlayerIndex()==0)
+                {
+                    if (variables.player1_summonerSpell == "flash")
+                    {
+
+                
+
+                        if (variables.player1_mana >= variables.manaCost_flash) 
+                        {
+                            chc.enabled = false;
+                            t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                            chc.enabled = true;
+
+                            flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                            flash.Play();
             
-                    variables.player1_mana -= variables.manaCost_flash;
+                            variables.player1_mana -= variables.manaCost_flash;
+                            flash_time = 0;
+                        }
+                    }
+                }
+
+                else if(GetPlayerIndex() == 1)
+                {
+                    if (variables.player2_summonerSpell == "flash")
+                    {
+
+                
+
+                        if (variables.player2_mana >= variables.manaCost_flash)
+                        {
+                            chc.enabled = false;
+                            t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                            chc.enabled = true;
+
+                            flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                            flash.Play();
+
+                            variables.player2_mana -= variables.manaCost_flash;
+                            flash_time = 0;
+                        }
+
+                    }
                 }
             }
-            else if(GetPlayerIndex() == 1)
+        
+
+
+         
+        
+            if (GetPlayerIndex() == 0)
             {
 
-                if (variables.player2_mana >= variables.manaCost_flash)
+                if (variables.player1_summonerSpell == "speed")
                 {
-                    chc.enabled = false;
-                    t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-                    chc.enabled = true;
 
-                    flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-                    flash.Play();
+                
 
-                    variables.player2_mana -= variables.manaCost_flash;
+
+                    if (speed_time >= variables.cooldown_speed)
+                    {
+                        if (variables.player1_mana >= variables.manaCost_speed)
+                        {
+
+                    
+                            speed_time = 0;
+                            variables.player1_speedActive = true;
+                            variables.player1_speed = variables.player1_speed * 2;
+                            variables.player1_mana -= variables.manaCost_speed;
+                        }
+                    }
                 }
+
+            }
+            if (GetPlayerIndex() == 1)
+            {
+
+                if (variables.player2_summonerSpell == "speed")
+                {
+
+            
+
+
+                    if (speed_time >= variables.cooldown_speed)
+                    {
+                        if (variables.player2_mana >= variables.manaCost_speed)
+                        {
+
+
+                            speed_time = 0;
+                            variables.player2_speedActive = true;
+                            variables.player2_speed = variables.player2_speed * 2;
+                            variables.player2_mana -= variables.manaCost_speed;
+                        }
+                    }
+                }
+
             }
 
-        }
+        
     }
     public void cross()
     {
