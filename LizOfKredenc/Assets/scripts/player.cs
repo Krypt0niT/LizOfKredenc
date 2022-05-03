@@ -266,15 +266,27 @@ public class player : MonoBehaviour
 
                         if (variables.player1_mana >= variables.manaCost_flash) 
                         {
+                            
+                        
+
+                            Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+
+                            if (!Physics.Raycast(transform.position, novaPozicia, 10))
+                            {
                             chc.enabled = false;
                             t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                             chc.enabled = true;
 
                             flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
                             flash.Play();
-            
+
                             variables.player1_mana -= variables.manaCost_flash;
                             flash_time = 0;
+                        }
+                                
+                        
+
+                            
                         }
                     }
                 }
