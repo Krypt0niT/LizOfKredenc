@@ -8,9 +8,7 @@ public class player : MonoBehaviour
 {
     Transform t;
     CharacterController chc;
-    Controls controls;
-    Vector2 move;
-    Vector2 rotate;
+
     [SerializeField]
     GameObject manager;
     Manazer variables;
@@ -27,7 +25,8 @@ public class player : MonoBehaviour
 
 
     float projectile_time = 0;
-    float flash_time = 0;
+    [HideInInspector]
+    public float flash_time = 0;
     float speed_time = 0;
     float speed_lengh = 0;
 
@@ -40,7 +39,6 @@ public class player : MonoBehaviour
         chc = GetComponent<CharacterController>();
         t = GetComponent<Transform>();
         variables = manager.GetComponent<Manazer>();
-        controls = new Controls();
 
         
 
@@ -69,7 +67,12 @@ public class player : MonoBehaviour
         
 
         projectile_time += Time.deltaTime;
-        flash_time += Time.deltaTime;
+        if (flash_time < variables.cooldown_flash)
+        {
+            flash_time += Time.deltaTime;
+            print(flash_time);
+
+        }
         speed_time += Time.deltaTime;
         
        
