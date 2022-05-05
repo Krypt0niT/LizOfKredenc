@@ -23,11 +23,12 @@ public class player : MonoBehaviour
     float casMana = 0;
     float casHealth = 0;
 
-
-    float projectile_time = 0;
+    [HideInInspector]
+    public float projectile_time = 0;
     [HideInInspector]
     public float flash_time = 0;
-    float speed_time = 0;
+    [HideInInspector]
+    public float speed_time = 0;
     float speed_lengh = 0;
 
     Vector2 MoveInputVector = Vector2.zero;
@@ -65,17 +66,22 @@ public class player : MonoBehaviour
             t.rotation = Quaternion.Euler(new Vector3(0, 180 + angle, 0));
         }
         
-
-        projectile_time += Time.deltaTime;
+        if (projectile_time < variables.cooldown_projectile)
+        {
+            projectile_time += Time.deltaTime;
+        }
         if (flash_time < variables.cooldown_flash)
         {
             flash_time += Time.deltaTime;
-            print(flash_time);
 
         }
-        speed_time += Time.deltaTime;
-        
-       
+        if (speed_time < variables.cooldown_speed)
+        {
+            speed_time += Time.deltaTime;
+
+        }
+
+
 
         if (GetPlayerIndex() == 0)
         {
@@ -299,21 +305,22 @@ public class player : MonoBehaviour
                     if (variables.player2_summonerSpell == "flash")
                     {
 
-                
 
-                        if (variables.player2_mana >= variables.manaCost_flash)
-                        {
-                            chc.enabled = false;
-                            t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-                            chc.enabled = true;
 
-                            flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-                            flash.Play();
+                    Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
 
-                            variables.player2_mana -= variables.manaCost_flash;
-                            flash_time = 0;
+                    if (!Physics.Raycast(transform.position, novaPozicia, 10))
+                    {
+                        chc.enabled = false;
+                        t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                        chc.enabled = true;
+
+                        flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                        flash.Play();
+
+                        variables.player2_mana -= variables.manaCost_flash;
+                        flash_time = 0;
                         }
-
                     }
                 }
             }
