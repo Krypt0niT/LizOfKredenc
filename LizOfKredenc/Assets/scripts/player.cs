@@ -252,6 +252,7 @@ public class player : MonoBehaviour
     }
     public void rightBackButton()
     {
+        print(":(");
 
     }
     public void leftButton()
@@ -412,8 +413,7 @@ public class player : MonoBehaviour
 
 
 
-
-
+ 
 
 
 
