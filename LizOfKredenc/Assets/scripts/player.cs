@@ -89,6 +89,8 @@ public class player : MonoBehaviour
         {
             //move
             chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player1_speed);
+
+
             if (variables.player1_speedActive)
             {
                 
@@ -232,7 +234,7 @@ public class player : MonoBehaviour
                 }
 
 
-
+                
                 if (variables.player1_health >= variables.player2_projectileDMG + CritBonusDMG + bonusDMG)
                 {
                     variables.player1_health -= variables.player2_projectileDMG + CritBonusDMG + bonusDMG;
@@ -249,9 +251,51 @@ public class player : MonoBehaviour
         {
             if (other.name == "ProjectilePlayer1(Clone)")
             {
-                if (variables.player2_health >= variables.player1_projectileDMG)
+                float critchance = 0;
+                if (variables.player1_perk_critchance1)
                 {
-                    variables.player2_health -= variables.player1_projectileDMG;
+                    critchance = 20;
+                }
+                if (variables.player1_perk_critchance2)
+                {
+                    critchance = 30;
+                }
+                if (variables.player1_perk_critchance3)
+                {
+                    critchance = 45;
+                }
+                if (!variables.player1_perk_critchance1 && !variables.player1_perk_critchance2 && !variables.player1_perk_critchance1)
+                {
+                    critchance = 10;
+                }
+
+
+
+                float bonusDMG = 0;
+                if (variables.player1_perk_bonusDMG1)
+                {
+                    bonusDMG = variables.player1_projectileDMG / 10;
+                }
+                if (variables.player1_perk_bonusDMG2)
+                {
+                    bonusDMG = variables.player1_projectileDMG / 5;
+                }
+
+
+
+                float random = Random.Range(0, 100);
+                float CritBonusDMG = 0;
+                if (random <= critchance)
+                {
+                    CritBonusDMG = variables.player1_projectileDMG;
+                }
+
+
+
+                if (variables.player2_health >= variables.player1_projectileDMG + CritBonusDMG + bonusDMG)
+                {
+                    variables.player2_health -= variables.player1_projectileDMG + CritBonusDMG + bonusDMG;
+                    print(variables.player1_projectileDMG + CritBonusDMG + bonusDMG);
                 }
                 else
                 {
