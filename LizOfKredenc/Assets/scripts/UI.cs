@@ -62,8 +62,8 @@ public class UI : MonoBehaviour
     {
         //score docastne
 
-        Player1_Score.text = "SCORE: " + variables.player1_SCORE;
-        Player2_Score.text = "SCORE: " + variables.player2_SCORE;
+        Player1_Score.text =  variables.player1_SCORE.ToString();
+        Player2_Score.text =  variables.player2_SCORE.ToString();
 
         //------------
 

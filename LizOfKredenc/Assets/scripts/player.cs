@@ -109,7 +109,17 @@ public class player : MonoBehaviour
             {
                 variables.player1_health = variables.player1_Maxhealth; 
             }
-            
+
+
+            if (variables.player1_perk_speed)
+            {
+                variables.player1_speed = 10;
+            }
+            else
+            {
+                variables.player1_speed = 5;
+            }
+
 
 
 
@@ -193,7 +203,14 @@ public class player : MonoBehaviour
             }
 
 
-
+            if (variables.player2_perk_speed)
+            {
+                variables.player2_speed = 10;
+            }
+            else
+            {
+                variables.player2_speed = 5;
+            }
 
 
             casHealth += Time.deltaTime;
@@ -311,6 +328,7 @@ public class player : MonoBehaviour
                 else
                 {
                     variables.player1_health = 0;
+                    variables.RoundEnd(this.name);
                 }
                 print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
 
@@ -393,6 +411,8 @@ public class player : MonoBehaviour
                 else
                 {
                     variables.player2_health = 0;
+                    variables.RoundEnd(this.name);
+
                 }
                 print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                 Destroy(other.gameObject);
@@ -623,6 +643,6 @@ public class player : MonoBehaviour
     {
         return playerIndex;
     }
-
+  
 
 }

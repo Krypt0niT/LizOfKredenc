@@ -6981,9 +6981,9 @@ MonoBehaviour:
   player1_healthRegen: 100
   player1_Maxmana: 250
   player1_mana: 250
-  player1_manaRegen: 50
+  player1_manaRegen: 10
   player1_speed: 5
-  player1_projectileDMG: 100
+  player1_projectileDMG: 200
   player1_summonerSpell: flash
   player1_speedActive: 0
   player1_perk_lifesteal1: 0
@@ -7001,9 +7001,9 @@ MonoBehaviour:
   player2_healthRegen: 100
   player2_Maxmana: 250
   player2_mana: 250
-  player2_manaRegen: 50
+  player2_manaRegen: 10
   player2_speed: 5
-  player2_projectileDMG: 100
+  player2_projectileDMG: 200
   player2_summonerSpell: flash
   player2_speedActive: 0
   player2_perk_lifesteal1: 0
@@ -7025,6 +7025,8 @@ MonoBehaviour:
   lengh_speed: 5
   player1_SCORE: 0
   player2_SCORE: 0
+  Player1: {fileID: 1166704231}
+  Player2: {fileID: 421782792}
 --- !u!1 &911825106
 GameObject:
   m_ObjectHideFlags: 0
