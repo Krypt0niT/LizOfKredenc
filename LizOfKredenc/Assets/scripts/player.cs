@@ -14,8 +14,7 @@ public class player : MonoBehaviour
     Manazer variables;
     [SerializeField]
     ParticleSystem flash;
-    [SerializeField] 
-    AudioClip flash_zvuk;
+
     [SerializeField]
     GameObject projectile;
     [SerializeField]
@@ -93,6 +92,27 @@ public class player : MonoBehaviour
             chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player1_speed);
 
 
+
+            if (variables.player1_perk_HealthIncrise1)
+            {
+                variables.player1_Maxhealth = 1250;
+            }
+            if (variables.player1_perk_HealthIncrise2)
+            {
+                variables.player1_Maxhealth = 1500;
+            }
+            if (!variables.player1_perk_HealthIncrise1 && !variables.player1_perk_HealthIncrise2)
+            {
+                variables.player1_Maxhealth = 1000;
+            }
+            if (variables.player1_health > variables.player1_Maxhealth)
+            {
+                variables.player1_health = variables.player1_Maxhealth; 
+            }
+            
+
+
+
             if (variables.player1_speedActive)
             {
                 
@@ -153,6 +173,30 @@ public class player : MonoBehaviour
         {
             //move
             chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player2_speed);
+
+
+            if (variables.player2_perk_HealthIncrise1)
+            {
+                variables.player2_Maxhealth = 1250;
+            }
+            if (variables.player2_perk_HealthIncrise2)
+            {
+                variables.player2_Maxhealth = 1500;
+            }
+            if (!variables.player2_perk_HealthIncrise1 && !variables.player2_perk_HealthIncrise2)
+            {
+                variables.player2_Maxhealth = 1000;
+            }
+            if (variables.player2_health > variables.player2_Maxhealth)
+            {
+                variables.player2_health = variables.player2_Maxhealth;
+            }
+
+            print(variables.player2_health);
+
+
+
+
             casHealth += Time.deltaTime;
             if (casHealth >= (1 / variables.player2_healthRegen))
             {
@@ -228,6 +272,8 @@ public class player : MonoBehaviour
 
                 
 
+                
+
                 float random = Random.Range(0, 100);
                 float CritBonusDMG = 0;
                 if (random <= critchance)
@@ -236,16 +282,39 @@ public class player : MonoBehaviour
                 }
 
 
-                
-                if (variables.player1_health >= variables.player2_projectileDMG + CritBonusDMG + bonusDMG)
+
+                //---------------------
+                float total_damage = variables.player2_projectileDMG + CritBonusDMG + bonusDMG;
+                //-----------------------
+
+                float lifesteal = 0;
+                if (variables.player2_perk_lifesteal1)
                 {
-                    variables.player1_health -= variables.player2_projectileDMG + CritBonusDMG + bonusDMG;
-                    print(variables.player2_projectileDMG + CritBonusDMG + bonusDMG);
+                    lifesteal = total_damage / 3;
+                }
+                if (variables.player2_perk_lifesteal2)
+                {
+                    lifesteal = total_damage / 2;
+                }
+
+
+                if (variables.player1_health >= total_damage)
+                {
+                    variables.player1_health -= total_damage;
+
+
+
+                    if (variables.player2_health <= variables.player2_Maxhealth - lifesteal)
+                    {
+                        variables.player2_health += lifesteal;
+                    }
                 }
                 else
                 {
                     variables.player1_health = 0;
                 }
+                print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
+
                 Destroy(other.gameObject);
             }
         }
@@ -285,6 +354,8 @@ public class player : MonoBehaviour
 
 
 
+
+
                 float random = Random.Range(0, 100);
                 float CritBonusDMG = 0;
                 if (random <= critchance)
@@ -294,15 +365,37 @@ public class player : MonoBehaviour
 
 
 
-                if (variables.player2_health >= variables.player1_projectileDMG + CritBonusDMG + bonusDMG)
+                //---------------------
+                float total_damage = variables.player1_projectileDMG + CritBonusDMG + bonusDMG;
+                //-----------------------
+
+                float lifesteal = 0;
+                if (variables.player1_perk_lifesteal1)
                 {
-                    variables.player2_health -= variables.player1_projectileDMG + CritBonusDMG + bonusDMG;
-                    print(variables.player1_projectileDMG + CritBonusDMG + bonusDMG);
+                    lifesteal = total_damage / 3;
+                }
+                if (variables.player1_perk_lifesteal2)
+                {
+                    lifesteal = total_damage / 2;
+                }
+
+
+                if (variables.player2_health >= total_damage)
+                {
+                    variables.player2_health -= total_damage;
+
+
+
+                    if (variables.player1_health <= variables.player1_Maxhealth - lifesteal)
+                    {
+                        variables.player1_health += lifesteal;
+                    }
                 }
                 else
                 {
                     variables.player2_health = 0;
                 }
+                print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                 Destroy(other.gameObject);
             }
         }
@@ -379,7 +472,9 @@ public class player : MonoBehaviour
                             chc.enabled = false;
                             t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                             chc.enabled = true;
-                            
+
+                        
+
 
                             flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
                             flash.Play();

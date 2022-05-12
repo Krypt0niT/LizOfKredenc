@@ -6851,13 +6851,16 @@ MonoBehaviour:
   player1_projectileDMG: 100
   player1_summonerSpell: flash
   player1_speedActive: 0
-  player1_perk_lifesteal: 0
+  player1_perk_lifesteal1: 0
+  player1_perk_lifesteal2: 0
   player1_perk_critchance1: 0
   player1_perk_critchance2: 0
   player1_perk_critchance3: 0
   player1_perk_bonusDMG1: 0
   player1_perk_bonusDMG2: 0
   player1_perk_speed: 0
+  player1_perk_HealthIncrise1: 0
+  player1_perk_HealthIncrise2: 0
   player2_Maxhealth: 1000
   player2_health: 1000
   player2_healthRegen: 100
@@ -6868,13 +6871,16 @@ MonoBehaviour:
   player2_projectileDMG: 100
   player2_summonerSpell: flash
   player2_speedActive: 0
-  player2_perk_lifesteal: 0
+  player2_perk_lifesteal1: 0
+  player2_perk_lifesteal2: 0
   player2_perk_critchance1: 0
   player2_perk_critchance2: 0
   player2_perk_critchance3: 0
   player2_perk_bonusDMG1: 0
   player2_perk_bonusDMG2: 0
   player2_perk_speed: 0
+  player2_perk_HealthIncrise1: 0
+  player2_perk_HealthIncrise2: 0
   manaCost_flash: 100
   manaCost_projectile: 20
   cooldown_projectile: 1.5
