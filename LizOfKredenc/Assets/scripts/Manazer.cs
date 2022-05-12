@@ -18,6 +18,15 @@ public class Manazer : MonoBehaviour
 
     public string player1_summonerSpell = "speed";
     public bool player1_speedActive = false;
+    //perky
+    public bool player1_perk_lifesteal = false;
+    public bool player1_perk_critchance1 = false;
+    public bool player1_perk_critchance2 = false;
+    public bool player1_perk_critchance3 = false;
+    public bool player1_perk_bonusDMG1 = false;
+    public bool player1_perk_bonusDMG2 = false;
+    public bool player1_perk_speed = false;
+
 
 
 
@@ -37,6 +46,14 @@ public class Manazer : MonoBehaviour
 
     public string player2_summonerSpell = "flash";
     public bool player2_speedActive = false;
+    //perky
+    public bool player2_perk_lifesteal = false;
+    public bool player2_perk_critchance1 = false;
+    public bool player2_perk_critchance2 = false;
+    public bool player2_perk_critchance3 = false;
+    public bool player2_perk_bonusDMG1 = false;
+    public bool player2_perk_bonusDMG2 = false;
+    public bool player2_perk_speed = false;
 
 
 
