@@ -15,7 +15,9 @@ public class player : MonoBehaviour
     [SerializeField]
     ParticleSystem flash;
     [SerializeField] 
-    AudioClip flash_zvuk;
+    AudioSource flash_source;
+    [SerializeField]
+    AudioClip flash_clip;
     [SerializeField]
     GameObject projectile;
     [SerializeField]
@@ -326,7 +328,7 @@ public class player : MonoBehaviour
                         {
 
                         Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-
+                        flash_source.PlayOneShot(flash_clip);
 
 
 
