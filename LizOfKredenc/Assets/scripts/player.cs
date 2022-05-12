@@ -17,6 +17,8 @@ public class player : MonoBehaviour
     [SerializeField]
     GameObject projectile;
     [SerializeField]
+    GameObject playerCollisionTester;
+    [SerializeField]
     private int playerIndex = 0;
 
 
@@ -182,15 +184,59 @@ public class player : MonoBehaviour
         
 
     }
+
     private void OnTriggerEnter(Collider other)
     {
+        
         if (this.name == "player1")
         {
             if (other.name == "ProjectilePlayer2(Clone)")
             {
-                if(variables.player1_health >= variables.player2_projectileDMG)
+                float critchance = 0;
+                if (variables.player2_perk_critchance1)
                 {
-                    variables.player1_health -= variables.player2_projectileDMG;
+                    critchance = 20;
+                }
+                if(variables.player2_perk_critchance2)
+                {
+                    critchance = 30;
+                }
+                if (variables.player2_perk_critchance3)
+                {
+                    critchance = 45;
+                }
+                if (!variables.player2_perk_critchance1 && !variables.player2_perk_critchance2 && !variables.player2_perk_critchance1)
+                {
+                    critchance = 10;
+                }
+
+
+
+                float bonusDMG = 0;
+                if (variables.player2_perk_bonusDMG1)
+                {
+                    bonusDMG = variables.player2_projectileDMG / 10;
+                }
+                if (variables.player2_perk_bonusDMG2)
+                {
+                    bonusDMG = variables.player2_projectileDMG / 5;
+                }
+
+                
+
+                float random = Random.Range(0, 100);
+                float CritBonusDMG = 0;
+                if (random <= critchance)
+                {
+                    CritBonusDMG = variables.player2_projectileDMG ;
+                }
+
+
+
+                if (variables.player1_health >= variables.player2_projectileDMG + CritBonusDMG + bonusDMG)
+                {
+                    variables.player1_health -= variables.player2_projectileDMG + CritBonusDMG + bonusDMG;
+                    print(variables.player2_projectileDMG + CritBonusDMG + bonusDMG);
                 }
                 else
                 {
@@ -276,13 +322,14 @@ public class player : MonoBehaviour
 
                         if (variables.player1_mana >= variables.manaCost_flash) 
                         {
-                            
-                        
 
-                            Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                        Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
 
-                            if (!Physics.Raycast(transform.position, novaPozicia, 10))
-                            {
+
+
+
+                        if (!Physics.Raycast(transform.position, novaPozicia, 10))
+                        {
                             chc.enabled = false;
                             t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                             chc.enabled = true;
@@ -293,12 +340,21 @@ public class player : MonoBehaviour
                             variables.player1_mana -= variables.manaCost_flash;
                             flash_time = 0;
                         }
-                                
+
+
+
+
+
+
+                        
                         
 
-                            
-                        }
+
+
+
+
                     }
+                }
                 }
 
                 else if(GetPlayerIndex() == 1)
