@@ -14,6 +14,8 @@ public class player : MonoBehaviour
     Manazer variables;
     [SerializeField]
     ParticleSystem flash;
+    [SerializeField] 
+    GameObject flash_zvuk;
     [SerializeField]
     GameObject projectile;
     [SerializeField]
