@@ -76,4 +76,49 @@ public class Manazer : MonoBehaviour
 
     public int player1_SCORE = 0;
     public int player2_SCORE = 0;
+
+
+
+
+
+
+
+    [SerializeField]
+    GameObject Player1;
+    [SerializeField]
+    GameObject Player2;
+
+    CharacterController Player1ch;
+    CharacterController Player2ch;
+
+    private void Update()
+    {
+        Player1ch = Player1.GetComponent<CharacterController>();
+        Player2ch = Player2.GetComponent<CharacterController>();
+
+    }
+    public void RoundEnd(string player)
+    {
+
+        if (player == "player1")
+        {
+            player2_SCORE ++;
+        }
+        if (player == "player2")
+        {
+            player1_SCORE++;
+        }
+
+        Player1ch.enabled = false;
+        Player2ch.enabled = false;
+        Player1.transform.position = new Vector3(7, 0.5f, 1);
+        Player2.transform.position = new Vector3(-7, 0.5f, 1);
+        Player1ch.enabled = true;
+        Player2ch.enabled = true;
+
+        player1_health = player1_Maxhealth;
+        player2_health = player2_Maxhealth;
+        player1_mana = player1_Maxhealth;
+        player2_mana = player2_Maxhealth;
+    }
 }
