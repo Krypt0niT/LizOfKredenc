@@ -73,4 +73,7 @@ public class Manazer : MonoBehaviour
     public float manaCost_speed = 100;
     public float cooldown_speed = 10;
     public float lengh_speed = 5;
+
+    public int player1_SCORE = 0;
+    public int player2_SCORE = 0;
 }

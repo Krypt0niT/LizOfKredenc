@@ -192,7 +192,6 @@ public class player : MonoBehaviour
                 variables.player2_health = variables.player2_Maxhealth;
             }
 
-            print(variables.player2_health);
 
 
 
@@ -437,7 +436,7 @@ public class player : MonoBehaviour
     }
     public void rightBackButton()
     {
-        print(":(");
+
 
     }
     public void leftButton()

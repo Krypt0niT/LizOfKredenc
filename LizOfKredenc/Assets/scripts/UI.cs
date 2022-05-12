@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class UI : MonoBehaviour
 {
@@ -31,6 +33,11 @@ public class UI : MonoBehaviour
 
     RectTransform summoner2_spell_Rect;
 
+    [SerializeField]
+    TMP_Text Player1_Score;
+
+    [SerializeField]
+    TMP_Text Player2_Score;
 
     void Start()
     {
@@ -45,10 +52,21 @@ public class UI : MonoBehaviour
         summoner1_spell_Rect = Summoner1_spell_color.GetComponent<RectTransform>();
         summoner2_spell_Rect = Summoner2_spell_color.GetComponent<RectTransform>();
 
+       
+        
+
+
     }
 
     void Update()
     {
+        //score docastne
+
+        Player1_Score.text = "SCORE: " + variables.player1_SCORE;
+        Player2_Score.text = "SCORE: " + variables.player2_SCORE;
+
+        //------------
+
         if (variables.player1_summonerSpell == "flash")
         {
             summoner1_spell_Rect.localScale = new Vector2(Player1variables.flash_time / variables.cooldown_flash * 0.5f, summoner1_spell_Rect.localScale.y);
