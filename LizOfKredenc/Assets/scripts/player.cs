@@ -15,7 +15,7 @@ public class player : MonoBehaviour
     [SerializeField]
     ParticleSystem flash;
     [SerializeField] 
-    GameObject flash_zvuk;
+    AudioClip flash_zvuk;
     [SerializeField]
     GameObject projectile;
     [SerializeField]
@@ -335,6 +335,7 @@ public class player : MonoBehaviour
                             chc.enabled = false;
                             t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                             chc.enabled = true;
+                            
 
                             flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
                             flash.Play();
