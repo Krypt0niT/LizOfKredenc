@@ -18,6 +18,18 @@ public class Manazer : MonoBehaviour
 
     public string player1_summonerSpell = "speed";
     public bool player1_speedActive = false;
+    //perky
+    public bool player1_perk_lifesteal1 = false;
+    public bool player1_perk_lifesteal2 = false;
+    public bool player1_perk_critchance1 = false;
+    public bool player1_perk_critchance2 = false;
+    public bool player1_perk_critchance3 = false;
+    public bool player1_perk_bonusDMG1 = false;
+    public bool player1_perk_bonusDMG2 = false;
+    public bool player1_perk_speed = false;
+    public bool player1_perk_HealthIncrise1 = false;
+    public bool player1_perk_HealthIncrise2 = false;
+
 
 
 
@@ -37,6 +49,18 @@ public class Manazer : MonoBehaviour
 
     public string player2_summonerSpell = "flash";
     public bool player2_speedActive = false;
+    //perky
+    public bool player2_perk_lifesteal1 = false;
+    public bool player2_perk_lifesteal2 = false;
+    public bool player2_perk_critchance1 = false;
+    public bool player2_perk_critchance2 = false;
+    public bool player2_perk_critchance3 = false;
+    public bool player2_perk_bonusDMG1 = false;
+    public bool player2_perk_bonusDMG2 = false;
+    public bool player2_perk_speed = false;
+    public bool player2_perk_HealthIncrise1 = false;
+    public bool player2_perk_HealthIncrise2 = false;
+
 
 
 
@@ -49,4 +73,52 @@ public class Manazer : MonoBehaviour
     public float manaCost_speed = 100;
     public float cooldown_speed = 10;
     public float lengh_speed = 5;
+
+    public int player1_SCORE = 0;
+    public int player2_SCORE = 0;
+
+
+
+
+
+
+
+    [SerializeField]
+    GameObject Player1;
+    [SerializeField]
+    GameObject Player2;
+
+    CharacterController Player1ch;
+    CharacterController Player2ch;
+
+    private void Update()
+    {
+        Player1ch = Player1.GetComponent<CharacterController>();
+        Player2ch = Player2.GetComponent<CharacterController>();
+
+    }
+    public void RoundEnd(string player)
+    {
+
+        if (player == "player1")
+        {
+            player2_SCORE ++;
+        }
+        if (player == "player2")
+        {
+            player1_SCORE++;
+        }
+
+        Player1ch.enabled = false;
+        Player2ch.enabled = false;
+        Player1.transform.position = new Vector3(7, 0.5f, 1);
+        Player2.transform.position = new Vector3(-7, 0.5f, 1);
+        Player1ch.enabled = true;
+        Player2ch.enabled = true;
+
+        player1_health = player1_Maxhealth;
+        player2_health = player2_Maxhealth;
+        player1_mana = player1_Maxhealth;
+        player2_mana = player2_Maxhealth;
+    }
 }

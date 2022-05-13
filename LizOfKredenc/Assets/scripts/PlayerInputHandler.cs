@@ -33,16 +33,46 @@ public class PlayerInputHandler : MonoBehaviour
     public void OnRB(CallbackContext context)
     {
         if (Player != null)
-            Player.rightButton();
+        {
+            if (context.started)
+            {
+                Player.rightButton();
+            }
+
+        }
+        
     }
     public void OnLB(CallbackContext context)
     {
         if (Player != null)
-            Player.leftButton();
+        {
+            if (context.started)
+            {
+                Player.leftButton();
+            }
+        }
+           
     }
     public void OnCross(CallbackContext context)
     {
         if (Player != null)
-            Player.cross();
+        {
+            if (context.started)
+            {
+                Player.cross();
+            }
+        }
+            
+    }
+    public void OnRBB(CallbackContext context)
+    {
+        if (Player != null)
+        {
+            if (context.started)
+            {
+                Player.rightBackButton();
+
+            }
+        }
     }
 }
