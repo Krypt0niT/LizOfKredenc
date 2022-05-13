@@ -14,14 +14,11 @@ public class player : MonoBehaviour
     Manazer variables;
     [SerializeField]
     ParticleSystem flash;
-<<<<<<< HEAD
     [SerializeField] 
     AudioSource flash_source;
     [SerializeField]
     AudioClip flash_clip;
-=======
 
->>>>>>> fe9ce940058d56caab1df89401c181a18e8f8d4d
     [SerializeField]
     GameObject projectile;
     [SerializeField]
