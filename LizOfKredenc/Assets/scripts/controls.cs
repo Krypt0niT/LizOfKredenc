@@ -89,6 +89,42 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""type"": ""Button"",
+                    ""id"": ""9dfcc7a8-15c1-4122-83b8-132e4ef29ab4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""right"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd77fed0-96cc-4c43-9839-d3b6465cd325"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""down"",
+                    ""type"": ""Button"",
+                    ""id"": ""8dda6096-0408-4817-add5-c61f54076525"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""type"": ""Button"",
+                    ""id"": ""682dd4d3-97b3-4c85-ba2a-b1396c6ed582"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -168,6 +204,50 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""circle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""319fa586-593e-4f37-b340-38f2e04ea1b4"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joistick"",
+                    ""action"": ""up"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""148fafd4-97c4-43b2-baa5-df3c5bf7563b"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joistick"",
+                    ""action"": ""right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""802707cc-f7ad-4382-82be-4cd7d2fcc647"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joistick"",
+                    ""action"": ""down"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cea0808a-2a31-4089-8b0b-1e63cddae11d"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Joistick"",
+                    ""action"": ""left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -195,6 +275,10 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_RBB = m_Gameplay.FindAction("RBB", throwIfNotFound: true);
         m_Gameplay_cross = m_Gameplay.FindAction("cross", throwIfNotFound: true);
         m_Gameplay_circle = m_Gameplay.FindAction("circle", throwIfNotFound: true);
+        m_Gameplay_up = m_Gameplay.FindAction("up", throwIfNotFound: true);
+        m_Gameplay_right = m_Gameplay.FindAction("right", throwIfNotFound: true);
+        m_Gameplay_down = m_Gameplay.FindAction("down", throwIfNotFound: true);
+        m_Gameplay_left = m_Gameplay.FindAction("left", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -261,6 +345,10 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_RBB;
     private readonly InputAction m_Gameplay_cross;
     private readonly InputAction m_Gameplay_circle;
+    private readonly InputAction m_Gameplay_up;
+    private readonly InputAction m_Gameplay_right;
+    private readonly InputAction m_Gameplay_down;
+    private readonly InputAction m_Gameplay_left;
     public struct GameplayActions
     {
         private @Controls m_Wrapper;
@@ -272,6 +360,10 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @RBB => m_Wrapper.m_Gameplay_RBB;
         public InputAction @cross => m_Wrapper.m_Gameplay_cross;
         public InputAction @circle => m_Wrapper.m_Gameplay_circle;
+        public InputAction @up => m_Wrapper.m_Gameplay_up;
+        public InputAction @right => m_Wrapper.m_Gameplay_right;
+        public InputAction @down => m_Wrapper.m_Gameplay_down;
+        public InputAction @left => m_Wrapper.m_Gameplay_left;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -302,6 +394,18 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @circle.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCircle;
                 @circle.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCircle;
                 @circle.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCircle;
+                @up.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUp;
+                @up.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUp;
+                @up.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUp;
+                @right.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRight;
+                @right.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRight;
+                @right.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRight;
+                @down.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDown;
+                @down.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDown;
+                @down.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDown;
+                @left.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeft;
+                @left.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeft;
+                @left.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLeft;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -327,6 +431,18 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @circle.started += instance.OnCircle;
                 @circle.performed += instance.OnCircle;
                 @circle.canceled += instance.OnCircle;
+                @up.started += instance.OnUp;
+                @up.performed += instance.OnUp;
+                @up.canceled += instance.OnUp;
+                @right.started += instance.OnRight;
+                @right.performed += instance.OnRight;
+                @right.canceled += instance.OnRight;
+                @down.started += instance.OnDown;
+                @down.performed += instance.OnDown;
+                @down.canceled += instance.OnDown;
+                @left.started += instance.OnLeft;
+                @left.performed += instance.OnLeft;
+                @left.canceled += instance.OnLeft;
             }
         }
     }
@@ -349,5 +465,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnRBB(InputAction.CallbackContext context);
         void OnCross(InputAction.CallbackContext context);
         void OnCircle(InputAction.CallbackContext context);
+        void OnUp(InputAction.CallbackContext context);
+        void OnRight(InputAction.CallbackContext context);
+        void OnDown(InputAction.CallbackContext context);
+        void OnLeft(InputAction.CallbackContext context);
     }
 }

@@ -13,6 +13,9 @@ public class player : MonoBehaviour
     GameObject manager;
     Manazer variables;
     [SerializeField]
+    GameObject PerkUI;
+    PerkSelecter perkS;
+    [SerializeField]
     ParticleSystem flash;
 
     [SerializeField] 
@@ -22,8 +25,6 @@ public class player : MonoBehaviour
 
     [SerializeField]
     GameObject projectile;
-    [SerializeField]
-    GameObject playerCollisionTester;
     [SerializeField]
     private int playerIndex = 0;
 
@@ -48,7 +49,7 @@ public class player : MonoBehaviour
         chc = GetComponent<CharacterController>();
         t = GetComponent<Transform>();
         variables = manager.GetComponent<Manazer>();
-
+        perkS = PerkUI.GetComponent<PerkSelecter>();
         
 
 
@@ -57,473 +58,457 @@ public class player : MonoBehaviour
 
 
     }
-    void Start()
-    {
-        
-    }
+
 
     void Update()
     {
-        if (RotateInputVector.x == 0 && RotateInputVector.y == 0)
+        if (variables.Game)
         {
-            t.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        }
-        else
-        {
-            float angle = Mathf.Atan2(RotateInputVector.x, RotateInputVector.y) * Mathf.Rad2Deg;
-            t.rotation = Quaternion.Euler(new Vector3(0, 180 + angle, 0));
-        }
+
         
-        if (projectile_time < variables.cooldown_projectile)
-        {
-            projectile_time += Time.deltaTime;
-        }
-        if (flash_time < variables.cooldown_flash)
-        {
-            flash_time += Time.deltaTime;
 
-        }
-        if (speed_time < variables.cooldown_speed)
-        {
-            speed_time += Time.deltaTime;
-
-        }
-
-
-
-        if (GetPlayerIndex() == 0)
-        {
-            //move
-            chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player1_speed);
-
-
-
-            if (variables.player1_perk_HealthIncrise1)
+            if (RotateInputVector.x == 0 && RotateInputVector.y == 0)
             {
-                variables.player1_Maxhealth = 1250;
-            }
-            if (variables.player1_perk_HealthIncrise2)
-            {
-                variables.player1_Maxhealth = 1500;
-            }
-            if (!variables.player1_perk_HealthIncrise1 && !variables.player1_perk_HealthIncrise2)
-            {
-                variables.player1_Maxhealth = 1000;
-            }
-            if (variables.player1_health > variables.player1_Maxhealth)
-            {
-                variables.player1_health = variables.player1_Maxhealth; 
-            }
-
-
-            if (variables.player1_perk_speed)
-            {
-                variables.player1_speed = 10;
+                t.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
             else
             {
-                variables.player1_speed = 5;
+                float angle = Mathf.Atan2(RotateInputVector.x, RotateInputVector.y) * Mathf.Rad2Deg;
+                t.rotation = Quaternion.Euler(new Vector3(0, 180 + angle, 0));
+            }
+        
+            if (projectile_time < variables.cooldown_projectile)
+            {
+                projectile_time += Time.deltaTime;
+            }
+            if (flash_time < variables.cooldown_flash)
+            {
+                flash_time += Time.deltaTime;
+
+            }
+            if (speed_time < variables.cooldown_speed)
+            {
+                speed_time += Time.deltaTime;
+
             }
 
 
 
-
-            if (variables.player1_speedActive)
+            if (GetPlayerIndex() == 0)
             {
+                //move
+                chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player1_speed);
+
+
+
                 
-                speed_lengh += Time.deltaTime;
-                if (speed_lengh >= variables.lengh_speed)
+
+
+                if (variables.player1_perk_speed)
                 {
-                    variables.player1_speedActive = false;
-                    variables.player1_speed = variables.player1_speed / 2;
-                    speed_lengh = 0;
-                }
-
-            }
-            if (variables.player2_speedActive)
-            {
-
-                speed_lengh += Time.deltaTime;
-                if (speed_lengh >= variables.lengh_speed)
-                {
-                    variables.player2_speedActive = false;
-                    variables.player2_speed = variables.player2_speed / 2;
-                    speed_lengh = 0;
-                }
-
-            }
-
-
-            casHealth += Time.deltaTime;
-            if (casHealth >= (1 / variables.player1_healthRegen))
-            {
-                if (variables.player1_health + 1 >= variables.player1_Maxhealth)
-                {
-                    variables.player1_health = variables.player1_Maxhealth;
+                    variables.player1_speed = 10;
                 }
                 else
                 {
-                    variables.player1_health++;
+                    variables.player1_speed = 5;
                 }
-                casHealth = 0;
-            }
 
 
-            casMana += Time.deltaTime;
-            if (casMana >= (1 / variables.player1_manaRegen))
-            {
-                if (variables.player1_mana + 1 >= variables.player1_Maxmana)
+
+
+                if (variables.player1_speedActive)
                 {
-                    variables.player1_mana = variables.player1_Maxmana;
+                
+                    speed_lengh += Time.deltaTime;
+                    if (speed_lengh >= variables.lengh_speed)
+                    {
+                        variables.player1_speedActive = false;
+                        variables.player1_speed = variables.player1_speed / 2;
+                        speed_lengh = 0;
+                    }
+
+                }
+                if (variables.player2_speedActive)
+                {
+
+                    speed_lengh += Time.deltaTime;
+                    if (speed_lengh >= variables.lengh_speed)
+                    {
+                        variables.player2_speedActive = false;
+                        variables.player2_speed = variables.player2_speed / 2;
+                        speed_lengh = 0;
+                    }
+
+                }
+
+
+                casHealth += Time.deltaTime;
+                if (casHealth >= (1 / variables.player1_healthRegen))
+                {
+                    if (variables.player1_health + 1 >= variables.player1_Maxhealth)
+                    {
+                        variables.player1_health = variables.player1_Maxhealth;
+                    }
+                    else
+                    {
+                        variables.player1_health++;
+                    }
+                    casHealth = 0;
+                }
+
+
+                casMana += Time.deltaTime;
+                if (casMana >= (1 / variables.player1_manaRegen))
+                {
+                    if (variables.player1_mana + 1 >= variables.player1_Maxmana)
+                    {
+                        variables.player1_mana = variables.player1_Maxmana;
+                    }
+                    else
+                    {
+                        variables.player1_mana++;
+                    }
+                    casMana = 0;
+                }
+
+            }
+            else if (GetPlayerIndex() == 1)
+            {
+                //move
+                chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player2_speed);
+
+
+                
+
+
+                if (variables.player2_perk_speed)
+                {
+                    variables.player2_speed = 10;
                 }
                 else
                 {
-                    variables.player1_mana++;
+                    variables.player2_speed = 5;
                 }
-                casMana = 0;
+
+
+                casHealth += Time.deltaTime;
+                if (casHealth >= (1 / variables.player2_healthRegen))
+                {
+                    if (variables.player2_health + 1 >= variables.player2_Maxhealth)
+                    {
+                        variables.player2_health = variables.player2_Maxhealth;
+                    }
+                    else
+                    {
+                        variables.player2_health++;
+                    }
+                    casHealth = 0;
+                }
+
+
+                casMana += Time.deltaTime;
+                if (casMana >= (1 / variables.player2_manaRegen))
+                {
+                    if (variables.player2_mana + 1 >= variables.player2_Maxmana)
+                    {
+                        variables.player2_mana = variables.player2_Maxmana;
+                    }
+                    else
+                    {
+                        variables.player2_mana++;
+                    }
+                    casMana = 0;
+                }
+
+
+
             }
 
         }
-        else if (GetPlayerIndex() == 1)
-        {
-            //move
-            chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player2_speed);
-
-
-            if (variables.player2_perk_HealthIncrise1)
-            {
-                variables.player2_Maxhealth = 1250;
-            }
-            if (variables.player2_perk_HealthIncrise2)
-            {
-                variables.player2_Maxhealth = 1500;
-            }
-            if (!variables.player2_perk_HealthIncrise1 && !variables.player2_perk_HealthIncrise2)
-            {
-                variables.player2_Maxhealth = 1000;
-            }
-            if (variables.player2_health > variables.player2_Maxhealth)
-            {
-                variables.player2_health = variables.player2_Maxhealth;
-            }
-
-
-            if (variables.player2_perk_speed)
-            {
-                variables.player2_speed = 10;
-            }
-            else
-            {
-                variables.player2_speed = 5;
-            }
-
-
-            casHealth += Time.deltaTime;
-            if (casHealth >= (1 / variables.player2_healthRegen))
-            {
-                if (variables.player2_health + 1 >= variables.player2_Maxhealth)
-                {
-                    variables.player2_health = variables.player2_Maxhealth;
-                }
-                else
-                {
-                    variables.player2_health++;
-                }
-                casHealth = 0;
-            }
-
-
-            casMana += Time.deltaTime;
-            if (casMana >= (1 / variables.player2_manaRegen))
-            {
-                if (variables.player2_mana + 1 >= variables.player2_Maxmana)
-                {
-                    variables.player2_mana = variables.player2_Maxmana;
-                }
-                else
-                {
-                    variables.player2_mana++;
-                }
-                casMana = 0;
-            }
-
-
-
-        }
-        
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        if (variables.Game)
+        {
+
         
-        if (this.name == "player1")
-        {
-            if (other.name == "ProjectilePlayer2(Clone)")
+            if (this.name == "player1")
             {
-                float critchance = 0;
-                if (variables.player2_perk_critchance1)
+                if (other.name == "ProjectilePlayer2(Clone)")
                 {
-                    critchance = 20;
-                }
-                if(variables.player2_perk_critchance2)
-                {
-                    critchance = 30;
-                }
-                if (variables.player2_perk_critchance3)
-                {
-                    critchance = 45;
-                }
-                if (!variables.player2_perk_critchance1 && !variables.player2_perk_critchance2 && !variables.player2_perk_critchance1)
-                {
-                    critchance = 10;
-                }
-
-
-
-                float bonusDMG = 0;
-                if (variables.player2_perk_bonusDMG1)
-                {
-                    bonusDMG = variables.player2_projectileDMG / 10;
-                }
-                if (variables.player2_perk_bonusDMG2)
-                {
-                    bonusDMG = variables.player2_projectileDMG / 5;
-                }
-
-                
-
-                
-
-                float random = Random.Range(0, 100);
-                float CritBonusDMG = 0;
-                if (random <= critchance)
-                {
-                    CritBonusDMG = variables.player2_projectileDMG ;
-                }
-
-
-
-                //---------------------
-                float total_damage = variables.player2_projectileDMG + CritBonusDMG + bonusDMG;
-                //-----------------------
-
-                float lifesteal = 0;
-                if (variables.player2_perk_lifesteal1)
-                {
-                    lifesteal = total_damage / 3;
-                }
-                if (variables.player2_perk_lifesteal2)
-                {
-                    lifesteal = total_damage / 2;
-                }
-
-
-                if (variables.player1_health >= total_damage)
-                {
-                    variables.player1_health -= total_damage;
-
-
-
-                    if (variables.player2_health <= variables.player2_Maxhealth - lifesteal)
+                    float critchance = 0;
+                    if (variables.player2_perk_critchance1)
                     {
-                        variables.player2_health += lifesteal;
+                        critchance = 20;
                     }
-                }
-                else
-                {
-                    variables.player1_health = 0;
-                    variables.RoundEnd(this.name);
-                }
-                print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
+                    if(variables.player2_perk_critchance2)
+                    {
+                        critchance = 30;
+                    }
+                    if (variables.player2_perk_critchance3)
+                    {
+                        critchance = 45;
+                    }
+                    if (!variables.player2_perk_critchance1 && !variables.player2_perk_critchance2 && !variables.player2_perk_critchance1)
+                    {
+                        critchance = 10;
+                    }
 
-                Destroy(other.gameObject);
+
+
+                    float bonusDMG = 0;
+                    if (variables.player2_perk_bonusDMG1)
+                    {
+                        bonusDMG = variables.player2_projectileDMG / 10;
+                    }
+                    if (variables.player2_perk_bonusDMG2)
+                    {
+                        bonusDMG = variables.player2_projectileDMG / 5;
+                    }
+
+                
+
+                
+
+                    float random = Random.Range(0, 100);
+                    float CritBonusDMG = 0;
+                    if (random <= critchance)
+                    {
+                        CritBonusDMG = variables.player2_projectileDMG ;
+                    }
+
+
+
+                    //---------------------
+                    float total_damage = variables.player2_projectileDMG + CritBonusDMG + bonusDMG;
+                    //-----------------------
+
+                    float lifesteal = 0;
+                    if (variables.player2_perk_lifesteal1)
+                    {
+                        lifesteal = total_damage / 3;
+                    }
+                    if (variables.player2_perk_lifesteal2)
+                    {
+                        lifesteal = total_damage / 2;
+                    }
+
+
+                    if (variables.player1_health >= total_damage)
+                    {
+                        variables.player1_health -= total_damage;
+
+
+
+                        if (variables.player2_health <= variables.player2_Maxhealth - lifesteal)
+                        {
+                            variables.player2_health += lifesteal;
+                        }
+                    }
+                    else
+                    {
+                        variables.player1_health = 0;
+                        variables.RoundEnd(this.name);
+                    }
+                    print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
+
+                    Destroy(other.gameObject);
+                }
             }
-        }
-        if (this.name == "player2")
-        {
-            if (other.name == "ProjectilePlayer1(Clone)")
+            if (this.name == "player2")
             {
-                float critchance = 0;
-                if (variables.player1_perk_critchance1)
+                if (other.name == "ProjectilePlayer1(Clone)")
                 {
-                    critchance = 20;
-                }
-                if (variables.player1_perk_critchance2)
-                {
-                    critchance = 30;
-                }
-                if (variables.player1_perk_critchance3)
-                {
-                    critchance = 45;
-                }
-                if (!variables.player1_perk_critchance1 && !variables.player1_perk_critchance2 && !variables.player1_perk_critchance1)
-                {
-                    critchance = 10;
-                }
-
-
-
-                float bonusDMG = 0;
-                if (variables.player1_perk_bonusDMG1)
-                {
-                    bonusDMG = variables.player1_projectileDMG / 10;
-                }
-                if (variables.player1_perk_bonusDMG2)
-                {
-                    bonusDMG = variables.player1_projectileDMG / 5;
-                }
-
-
-
-
-
-                float random = Random.Range(0, 100);
-                float CritBonusDMG = 0;
-                if (random <= critchance)
-                {
-                    CritBonusDMG = variables.player1_projectileDMG;
-                }
-
-
-
-                //---------------------
-                float total_damage = variables.player1_projectileDMG + CritBonusDMG + bonusDMG;
-                //-----------------------
-
-                float lifesteal = 0;
-                if (variables.player1_perk_lifesteal1)
-                {
-                    lifesteal = total_damage / 3;
-                }
-                if (variables.player1_perk_lifesteal2)
-                {
-                    lifesteal = total_damage / 2;
-                }
-
-
-                if (variables.player2_health >= total_damage)
-                {
-                    variables.player2_health -= total_damage;
-
-
-
-                    if (variables.player1_health <= variables.player1_Maxhealth - lifesteal)
+                    float critchance = 0;
+                    if (variables.player1_perk_critchance1)
                     {
-                        variables.player1_health += lifesteal;
+                        critchance = 20;
                     }
-                }
-                else
-                {
-                    variables.player2_health = 0;
-                    variables.RoundEnd(this.name);
+                    if (variables.player1_perk_critchance2)
+                    {
+                        critchance = 30;
+                    }
+                    if (variables.player1_perk_critchance3)
+                    {
+                        critchance = 45;
+                    }
+                    if (!variables.player1_perk_critchance1 && !variables.player1_perk_critchance2 && !variables.player1_perk_critchance1)
+                    {
+                        critchance = 10;
+                    }
 
+
+
+                    float bonusDMG = 0;
+                    if (variables.player1_perk_bonusDMG1)
+                    {
+                        bonusDMG = variables.player1_projectileDMG / 10;
+                    }
+                    if (variables.player1_perk_bonusDMG2)
+                    {
+                        bonusDMG = variables.player1_projectileDMG / 5;
+                    }
+
+
+
+
+
+                    float random = Random.Range(0, 100);
+                    float CritBonusDMG = 0;
+                    if (random <= critchance)
+                    {
+                        CritBonusDMG = variables.player1_projectileDMG;
+                    }
+
+
+
+                    //---------------------
+                    float total_damage = variables.player1_projectileDMG + CritBonusDMG + bonusDMG;
+                    //-----------------------
+
+                    float lifesteal = 0;
+                    if (variables.player1_perk_lifesteal1)
+                    {
+                        lifesteal = total_damage / 3;
+                    }
+                    if (variables.player1_perk_lifesteal2)
+                    {
+                        lifesteal = total_damage / 2;
+                    }
+
+
+                    if (variables.player2_health >= total_damage)
+                    {
+                        variables.player2_health -= total_damage;
+
+
+
+                        if (variables.player1_health <= variables.player1_Maxhealth - lifesteal)
+                        {
+                            variables.player1_health += lifesteal;
+                        }
+                    }
+                    else
+                    {
+                        variables.player2_health = 0;
+                        variables.RoundEnd(this.name);
+
+                    }
+                    print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
+                    Destroy(other.gameObject);
                 }
-                print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
-                Destroy(other.gameObject);
             }
         }
     }
 
     public void rightButton()
     {
-        if (GetPlayerIndex() == 0)
+        if (variables.Game)
         {
-
-            if (projectile_time >= variables.cooldown_projectile)
+            if (GetPlayerIndex() == 0)
             {
-                if (variables.player1_mana >= variables.manaCost_projectile)
-                {
-                    Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
-                    variables.player1_mana -= variables.manaCost_projectile;
-                    projectile.name = "ProjectilePlayer1";
-                }
-                projectile_time = 0;
-            }
-        }
-        else if (GetPlayerIndex() == 1)
-        {
 
-            if (projectile_time >= variables.cooldown_projectile)
+                if (projectile_time >= variables.cooldown_projectile)
+                {
+                    if (variables.player1_mana >= variables.manaCost_projectile)
+                    {
+                        Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                        variables.player1_mana -= variables.manaCost_projectile;
+                        projectile.name = "ProjectilePlayer1";
+                    }
+                    projectile_time = 0;
+                }
+            }
+            else if (GetPlayerIndex() == 1)
             {
-                if (variables.player2_mana >= variables.manaCost_projectile)
+
+                if (projectile_time >= variables.cooldown_projectile)
                 {
-                    Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
-                    projectile.name = "ProjectilePlayer2";
-                    variables.player2_mana -= variables.manaCost_projectile;
+                    if (variables.player2_mana >= variables.manaCost_projectile)
+                    {
+                        Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                        projectile.name = "ProjectilePlayer2";
+                        variables.player2_mana -= variables.manaCost_projectile;
+                    }
+                    projectile_time = 0;
                 }
-                projectile_time = 0;
             }
+
         }
-
-
 
     }
     public void rightBackButton()
     {
+        if (variables.Game)
+        {
 
 
+        }
     }
     public void leftButton()
     {
-        
-        
 
-        
+        if (variables.Game)
+        {
+
+
+
+
             if (flash_time >= variables.cooldown_flash)
             {
 
 
                 //flash
-                
-                if (GetPlayerIndex()==0)
+
+                if (GetPlayerIndex() == 0)
                 {
                     if (variables.player1_summonerSpell == "flash")
                     {
 
-                
 
-                        if (variables.player1_mana >= variables.manaCost_flash) 
+
+                        if (variables.player1_mana >= variables.manaCost_flash)
                         {
 
-                        Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-                        
+                            Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
 
 
 
-                        if (!Physics.Raycast(transform.position, novaPozicia, 10))
-                        {
-                            chc.enabled = false;
-                            t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-                            chc.enabled = true;
-                            flash_source.PlayOneShot(flash_clip);
+
+                            if (!Physics.Raycast(transform.position, novaPozicia, 10))
+                            {
+                                chc.enabled = false;
+                                t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                                chc.enabled = true;
+                                flash_source.PlayOneShot(flash_clip);
 
 
 
-                            flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-                            flash.Play();
+                                flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                                flash.Play();
 
-                            variables.player1_mana -= variables.manaCost_flash;
-                            flash_time = 0;
+                                variables.player1_mana -= variables.manaCost_flash;
+                                flash_time = 0;
+                            }
+
+
+
+
+
+
+
+
+
+
+
+
+
                         }
-
-
-
-
-
-
-                        
-                        
-
-
-
-
-
                     }
                 }
-                }
 
-                else if(GetPlayerIndex() == 1)
+                else if (GetPlayerIndex() == 1)
                 {
                     if (variables.player2_summonerSpell == "flash")
                     {
@@ -548,18 +533,18 @@ public class player : MonoBehaviour
                     }
                 }
             }
-        
 
 
-         
-        
+
+
+
             if (GetPlayerIndex() == 0)
             {
 
                 if (variables.player1_summonerSpell == "speed")
                 {
 
-                
+
 
 
                     if (speed_time >= variables.cooldown_speed)
@@ -567,7 +552,7 @@ public class player : MonoBehaviour
                         if (variables.player1_mana >= variables.manaCost_speed)
                         {
 
-                    
+
                             speed_time = 0;
                             variables.player1_speedActive = true;
                             variables.player1_speed = variables.player1_speed * 2;
@@ -583,7 +568,7 @@ public class player : MonoBehaviour
                 if (variables.player2_summonerSpell == "speed")
                 {
 
-            
+
 
 
                     if (speed_time >= variables.cooldown_speed)
@@ -601,43 +586,30 @@ public class player : MonoBehaviour
                 }
 
             }
-
+        }
         
     }
     public void cross()
     {
-        if (GetPlayerIndex() == 0)
-        {
-            if (variables.player1_health > 100)
-            {
-                variables.player1_health -= 100f;
-            }
-        }
-        if (GetPlayerIndex() == 1)
-        {
-            if (variables.player2_health > 100)
-            {
-                variables.player2_health -= 100f;
-            }
-        }
+        perkS.perkPick(GetPlayerIndex());
+        
     }
     public void SetMoveInputVector(Vector2 direction)
     {
         MoveInputVector = direction;
-       
-       
     }
     public void SetRotateInputVector(Vector2 direction)
     {
         RotateInputVector = direction;
+    }
+
+    public void ArrowDirection(string direction)
+    {
+         perkS.IndexCalculator(direction, GetPlayerIndex());
 
 
     }
-
-
-
  
-
 
 
 
