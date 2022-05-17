@@ -8,13 +8,20 @@ using System.Linq;
 public class PlayerInputHandler : MonoBehaviour
 {
 
-    private PlayerInput playerInput;
-    private player Player;
+    PlayerInput playerInput;
+    player Player;
+    Manazer variables;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         var players = FindObjectsOfType<player>();
+        
+        variables = GameObject.Find("Manager").GetComponent<Manazer>();
+
+
+
+
 
         var index = playerInput.playerIndex;
         Player = players.FirstOrDefault(p => p.GetPlayerIndex() == index);
@@ -71,6 +78,57 @@ public class PlayerInputHandler : MonoBehaviour
             if (context.started)
             {
                 Player.rightBackButton();
+
+            }
+        }
+    }
+    public void OnUP(CallbackContext context)
+    {
+        if (Player != null)
+        {
+            if (context.started)
+            {
+                Player.ArrowDirection("UP");
+            }
+        }
+    }
+    public void OnRIGHT(CallbackContext context)
+    {
+        if (Player != null)
+        {
+            if (context.started)
+            {
+
+                Player.ArrowDirection("RIGHT");
+
+
+
+            }
+        }
+    }
+    public void OnDOWN(CallbackContext context)
+    {
+        if (Player != null)
+        {
+            if (context.started)
+            {
+
+                Player.ArrowDirection("DOWN");
+
+
+            }
+        }
+    }
+    public void OnLEFT(CallbackContext context)
+    {
+        if (Player != null)
+        {
+            if (context.started)
+            {
+                
+
+                Player.ArrowDirection("LEFT");
+
 
             }
         }
