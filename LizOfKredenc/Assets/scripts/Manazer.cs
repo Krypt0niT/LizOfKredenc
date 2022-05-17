@@ -77,6 +77,13 @@ public class Manazer : MonoBehaviour
     public int player1_SCORE = 0;
     public int player2_SCORE = 0;
 
+    public bool player1_perkSelected = false;
+    public bool player2_perkSelected = false;
+
+
+    public bool Game = true;
+
+
 
 
 
@@ -87,15 +94,54 @@ public class Manazer : MonoBehaviour
     GameObject Player1;
     [SerializeField]
     GameObject Player2;
+    [SerializeField]
+    GameObject Player1HB;
+    [SerializeField]
+    GameObject Player2HB;
+    [SerializeField]
+    GameObject GameUI;
+    [SerializeField]
+    GameObject PerkUI;
 
     CharacterController Player1ch;
     CharacterController Player2ch;
 
-    private void Update()
+    private void Start()
     {
+
         Player1ch = Player1.GetComponent<CharacterController>();
         Player2ch = Player2.GetComponent<CharacterController>();
 
+    }
+    private void Update()
+    {
+        if (!Game)
+        {
+            Player1.SetActive(false);
+            Player2.SetActive(false);
+            Player1HB.SetActive(false);
+            Player2HB.SetActive(false);
+            GameUI.SetActive(false);
+
+            PerkUI.SetActive(true);
+        }
+        else
+        {
+            
+            
+               Player1.SetActive(true);
+               Player2.SetActive(true);
+               Player1HB.SetActive(true);
+               Player2HB.SetActive(true);
+               GameUI.SetActive(true);
+
+               PerkUI.SetActive(false);
+            
+            
+
+
+
+        }
     }
     public void RoundEnd(string player)
     {
@@ -109,6 +155,19 @@ public class Manazer : MonoBehaviour
             player1_SCORE++;
         }
 
+        Game = false;
+
+
+
+
+        
+        
+    }
+    public void RoundStart()
+    {
+        Game = true;
+        player1_perkSelected = false;
+        player2_perkSelected = false;
         Player1ch.enabled = false;
         Player2ch.enabled = false;
         Player1.transform.position = new Vector3(7, 0.5f, 1);
@@ -116,9 +175,46 @@ public class Manazer : MonoBehaviour
         Player1ch.enabled = true;
         Player2ch.enabled = true;
 
+        if (player1_perk_HealthIncrise1)
+        {
+            player1_Maxhealth = 1250;
+        }
+        if (player1_perk_HealthIncrise2)
+        {
+            player1_Maxhealth = 1500;
+        }
+        if (!player1_perk_HealthIncrise1 && !player1_perk_HealthIncrise2)
+        {
+            player1_Maxhealth = 1000;
+        }
+        if (player1_health > player1_Maxhealth)
+        {
+            player1_health = player1_Maxhealth;
+        }
+
+
+        if (player2_perk_HealthIncrise1)
+        {
+            player2_Maxhealth = 1250;
+        }
+        if (player2_perk_HealthIncrise2)
+        {
+            player2_Maxhealth = 1500;
+        }
+        if (!player2_perk_HealthIncrise1 && !player2_perk_HealthIncrise2)
+        {
+            player2_Maxhealth = 1000;
+        }
+        if (player2_health > player2_Maxhealth)
+        {
+            player2_health = player2_Maxhealth;
+        }
+
+
         player1_health = player1_Maxhealth;
         player2_health = player2_Maxhealth;
         player1_mana = player1_Maxhealth;
         player2_mana = player2_Maxhealth;
+
     }
 }

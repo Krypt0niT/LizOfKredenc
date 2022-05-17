@@ -158,6 +158,70 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 4562e9fd-9166-4735-a59b-5bf0f66d5e0f
     m_ActionName: Gameplay/circle[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6455029730248295158}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnUP
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9dfcc7a8-15c1-4122-83b8-132e4ef29ab4
+    m_ActionName: Gameplay/up[/XInputControllerWindows/dpad/up,/XInputControllerWindows1/dpad/up]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6455029730248295158}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnRIGHT
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dd77fed0-96cc-4c43-9839-d3b6465cd325
+    m_ActionName: Gameplay/right[/XInputControllerWindows/dpad/right,/XInputControllerWindows1/dpad/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6455029730248295158}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnDOWN
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 8dda6096-0408-4817-add5-c61f54076525
+    m_ActionName: Gameplay/down[/XInputControllerWindows/dpad/down,/XInputControllerWindows1/dpad/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6455029730248295158}
+        m_TargetAssemblyTypeName: PlayerInputHandler, Assembly-CSharp
+        m_MethodName: OnLEFT
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 682dd4d3-97b3-4c85-ba2a-b1396c6ed582
+    m_ActionName: Gameplay/left[/XInputControllerWindows/dpad/left,/XInputControllerWindows1/dpad/left]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
