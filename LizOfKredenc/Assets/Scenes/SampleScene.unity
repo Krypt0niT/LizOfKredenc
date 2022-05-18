@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657892, g: 0.4964164, b: 0.57481736, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657856, g: 0.49641585, b: 0.5748167, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7711,6 +7711,11 @@ MonoBehaviour:
   player1_perk_speed: 0
   player1_perk_HealthIncrise1: 0
   player1_perk_HealthIncrise2: 0
+  player1_perk_lifesteal2_avaiable: 0
+  player1_perk_critchance2_avaiable: 0
+  player1_perk_critchance3_avaiable: 0
+  player1_perk_bonusDMG2_avaiable: 0
+  player1_perk_HealthIncrise2_avaiable: 0
   player2_Maxhealth: 1000
   player2_health: 1000
   player2_healthRegen: 50
@@ -7731,6 +7736,11 @@ MonoBehaviour:
   player2_perk_speed: 0
   player2_perk_HealthIncrise1: 0
   player2_perk_HealthIncrise2: 0
+  player2_perk_lifesteal2_avaiable: 0
+  player2_perk_critchance2_avaiable: 0
+  player2_perk_critchance3_avaiable: 0
+  player2_perk_bonusDMG2_avaiable: 0
+  player2_perk_HealthIncrise2_avaiable: 0
   manaCost_flash: 100
   manaCost_projectile: 20
   cooldown_projectile: 1.5
@@ -7891,6 +7901,7 @@ MonoBehaviour:
   - {fileID: 1210516491}
   - {fileID: 28276338}
   selector2: {fileID: 1684705403}
+  locket: {fileID: 2086488884690110459, guid: a59df7eec7fcef8438650d708bfef4a8, type: 3}
 --- !u!1 &911825106
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,11 +23,22 @@ public class PerkSelecter : MonoBehaviour
     List<GameObject> perks2 = new List<GameObject>();
     [SerializeField]
     GameObject selector2;
+
+
+    [SerializeField]
+    GameObject locket;
     void Start()
     {
         Player1 = player1.GetComponent<player>();
         Player2 = player2.GetComponent<player>();
         variables = manager.GetComponent<Manazer>();
+
+
+
+        if (!variables.player1_perk_bonusDMG2_avaiable)
+        {
+
+        }
     }
 
     void Update()
