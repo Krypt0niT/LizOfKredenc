@@ -30,7 +30,11 @@ public class Manazer : MonoBehaviour
     public bool player1_perk_HealthIncrise1 = false;
     public bool player1_perk_HealthIncrise2 = false;
 
-
+    [HideInInspector] public bool player1_perk_lifesteal2_avaiable = false;
+    [HideInInspector] public bool player1_perk_critchance2_avaiable = false;
+    [HideInInspector] public bool player1_perk_critchance3_avaiable = false;
+    [HideInInspector] public bool player1_perk_bonusDMG2_avaiable = false;
+    [HideInInspector] public bool player1_perk_HealthIncrise2_avaiable = false;
 
 
 
@@ -60,6 +64,15 @@ public class Manazer : MonoBehaviour
     public bool player2_perk_speed = false;
     public bool player2_perk_HealthIncrise1 = false;
     public bool player2_perk_HealthIncrise2 = false;
+
+    [HideInInspector] public bool player2_perk_lifesteal2_avaiable = false;
+    [HideInInspector] public bool player2_perk_critchance2_avaiable = false;
+    [HideInInspector] public bool player2_perk_critchance3_avaiable = false;
+    [HideInInspector] public bool player2_perk_bonusDMG2_avaiable = false;
+    [HideInInspector] public bool player2_perk_HealthIncrise2_avaiable = false;
+
+
+
 
 
 
@@ -124,6 +137,7 @@ public class Manazer : MonoBehaviour
             GameUI.SetActive(false);
 
             PerkUI.SetActive(true);
+
         }
         else
         {

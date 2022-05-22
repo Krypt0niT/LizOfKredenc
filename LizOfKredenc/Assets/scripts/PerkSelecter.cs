@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class PerkSelecter : MonoBehaviour
 {
@@ -21,32 +20,13 @@ public class PerkSelecter : MonoBehaviour
     [SerializeField]
     GameObject selector1;
     [SerializeField]
-    TMP_Text info1;
-
-    [SerializeField]
     List<GameObject> perks2 = new List<GameObject>();
     [SerializeField]
     GameObject selector2;
+
+
     [SerializeField]
-    TMP_Text info2;
-
-
-
-    List<string> infotips = new List<string>
-    {
-        "Base damage will be increased \n(0% -> 10%)",
-        "Base damage will be increased \n(10% -> 20%)",
-        "Chance of critical strike will be increased \n(10% -> 20%)",
-        "Chance of critical strike will be increased \n(20% -> 30%)",
-        "Chance of critical strike will be increased \n(30% -> 45%)",
-        "Your health will be increased \n(1000 -> 1250)",
-        "Your health will be increased \n(1250 -> 1500)",
-        "Healing from total damage \n(0% -> 33%)",
-        "Healing from total damage \n(33% -> 50%)",
-        "Base speed will be increased"
-    };
-    
-
+    GameObject locket;
     void Start()
     {
         Player1 = player1.GetComponent<player>();
@@ -54,14 +34,11 @@ public class PerkSelecter : MonoBehaviour
         variables = manager.GetComponent<Manazer>();
 
 
-        info1.text = infotips[0];
-        info2.text = infotips[0];
 
+        if (!variables.player1_perk_bonusDMG2_avaiable)
+        {
 
-
-
-
-
+        }
     }
 
     void Update()
@@ -117,7 +94,6 @@ public class PerkSelecter : MonoBehaviour
                 }
             }
             selector1.transform.position = new Vector2(perks1[player1Selected].transform.position.x, perks1[player1Selected].transform.position.y);
-            info1.text = infotips[player1Selected];
         }
         if (index == 1)
         {
@@ -162,9 +138,8 @@ public class PerkSelecter : MonoBehaviour
                     player2Selected += 10;
                 }
             }
+            selector1.transform.position = new Vector2(perks1[player1Selected].transform.position.x, perks1[player1Selected].transform.position.y);
             selector2.transform.position = new Vector2(perks2[player2Selected].transform.position.x, perks2[player2Selected].transform.position.y);
-            info2.text = infotips[player2Selected];
-
 
         }
 

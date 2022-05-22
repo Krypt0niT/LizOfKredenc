@@ -541,22 +541,26 @@ public class player : MonoBehaviour
                     if (variables.player2_summonerSpell == "flash")
                     {
 
-
-
-                        Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-
-                        if (!Physics.Raycast(transform.position, novaPozicia, 10))
+                        if (variables.player2_mana >= variables.manaCost_flash)
                         {
-                            chc.enabled = false;
-                            t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-                            chc.enabled = true;
-                            flash_source.PlayOneShot(flash_clip);
 
-                            flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-                            flash.Play();
+                       
 
-                            variables.player2_mana -= variables.manaCost_flash;
-                            flash_time = 0;
+                                Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+
+                            if (!Physics.Raycast(transform.position, novaPozicia, 10))
+                            {
+                                chc.enabled = false;
+                                t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                                chc.enabled = true;
+                                flash_source.PlayOneShot(flash_clip);
+
+                                flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                                flash.Play();
+
+                                variables.player2_mana -= variables.manaCost_flash;
+                                flash_time = 0;
+                            }
                         }
                     }
                 }
