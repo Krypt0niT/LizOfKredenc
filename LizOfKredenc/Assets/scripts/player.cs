@@ -103,15 +103,29 @@ public class player : MonoBehaviour
 
                 
 
-
-                if (variables.player1_perk_speed)
+                if (!variables.player1_speedActive)
                 {
-                    variables.player1_speed = 10;
+                    if (variables.player1_perk_speed)
+                    {
+                        variables.player1_speed = 8;
+                    }
+                    else
+                    {
+                        variables.player1_speed = 5;
+                    }
                 }
                 else
                 {
-                    variables.player1_speed = 5;
+                    if (variables.player1_perk_speed)
+                    {
+                        variables.player1_speed = 16;
+                    }
+                    else
+                    {
+                        variables.player1_speed = 10;
+                    }
                 }
+                
 
 
 
@@ -178,16 +192,30 @@ public class player : MonoBehaviour
                 chc.Move(new Vector3(-MoveInputVector.x, 0, -MoveInputVector.y) * Time.deltaTime * variables.player2_speed);
 
 
-                
 
 
-                if (variables.player2_perk_speed)
+
+                if (!variables.player2_speedActive)
                 {
-                    variables.player2_speed = 10;
+                    if (variables.player2_perk_speed)
+                    {
+                        variables.player2_speed = 8;
+                    }
+                    else
+                    {
+                        variables.player2_speed = 5;
+                    }
                 }
                 else
                 {
-                    variables.player2_speed = 5;
+                    if (variables.player2_perk_speed)
+                    {
+                        variables.player2_speed = 16;
+                    }
+                    else
+                    {
+                        variables.player2_speed = 10;
+                    }
                 }
 
 
@@ -555,7 +583,6 @@ public class player : MonoBehaviour
 
                             speed_time = 0;
                             variables.player1_speedActive = true;
-                            variables.player1_speed = variables.player1_speed * 2;
                             variables.player1_mana -= variables.manaCost_speed;
                         }
                     }
@@ -579,7 +606,6 @@ public class player : MonoBehaviour
 
                             speed_time = 0;
                             variables.player2_speedActive = true;
-                            variables.player2_speed = variables.player2_speed * 2;
                             variables.player2_mana -= variables.manaCost_speed;
                         }
                     }
