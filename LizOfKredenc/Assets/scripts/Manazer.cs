@@ -115,6 +115,8 @@ public class Manazer : MonoBehaviour
     GameObject GameUI;
     [SerializeField]
     GameObject PerkUI;
+    [SerializeField]
+    GameObject map;
 
     CharacterController Player1ch;
     CharacterController Player2ch;
@@ -135,6 +137,7 @@ public class Manazer : MonoBehaviour
             Player1HB.SetActive(false);
             Player2HB.SetActive(false);
             GameUI.SetActive(false);
+            map.SetActive(false);
 
             PerkUI.SetActive(true);
 
@@ -148,6 +151,7 @@ public class Manazer : MonoBehaviour
                Player1HB.SetActive(true);
                Player2HB.SetActive(true);
                GameUI.SetActive(true);
+               map.SetActive(true);
 
                PerkUI.SetActive(false);
             

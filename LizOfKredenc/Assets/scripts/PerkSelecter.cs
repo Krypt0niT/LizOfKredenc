@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PerkSelecter : MonoBehaviour
@@ -32,6 +33,7 @@ public class PerkSelecter : MonoBehaviour
 
 
 
+
     List<string> infotips = new List<string>
     {
         "Base damage will be increased \n(0% -> 10%)",
@@ -57,6 +59,7 @@ public class PerkSelecter : MonoBehaviour
         info1.text = infotips[0];
         info2.text = infotips[0];
 
+
     }
 
     void Update()
@@ -65,54 +68,190 @@ public class PerkSelecter : MonoBehaviour
         {
             variables.RoundStart();
         }
+
+
+
+
+
+        //blokovanie operkov
+
+        if (!variables.player1_perk_bonusDMG1)
+        {
+            perks1[1].GetComponent<Image>().color = new Color(0.2f,0.2f, 0.2f, 255);
+        }
+        else
+        {
+            variables.player1_perk_bonusDMG2_avaiable = true;
+            perks1[1].GetComponent<Image>().color = new Color(0.5f, 0.75f, 0.9f, 255);
+
+        }
+        
+        if (!variables.player1_perk_critchance1)
+        {
+            perks1[3].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 255);
+
+        }
+        else
+        {
+            variables.player1_perk_critchance2_avaiable = true;
+            perks1[3].GetComponent<Image>().color = new Color(0.5f, 0.75f, 0.9f, 255);
+
+        }
+        if (!variables.player1_perk_critchance2)
+        {
+            perks1[4].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 255);
+
+        }
+        else
+        {
+            variables.player1_perk_critchance3_avaiable = true;
+            perks1[4].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+
+        }
+        if (!variables.player1_perk_HealthIncrise1)
+        {
+            perks1[6].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 255);
+
+        }
+        else
+        {
+            variables.player1_perk_HealthIncrise2_avaiable = true;
+            perks1[6].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+
+        }
+        if (!variables.player1_perk_lifesteal1)
+        {
+            perks1[8].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 255);
+
+        }
+        else
+        {
+            variables.player1_perk_lifesteal2_avaiable = true;
+            perks1[8].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+
+        }
+
+
+
+        //player 2
+        if (!variables.player2_perk_bonusDMG1)
+        {
+            perks2[1].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 255);
+        }
+        else
+        {
+            variables.player2_perk_bonusDMG2_avaiable = true;
+            perks2[1].GetComponent<Image>().color = new Color(0.5f, 0.75f, 0.9f, 255);
+
+        }
+
+        if (!variables.player2_perk_critchance1)
+        {
+            perks2[3].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 255);
+
+        }
+        else
+        {
+            variables.player2_perk_critchance2_avaiable = true;
+            perks2[3].GetComponent<Image>().color = new Color(0.5f, 0.75f, 0.9f, 255);
+
+        }
+        if (!variables.player2_perk_critchance2)
+        {
+            perks2[4].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 255);
+
+        }
+        else
+        {
+            variables.player2_perk_critchance3_avaiable = true;
+            perks2[4].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+
+        }
+        if (!variables.player2_perk_HealthIncrise1)
+        {
+            perks2[6].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 255);
+
+        }
+        else
+        {
+            variables.player2_perk_HealthIncrise2_avaiable = true;
+            perks2[6].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+
+        }
+        if (!variables.player2_perk_lifesteal1)
+        {
+            perks2[8].GetComponent<Image>().color = new Color(0.2f, 0.2f, 0.2f, 255);
+
+        }
+        else
+        {
+            variables.player2_perk_lifesteal2_avaiable = true;
+            perks2[8].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+
+        }
+
+
+
+
+
     }
     public void IndexCalculator(string direction, int index)
     {
         if (index == 0)
         {
-            if (direction == "DOWN")
+            if (!variables.player1_perkSelected)
             {
-                player1Selected++;
-                if (player1Selected == 5 )
+                if (direction == "DOWN")
                 {
-                    player1Selected = 0;
-                }
-                if (player1Selected == perks1.Count )
-                {
-                    player1Selected = perks1.Count/2;
+                    player1Selected++;
+                    if (player1Selected == 5)
+                    {
+                        player1Selected = 0;
+                    }
+                    if (player1Selected == perks1.Count)
+                    {
+                        player1Selected = perks1.Count / 2;
 
+                    }
+                }
+                if (direction == "UP")
+                {
+                    player1Selected--;
+                    if (player1Selected < 0)
+                    {
+                        player1Selected = 4;
+                    }
+                    else if (player1Selected == 4)
+                    {
+                        player1Selected = perks1.Count - 1;
+                    }
+                }
+                if (direction == "RIGHT")
+                {
+                    player1Selected += 5;
+                    if (player1Selected > perks1.Count - 1)
+                    {
+                        player1Selected -= 10;
+                    }
+                }
+                if (direction == "LEFT")
+                {
+                    player1Selected -= 5;
+                    if (player1Selected < 0)
+                    {
+                        player1Selected += 10;
+                    }
+                }
+                selector1.transform.position = new Vector2(perks1[player1Selected].transform.position.x, perks1[player1Selected].transform.position.y);
+                info1.color = new Color(1, 1, 1, 255);
+                info1.text = infotips[player1Selected];
+                if (perks1[player1Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
+                {
+                    info1.text = "You have to unlock previous to get this one";
+                    info1.color = new Color(1, 0, 0, 255);
                 }
             }
-            if (direction == "UP")
-            {
-                player1Selected--;
-                if (player1Selected < 0)
-                {
-                    player1Selected = 4;
-                }
-                else if (player1Selected == 4)
-                {
-                    player1Selected = perks1.Count - 1;
-                }
-            }
-            if (direction == "RIGHT")
-            {
-                player1Selected += 5;
-                if (player1Selected > perks1.Count-1)
-                {
-                    player1Selected -= 10;
-                }
-            }
-            if (direction == "LEFT")
-            {
-                player1Selected -= 5;
-                if (player1Selected  < 0)
-                {
-                    player1Selected += 10;
-                }
-            }
-            selector1.transform.position = new Vector2(perks1[player1Selected].transform.position.x, perks1[player1Selected].transform.position.y);
-            info1.text = infotips[player1Selected];
+            
         }
         if (index == 1)
         {
@@ -158,100 +297,247 @@ public class PerkSelecter : MonoBehaviour
                 }
             }
             selector2.transform.position = new Vector2(perks2[player2Selected].transform.position.x, perks2[player2Selected].transform.position.y);
+            info2.color = new Color(1, 1, 1, 255);
             info2.text = infotips[player2Selected];
+            if (perks2[player2Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
+            {
+                info2.text = "You have to unlock previous to get this one";
+                info2.color = new Color(0, 0, 1, 255);
+            }
+
         }
 
     }
     public void perkPick(int index)
     {
-        if (index == 0)
+        if (!variables.Game)
         {
-            if (!variables.player1_perkSelected)
+            if (index == 0)
             {
-
-            
-                switch (player1Selected)
+                if (!variables.player1_perkSelected)
                 {
-                    case 0:
-                        variables.player1_perk_bonusDMG1 = true;
-                        break;
-                    case 1:
-                        variables.player1_perk_bonusDMG2 = true;
-                        break;
-                    case 2:
-                        variables.player1_perk_critchance1 = true;
-                        break;
-                    case 3:
-                        variables.player1_perk_critchance2 = true;
-                        break;
-                    case 4:
-                        variables.player1_perk_critchance3 = true;
-                        break;
-                    case 5:
-                        variables.player1_perk_HealthIncrise1 = true;
-                        break;
-                    case 6:
-                        variables.player1_perk_HealthIncrise2 = true;
-                        break;
-                    case 7:
-                        variables.player1_perk_lifesteal1 = true;
-                        break;
-                    case 8:
-                        variables.player1_perk_lifesteal2 = true;
-                        break;
-                    case 9:
-                        variables.player1_perk_speed = true;
-                        break;
 
 
+                    switch (player1Selected)
+                    {
+                        case 0:
+                            if (!variables.player1_perk_bonusDMG1)
+                            {
+                                variables.player1_perk_bonusDMG1 = true;
+                                variables.player1_perkSelected = true;
+                            }
+                            
+                            break;
+                        case 1:
+                            if (!variables.player1_perk_bonusDMG2)
+                            {
+                                if (variables.player1_perk_bonusDMG2_avaiable)
+                                {
+                                    variables.player1_perk_bonusDMG2 = true;
+                                    variables.player1_perkSelected = true;
+                                }
+                            }
+                            
+                            break;
+                        case 2:
+                            if (!variables.player1_perk_critchance1)
+                            {
+                                variables.player1_perk_critchance1 = true;
+                                variables.player1_perkSelected = true;
+                            }
+                            
+                            break;
+                        case 3:
+                            if (!variables.player1_perk_critchance2)
+                            {
+                                if (variables.player1_perk_critchance2_avaiable)
+                                {
+                                    variables.player1_perk_critchance2 = true;
+                                    variables.player1_perkSelected = true;
+                                }
+                            }
+                            
+                            
+                            break;
+                        case 4:
+                            if (!variables.player1_perk_critchance3)
+                            {
+                                if (variables.player1_perk_critchance3_avaiable)
+                                {
+                                    variables.player1_perk_critchance3 = true;
+                                    variables.player1_perkSelected = true;
+                                }
+                            }
+                            
+                            break;
+                        case 5:
+                            if (!variables.player1_perk_HealthIncrise1)
+                            {
+                                variables.player1_perk_HealthIncrise1 = true;
+                                variables.player1_perkSelected = true;
+                            }
+                            
+                            break;
+                        case 6:
+                            if (!variables.player1_perk_HealthIncrise2)
+                            {
+                                if (variables.player1_perk_HealthIncrise2_avaiable)
+                                {
+                                    variables.player1_perk_HealthIncrise2 = true;
+                                    variables.player1_perkSelected = true;
+                                }
+                            }
+                            
+                            
+                            break;
+                        case 7:
+                            if (!variables.player1_perk_lifesteal1)
+                            {
+                                variables.player1_perk_lifesteal1 = true;
+                                variables.player1_perkSelected = true;
+                            }
+                            
+                            break;
+                        case 8:
+                            if (!variables.player1_perk_lifesteal2)
+                            {
+                                if (variables.player1_perk_lifesteal2_avaiable)
+                                {
+                                    variables.player1_perk_lifesteal2 = true;
+                                    variables.player1_perkSelected = true;
+                                }
+                            }
+                            
+                            
+                            break;
+                        case 9:
+                            if (!variables.player1_perk_speed)
+                            {
+                                variables.player1_perk_speed = true;
+                                variables.player1_perkSelected = true;
+                            }
+                            
+                            break;
+
+
+                    }
                 }
+                
             }
-            variables.player1_perkSelected = true;
-        }
-        if (index == 1)
-        {
-            if (!variables.player2_perkSelected)
+            if (index == 1)
             {
-
-
-                switch (player2Selected)
+                if (!variables.player2_perkSelected)
                 {
-                    case 0:
-                        variables.player2_perk_bonusDMG1 = true;
-                        break;
-                    case 1:
-                        variables.player2_perk_bonusDMG2 = true;
-                        break;
-                    case 2:
-                        variables.player2_perk_critchance1 = true;
-                        break;
-                    case 3:
-                        variables.player2_perk_critchance2 = true;
-                        break;
-                    case 4:
-                        variables.player2_perk_critchance3 = true;
-                        break;
-                    case 5:
-                        variables.player2_perk_HealthIncrise1 = true;
-                        break;
-                    case 6:
-                        variables.player2_perk_HealthIncrise2 = true;
-                        break;
-                    case 7:
-                        variables.player2_perk_lifesteal1 = true;
-                        break;
-                    case 8:
-                        variables.player2_perk_lifesteal2 = true;
-                        break;
-                    case 9:
-                        variables.player2_perk_speed = true;
-                        break;
 
 
+                    switch (player2Selected)
+                    {
+                        case 0:
+                            if (!variables.player2_perk_bonusDMG1)
+                            {
+                                variables.player2_perk_bonusDMG1 = true;
+                                variables.player2_perkSelected = true;
+                            }
+
+                            break;
+                        case 1:
+                            if (!variables.player2_perk_bonusDMG2)
+                            {
+                                if (variables.player2_perk_bonusDMG2_avaiable)
+                                {
+                                    variables.player2_perk_bonusDMG2 = true;
+                                    variables.player2_perkSelected = true;
+                                }
+                            }
+
+                            break;
+                        case 2:
+                            if (!variables.player2_perk_critchance1)
+                            {
+                                variables.player2_perk_critchance1 = true;
+                                variables.player2_perkSelected = true;
+                            }
+
+                            break;
+                        case 3:
+                            if (!variables.player2_perk_critchance2)
+                            {
+                                if (variables.player2_perk_critchance2_avaiable)
+                                {
+                                    variables.player2_perk_critchance2 = true;
+                                    variables.player2_perkSelected = true;
+                                }
+                            }
+
+
+                            break;
+                        case 4:
+                            if (!variables.player2_perk_critchance3)
+                            {
+                                if (variables.player2_perk_critchance3_avaiable)
+                                {
+                                    variables.player2_perk_critchance3 = true;
+                                    variables.player2_perkSelected = true;
+                                }
+                            }
+
+                            break;
+                        case 5:
+                            if (!variables.player2_perk_HealthIncrise1)
+                            {
+                                variables.player2_perk_HealthIncrise1 = true;
+                                variables.player2_perkSelected = true;
+                            }
+
+                            break;
+                        case 6:
+                            if (!variables.player2_perk_HealthIncrise2)
+                            {
+                                if (variables.player2_perk_HealthIncrise2_avaiable)
+                                {
+                                    variables.player2_perk_HealthIncrise2 = true;
+                                    variables.player2_perkSelected = true;
+                                }
+                            }
+
+
+                            break;
+                        case 7:
+                            if (!variables.player2_perk_lifesteal1)
+                            {
+                                variables.player2_perk_lifesteal1 = true;
+                                variables.player2_perkSelected = true;
+                            }
+
+                            break;
+                        case 8:
+                            if (!variables.player2_perk_lifesteal2)
+                            {
+                                if (variables.player2_perk_lifesteal2_avaiable)
+                                {
+                                    variables.player2_perk_lifesteal2 = true;
+                                    variables.player2_perkSelected = true;
+                                }
+                            }
+
+
+                            break;
+                        case 9:
+                            if (!variables.player2_perk_speed)
+                            {
+                                variables.player2_perk_speed = true;
+                                variables.player2_perkSelected = true;
+                            }
+
+                            break;
+
+
+                    }
                 }
+
             }
-            variables.player2_perkSelected = true;
         }
+        
 
     }
 
