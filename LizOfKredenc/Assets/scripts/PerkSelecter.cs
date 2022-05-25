@@ -120,7 +120,7 @@ public class PerkSelecter : MonoBehaviour
         else
         {
             variables.player1_perk_HealthIncrise2_avaiable = true;
-            perks1[6].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+            perks1[6].GetComponent<Image>().color = new Color(0.5f, 0.75f, 0.9f, 255);
 
         }
         if (!variables.player1_perk_lifesteal1)
@@ -131,7 +131,7 @@ public class PerkSelecter : MonoBehaviour
         else
         {
             variables.player1_perk_lifesteal2_avaiable = true;
-            perks1[8].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+            perks1[8].GetComponent<Image>().color = new Color(0.5f, 0.75f, 0.9f, 255);
 
         }
 
@@ -145,7 +145,7 @@ public class PerkSelecter : MonoBehaviour
         else
         {
             variables.player2_perk_bonusDMG2_avaiable = true;
-            perks2[1].GetComponent<Image>().color = new Color(0.5f, 0.75f, 0.9f, 255);
+            perks2[1].GetComponent<Image>().color = new Color(0.87f, 0.4f, 0.45f, 255);
 
         }
 
@@ -157,7 +157,7 @@ public class PerkSelecter : MonoBehaviour
         else
         {
             variables.player2_perk_critchance2_avaiable = true;
-            perks2[3].GetComponent<Image>().color = new Color(0.5f, 0.75f, 0.9f, 255);
+            perks2[3].GetComponent<Image>().color = new Color(0.87f, 0.4f, 0.45f, 255);
 
         }
         if (!variables.player2_perk_critchance2)
@@ -168,7 +168,7 @@ public class PerkSelecter : MonoBehaviour
         else
         {
             variables.player2_perk_critchance3_avaiable = true;
-            perks2[4].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+            perks2[4].GetComponent<Image>().color = new Color(1f, 0.6f, 0.65f, 255);
 
         }
         if (!variables.player2_perk_HealthIncrise1)
@@ -179,7 +179,7 @@ public class PerkSelecter : MonoBehaviour
         else
         {
             variables.player2_perk_HealthIncrise2_avaiable = true;
-            perks2[6].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+            perks2[6].GetComponent<Image>().color = new Color(0.87f, 0.4f, 0.45f, 255);
 
         }
         if (!variables.player2_perk_lifesteal1)
@@ -190,7 +190,7 @@ public class PerkSelecter : MonoBehaviour
         else
         {
             variables.player2_perk_lifesteal2_avaiable = true;
-            perks2[8].GetComponent<Image>().color = new Color(0.7f, 0.95f, 1f, 255);
+            perks2[8].GetComponent<Image>().color = new Color(0.87f, 0.4f, 0.45f, 255);
 
         }
 

@@ -34,10 +34,21 @@ public class UI : MonoBehaviour
     RectTransform summoner2_spell_Rect;
 
     [SerializeField]
-    TMP_Text Player1_Score;
+    List<GameObject> perks1 = new List<GameObject>();
+
+    List<int> perks1_poradie = new List<int>();
 
     [SerializeField]
-    TMP_Text Player2_Score;
+    List<Sprite> icons = new List<Sprite>();
+
+
+
+    [SerializeField]
+    List<GameObject> perks2 = new List<GameObject>();
+
+    List<int> perks2_poradie = new List<int>();
+
+ 
 
     void Start()
     {
@@ -62,15 +73,263 @@ public class UI : MonoBehaviour
     {
         if (variables.Game)
         {
+            int pocet1 = 0;
+            if (variables.player1_perk_lifesteal1)
+                pocet1++;
+            if (variables.player1_perk_lifesteal2)
+                pocet1++;
+            if (variables.player1_perk_critchance1)
+                pocet1++;
+            if (variables.player1_perk_critchance2)
+                pocet1++;
+            if (variables.player1_perk_critchance3)
+                pocet1++;
+            if (variables.player1_perk_bonusDMG1)
+                pocet1++;
+            if (variables.player1_perk_bonusDMG2)
+                pocet1++;
+            if (variables.player1_perk_speed)
+                pocet1++;
+            if (variables.player1_perk_HealthIncrise1)
+                pocet1++;
+            if (variables.player1_perk_HealthIncrise2)
+                pocet1++;
 
 
 
-            //score docastne
 
-            Player1_Score.text = variables.player1_SCORE.ToString();
-            Player2_Score.text = variables.player2_SCORE.ToString();
+            
+            if (variables.player1_perk_lifesteal1)
+            {
+                if (!perks1_poradie.Contains(7))
+                {
+                        perks1_poradie.Add(7);
+                }
+            }
+               
+            if (variables.player1_perk_lifesteal2)
+            {
+                if (!perks1_poradie.Contains(8))
+                {
+                        perks1_poradie.Add(8);
+                }
+            }
+                
+            if (variables.player1_perk_critchance1)
+            {
+                if (!perks1_poradie.Contains(2))
+                {
+                        perks1_poradie.Add(2);
+                }
+            }
+                
+            if (variables.player1_perk_critchance2)
+            {
+                if (!perks1_poradie.Contains(3))
+                {
+                        perks1_poradie.Add(3);
+                }
+            }
+                
+            if (variables.player1_perk_critchance3)
+            {
+                if (!perks1_poradie.Contains(4))
+                {
+                        perks1_poradie.Add(4);
+                }
+            }
+                
+            if (variables.player1_perk_bonusDMG1)
+            {
+                if (!perks1_poradie.Contains(0))
+                {
+                        perks1_poradie.Add(0);
+                }
+            }
+                
+            if (variables.player1_perk_bonusDMG2)
+            {
+                if (!perks1_poradie.Contains(1))
+                {
+                        perks1_poradie.Add(1);
+                }
+            }
+                
+            if (variables.player1_perk_speed)
+            {
+                if (!perks1_poradie.Contains(9))
+                {
+                        perks1_poradie.Add(9);
+                }
+            }
+                
+            if (variables.player1_perk_HealthIncrise1)
+            {
+                if (!perks1_poradie.Contains(5))
+                {
+                        perks1_poradie.Add(5);
+                }
+            }
+                
+            if (variables.player1_perk_HealthIncrise2)
+            {
+                if (!perks1_poradie.Contains(6))
+                {
+                        perks1_poradie.Add(6);
+                }
+            }
+                
+            
+            
 
-            //------------
+
+      
+
+            for (int i = 0; i < perks1.Count; i++)
+            {
+                perks1[i].SetActive(false);
+                
+            }
+            for (int i = 0; i < pocet1; i++)
+            {
+                perks1[i].SetActive(true);
+                perks1[i].GetComponent<Image>().sprite = icons[perks1_poradie[i]];
+            }
+
+
+
+
+
+
+            //-----player2-------
+            int pocet2 = 0;
+            if (variables.player2_perk_lifesteal1)
+                pocet2++;
+            if (variables.player2_perk_lifesteal2)
+                pocet2++;
+            if (variables.player2_perk_critchance1)
+                pocet2++;
+            if (variables.player2_perk_critchance2)
+                pocet2++;
+            if (variables.player2_perk_critchance3)
+                pocet2++;
+            if (variables.player2_perk_bonusDMG1)
+                pocet2++;
+            if (variables.player2_perk_bonusDMG2)
+                pocet2++;
+            if (variables.player2_perk_speed)
+                pocet2++;
+            if (variables.player2_perk_HealthIncrise1)
+                pocet2++;
+            if (variables.player2_perk_HealthIncrise2)
+                pocet2++;
+
+
+
+
+            if (variables.player2_perk_lifesteal1)
+            {
+                if (!perks2_poradie.Contains(7))
+                {
+                        perks2_poradie.Add(7);
+                }
+            }
+
+            if (variables.player2_perk_lifesteal2)
+            {
+                if (!perks2_poradie.Contains(8))
+                {
+                        perks2_poradie.Add(8);
+                }
+            }
+
+            if (variables.player2_perk_critchance1)
+            {
+                if (!perks2_poradie.Contains(2))
+                {
+                        perks2_poradie.Add(2);
+                }
+            }
+
+            if (variables.player2_perk_critchance2)
+            {
+                if (!perks2_poradie.Contains(3))
+                {
+                        perks2_poradie.Add(3);
+                }
+            }
+
+            if (variables.player2_perk_critchance3)
+            {
+                if (!perks2_poradie.Contains(4))
+                {
+                        perks2_poradie.Add(4);
+                }
+            }
+
+            if (variables.player2_perk_bonusDMG1)
+            {
+                if (!perks2_poradie.Contains(0))
+                {
+                        perks2_poradie.Add(0);
+                }
+            }
+
+            if (variables.player2_perk_bonusDMG2)
+            {
+                if (!perks2_poradie.Contains(1))
+                {
+                        perks2_poradie.Add(1);
+                }
+            }
+
+            if (variables.player2_perk_speed)
+            {
+                if (!perks2_poradie.Contains(9))
+                {
+                        perks2_poradie.Add(9);
+                }
+            }
+
+            if (variables.player2_perk_HealthIncrise1)
+            {
+                if (!perks2_poradie.Contains(5))
+                {
+                        perks2_poradie.Add(5);
+                }
+            }
+
+            if (variables.player2_perk_HealthIncrise2)
+            {
+                if (!perks2_poradie.Contains(6))
+                {
+                        perks2_poradie.Add(6);
+                }
+            }
+
+
+
+
+
+        
+
+
+            for (int i = 0; i < perks2.Count; i++)
+            {
+                perks2[i].SetActive(false);
+
+            }
+            for (int i = 0; i < pocet2; i++)
+            {
+                perks2[i].SetActive(true);
+                perks2[i].GetComponent<Image>().sprite = icons[perks2_poradie[i]];
+            }
+
+
+
+
+
+
 
             if (variables.player1_summonerSpell == "flash")
             {

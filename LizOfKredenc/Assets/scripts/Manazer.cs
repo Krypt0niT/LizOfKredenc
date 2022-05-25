@@ -94,7 +94,7 @@ public class Manazer : MonoBehaviour
     public bool player2_perkSelected = false;
 
 
-    public bool Game = true;
+    public bool Game = false;
 
 
 
