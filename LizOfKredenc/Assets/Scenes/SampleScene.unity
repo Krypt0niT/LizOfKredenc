@@ -6302,6 +6302,7 @@ MonoBehaviour:
   flash_source: {fileID: 421782799}
   flash_clip: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
   projectile: {fileID: 9138526412366840579, guid: 0edcac0097714734d9ac87d08a2d5cdd, type: 3}
+  charge: {fileID: 0}
   playerIndex: 1
   projectile_time: 0
   flash_time: 0
@@ -8250,6 +8251,7 @@ MonoBehaviour:
   player1_manaRegen: 10
   player1_speed: 5
   player1_projectileDMG: 200
+  player1_chargeDMG: 200
   player1_summonerSpell: flash
   player1_speedActive: 0
   player1_perk_lifesteal1: 0
@@ -8275,6 +8277,7 @@ MonoBehaviour:
   player2_manaRegen: 10
   player2_speed: 5
   player2_projectileDMG: 200
+  player2_chargeDMG: 350
   player2_summonerSpell: flash
   player2_speedActive: 0
   player2_perk_lifesteal1: 0
@@ -9399,6 +9402,7 @@ MonoBehaviour:
   flash_source: {fileID: 1166704238}
   flash_clip: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
   projectile: {fileID: 9138526412366840579, guid: 761bb836cbdeddc4ba261c40b4e0fdfa, type: 3}
+  charge: {fileID: 7651990158230106650, guid: b2addf9b28bd06645af751f95cef5df2, type: 3}
   playerIndex: 0
   projectile_time: 0
   flash_time: 0

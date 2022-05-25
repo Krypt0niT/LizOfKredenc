@@ -26,6 +26,8 @@ public class player : MonoBehaviour
     [SerializeField]
     GameObject projectile;
     [SerializeField]
+    GameObject charge;
+    [SerializeField]
     private int playerIndex = 0;
 
 
@@ -470,7 +472,7 @@ public class player : MonoBehaviour
     {
         if (variables.Game)
         {
-
+            Instantiate(charge, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
 
         }
     }
