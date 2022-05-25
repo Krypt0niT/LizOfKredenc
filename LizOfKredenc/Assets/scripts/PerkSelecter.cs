@@ -30,6 +30,8 @@ public class PerkSelecter : MonoBehaviour
     GameObject selector2;
     [SerializeField]
     TMP_Text info2;
+    [SerializeField]
+    TMP_Text score;
 
 
 
@@ -69,7 +71,9 @@ public class PerkSelecter : MonoBehaviour
             variables.RoundStart();
         }
 
+        // score
 
+        score.text = variables.player1_SCORE + " : " + variables.player2_SCORE;
 
 
 
