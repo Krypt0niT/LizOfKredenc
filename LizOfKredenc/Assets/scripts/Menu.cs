@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Menu : MonoBehaviour
 {
-    public void loadGame()
+    public void LoadGame()
     {
-        SceneManager.LoadScene(1);
-        print("a");
+        SceneManager.LoadScene("Game");
     }
 
 }
