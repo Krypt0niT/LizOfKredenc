@@ -86,6 +86,8 @@ public class Manazer : MonoBehaviour
     public float manaCost_flash = 100;
     public float manaCost_projectile = 20;
     public float cooldown_projectile = 3;
+    public float cooldown_charge = 10;
+
     public float cooldown_flash = 0.5f;
     public float manaCost_speed = 100;
     public float cooldown_speed = 10;

@@ -52,10 +52,11 @@ public class healthbar : MonoBehaviour
                     float Hpercenta = 100 / Hpocet_dielikov;
 
                     t.position = new Vector3(t.position.x + ((100f - Hpercenta) / 100), t.position.y, t.position.z);
-                    green = Hpercenta / 100;
-                    red = 1 - (Hpercenta / 100);
+                    green = Hpercenta / 200;
+                    red = 1 - (Hpercenta / 50);
 
-                    healthMaterial.color = new Color(red, green, 0f, 255);
+                    healthMaterial.SetColor("_EmissionColor", new Color(red, green, 0f, 255));
+
 
 
                 }
@@ -79,10 +80,11 @@ public class healthbar : MonoBehaviour
                     float Hpercenta = 100 / Hpocet_dielikov;
 
                     t.position = new Vector3(t.position.x + ((100f - Hpercenta) / 100), t.position.y, t.position.z);
-                    green = Hpercenta / 100;
-                    red = 1 - (Hpercenta / 100);
+                    green = Hpercenta / 200;
+                    red = 1 - (Hpercenta / 50);
 
-                    healthMaterial.color = new Color(red, green, 0f, 255);
+                    healthMaterial.SetColor("_EmissionColor", new Color(red, green, 0f, 255));
+
 
 
                 }

@@ -428,8 +428,73 @@ public class player : MonoBehaviour
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
                 }
+
+
+
+                 
             }
         }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (this.name == "player2")
+        {
+            if (other.name == "ChargeP1(Clone)")
+            {
+
+                if (other.GetComponent<charge>().damage)
+                {
+                    float bonusDMG = 0;
+                    if (variables.player1_perk_bonusDMG1)
+                    {
+                        bonusDMG = variables.player1_chargeDMG / 10;
+                    }
+                    if (variables.player1_perk_bonusDMG2)
+                    {
+                        bonusDMG = variables.player1_chargeDMG / 5;
+                    }
+
+                    //---------------------
+                    float total_damage = variables.player1_chargeDMG + bonusDMG;
+                    //-----------------------
+
+                    float lifesteal = 0;
+                    if (variables.player1_perk_lifesteal1)
+                    {
+                        lifesteal = total_damage / 3;
+                    }
+                    if (variables.player1_perk_lifesteal2)
+                    {
+                        lifesteal = total_damage / 2;
+                    }
+
+
+                    if (variables.player2_health >= total_damage)
+                    {
+                        variables.player2_health -= total_damage;
+
+
+
+                        if (variables.player1_health <= variables.player1_Maxhealth - lifesteal)
+                        {
+                            variables.player1_health += lifesteal;
+                        }
+                    }
+                    else
+                    {
+                        variables.player2_health = 0;
+                        variables.RoundEnd(this.name);
+
+                    }
+                    print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
+                    print(":O");
+                    Destroy(other.gameObject);
+
+                }
+
+            }
+        }
+            
     }
 
     public void rightButton()
