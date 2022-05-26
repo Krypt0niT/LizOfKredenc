@@ -123,6 +123,8 @@ public class Manazer : MonoBehaviour
     GameObject PerkUI;
     [SerializeField]
     GameObject map;
+    [SerializeField]
+    Material ground;
 
     CharacterController Player1ch;
     CharacterController Player2ch;
@@ -144,6 +146,7 @@ public class Manazer : MonoBehaviour
             Player2HB.SetActive(false);
             GameUI.SetActive(false);
             map.SetActive(false);
+            ground.color = new Color(0,0,0, 255);
 
             PerkUI.SetActive(true);
 
@@ -152,14 +155,15 @@ public class Manazer : MonoBehaviour
         {
             
             
-               Player1.SetActive(true);
-               Player2.SetActive(true);
-               Player1HB.SetActive(true);
-               Player2HB.SetActive(true);
-               GameUI.SetActive(true);
-               map.SetActive(true);
+            Player1.SetActive(true);
+            Player2.SetActive(true);
+            Player1HB.SetActive(true);
+            Player2HB.SetActive(true);
+            GameUI.SetActive(true);
+            map.SetActive(true);
+            ground.color = new Color(0.31f, 0.31f, 0.31f, 255);
+            PerkUI.SetActive(false);
 
-               PerkUI.SetActive(false);
             
             
 
