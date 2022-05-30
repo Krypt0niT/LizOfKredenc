@@ -33,10 +33,6 @@ public class PerkSelecter : MonoBehaviour
     [SerializeField]
     TMP_Text score;
 
-    [SerializeField]
-    AudioSource source;
-    [SerializeField]
-    AudioClip move;
 
 
 
@@ -255,7 +251,7 @@ public class PerkSelecter : MonoBehaviour
                 info1.color = new Color(1, 1, 1, 255);
                 info1.text = infotips[player1Selected];
 
-                source.PlayOneShot(move);
+                //zvuk
 
 
                 if (perks1[player1Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
@@ -315,7 +311,7 @@ public class PerkSelecter : MonoBehaviour
                 info2.color = new Color(1, 1, 1, 255);
                 info2.text = infotips[player2Selected];
 
-                source.PlayOneShot(move);
+                //zvuk
 
 
                 if (perks2[player2Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))

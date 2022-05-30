@@ -17,7 +17,15 @@ public class charge : MonoBehaviour
     void Start()
     {
         transform.position += transform.forward  *(this.transform.localScale.z / 2);
-        material.SetColor("_EmissionColor", new Color(0f, 0f, charger, 255));
+        if (this.name == "ChargeP1(Clone)")
+        {
+            material.SetColor("_EmissionColor", new Color(0f, 0f, charger, 255));
+        }
+        if (this.name == "ChargeP2(Clone)")
+        {
+            material.SetColor("_EmissionColor", new Color(charger, 0f, 0f, 255));
+        }
+
     }
 
     void Update()
@@ -26,11 +34,26 @@ public class charge : MonoBehaviour
 
 
         charger += Time.deltaTime / time;
-        material.SetColor("_EmissionColor", new Color(0f, 0f, charger, 255));
+        if (this.name == "ChargeP1(Clone)")
+        {
+            material.SetColor("_EmissionColor", new Color(0f, 0f, charger, 255));
+        }
+        if (this.name == "ChargeP2(Clone)")
+        {
+            material.SetColor("_EmissionColor", new Color(charger, 0f, 0f, 255));
+        }
+
 
         if (start >= time)
         {
-            material.SetColor("_EmissionColor", new Color(0.2f, 0.2f, charger, 255));
+            if (this.name == "ChargeP1(Clone)")
+            {
+                material.SetColor("_EmissionColor", new Color(0.2f, 0.2f, charger, 255));
+            }
+            if (this.name == "ChargeP2(Clone)")
+            {
+                material.SetColor("_EmissionColor", new Color(charger, 0.2f, 0.2f, 255));
+            }
 
             damage = true;
             if (start >= time + 2)

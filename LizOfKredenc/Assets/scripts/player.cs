@@ -18,10 +18,7 @@ public class player : MonoBehaviour
     [SerializeField]
     ParticleSystem flash;
 
-    [SerializeField] 
-    AudioSource flash_source;
-    [SerializeField]
-    AudioClip flash_clip;
+
 
     [SerializeField]
     GameObject projectile;
@@ -503,7 +500,64 @@ public class player : MonoBehaviour
 
             }
         }
-            
+        if (this.name == "player1")
+        {
+            if (other.name == "ChargeP2(Clone)")
+            {
+
+                if (other.GetComponent<charge>().damage)
+                {
+                    float bonusDMG = 0;
+                    if (variables.player2_perk_bonusDMG1)
+                    {
+                        bonusDMG = variables.player2_chargeDMG / 10;
+                    }
+                    if (variables.player2_perk_bonusDMG2)
+                    {
+                        bonusDMG = variables.player2_chargeDMG / 5;
+                    }
+
+                    //---------------------
+                    float total_damage = variables.player2_chargeDMG + bonusDMG;
+                    //-----------------------
+
+                    float lifesteal = 0;
+                    if (variables.player2_perk_lifesteal1)
+                    {
+                        lifesteal = total_damage / 3;
+                    }
+                    if (variables.player2_perk_lifesteal2)
+                    {
+                        lifesteal = total_damage / 2;
+                    }
+
+
+                    if (variables.player1_health >= total_damage)
+                    {
+                        variables.player1_health -= total_damage;
+
+
+
+                        if (variables.player2_health <= variables.player2_Maxhealth - lifesteal)
+                        {
+                            variables.player2_health += lifesteal;
+                        }
+                    }
+                    else
+                    {
+                        variables.player1_health = 0;
+                        variables.RoundEnd(this.name);
+
+                    }
+                    print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
+                    print(":O");
+                    Destroy(other.gameObject);
+
+                }
+
+            }
+        }
+
     }
 
     public void rightButton()
@@ -560,7 +614,21 @@ public class player : MonoBehaviour
 
                 }
             }
-                
+            if (GetPlayerIndex() == 1)
+            {
+                if (charge_time >= variables.cooldown_charge)
+                {
+                    if (variables.player2_mana >= variables.manaCost_charge)
+                    {
+                        Instantiate(charge, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                        charge_time = 0;
+                        variables.player2_mana -= variables.manaCost_charge;
+                    }
+
+
+                }
+            }
+
 
         }
     }
@@ -593,7 +661,7 @@ public class player : MonoBehaviour
                                 chc.enabled = false;
                                 t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                                 chc.enabled = true;
-                                flash_source.PlayOneShot(flash_clip);
+                                //zvuk
 
 
 
@@ -633,7 +701,7 @@ public class player : MonoBehaviour
                                 chc.enabled = false;
                                 t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                                 chc.enabled = true;
-                                flash_source.PlayOneShot(flash_clip);
+                                //zvuk
 
                                 flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
                                 flash.Play();
