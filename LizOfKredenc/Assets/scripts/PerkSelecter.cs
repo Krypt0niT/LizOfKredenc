@@ -15,6 +15,10 @@ public class PerkSelecter : MonoBehaviour
     [SerializeField]
     GameObject manager;
     Manazer variables;
+    [SerializeField]
+    GameObject audioManager;
+    AudioManager sounds;
+    AudioSource source;
     int player1Selected = 0;
     int player2Selected = 0;
     [SerializeField]
@@ -55,6 +59,9 @@ public class PerkSelecter : MonoBehaviour
         Player1 = player1.GetComponent<player>();
         Player2 = player2.GetComponent<player>();
         variables = manager.GetComponent<Manazer>();
+
+        sounds = audioManager.GetComponent<AudioManager>();
+        source = audioManager.GetComponent<AudioSource>();
 
 
 
@@ -251,7 +258,7 @@ public class PerkSelecter : MonoBehaviour
                 info1.color = new Color(1, 1, 1, 255);
                 info1.text = infotips[player1Selected];
 
-                //zvuk
+                source.PlayOneShot(sounds.perkMove);
 
 
                 if (perks1[player1Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
@@ -310,8 +317,8 @@ public class PerkSelecter : MonoBehaviour
                 selector2.transform.position = new Vector2(perks2[player2Selected].transform.position.x, perks2[player2Selected].transform.position.y);
                 info2.color = new Color(1, 1, 1, 255);
                 info2.text = infotips[player2Selected];
+                source.PlayOneShot(sounds.perkMove);
 
-                //zvuk
 
 
                 if (perks2[player2Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
@@ -342,8 +349,10 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player1_perk_bonusDMG1 = true;
                                 variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
-                            
+
                             break;
                         case 1:
                             if (!variables.player1_perk_bonusDMG2)
@@ -352,6 +361,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player1_perk_bonusDMG2 = true;
                                     variables.player1_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
                             
@@ -361,8 +372,10 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player1_perk_critchance1 = true;
                                 variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
-                            
+
                             break;
                         case 3:
                             if (!variables.player1_perk_critchance2)
@@ -371,6 +384,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player1_perk_critchance2 = true;
                                     variables.player1_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
                             
@@ -383,6 +398,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player1_perk_critchance3 = true;
                                     variables.player1_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
                             
@@ -392,8 +409,10 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player1_perk_HealthIncrise1 = true;
                                 variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
-                            
+
                             break;
                         case 6:
                             if (!variables.player1_perk_HealthIncrise2)
@@ -402,6 +421,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player1_perk_HealthIncrise2 = true;
                                     variables.player1_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
                             
@@ -412,8 +433,10 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player1_perk_lifesteal1 = true;
                                 variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
-                            
+
                             break;
                         case 8:
                             if (!variables.player1_perk_lifesteal2)
@@ -422,6 +445,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player1_perk_lifesteal2 = true;
                                     variables.player1_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
                             
@@ -432,8 +457,10 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player1_perk_speed = true;
                                 variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
-                            
+
                             break;
 
 
@@ -454,6 +481,8 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player2_perk_bonusDMG1 = true;
                                 variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
 
                             break;
@@ -464,6 +493,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player2_perk_bonusDMG2 = true;
                                     variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
 
@@ -473,6 +504,8 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player2_perk_critchance1 = true;
                                 variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
 
                             break;
@@ -483,6 +516,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player2_perk_critchance2 = true;
                                     variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
 
@@ -495,6 +530,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player2_perk_critchance3 = true;
                                     variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
 
@@ -504,6 +541,8 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player2_perk_HealthIncrise1 = true;
                                 variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
 
                             break;
@@ -514,6 +553,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player2_perk_HealthIncrise2 = true;
                                     variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
 
@@ -524,6 +565,8 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player2_perk_lifesteal1 = true;
                                 variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
 
                             break;
@@ -534,6 +577,8 @@ public class PerkSelecter : MonoBehaviour
                                 {
                                     variables.player2_perk_lifesteal2 = true;
                                     variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
                                 }
                             }
 
@@ -544,6 +589,8 @@ public class PerkSelecter : MonoBehaviour
                             {
                                 variables.player2_perk_speed = true;
                                 variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
                             }
 
                             break;

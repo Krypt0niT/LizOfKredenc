@@ -11,19 +11,30 @@ public class Menu : MonoBehaviour
     GameObject settings;
     [SerializeField]
     GameObject about;
+    [SerializeField]
+    GameObject audioManager;
+    AudioManager sounds;
+    AudioSource source;
+
+
 
     private void Start()
     {
         settings.SetActive(false);
         about.SetActive(false);
+        sounds = audioManager.GetComponent<AudioManager>();
+        source = audioManager.GetComponent<AudioSource>();
+
 
     }
     public void LoadGame()
     {
+        source.PlayOneShot(sounds.perkSelect);
         SceneManager.LoadScene("Game");
     }
     public void SettingsBack()
     {
+        source.PlayOneShot(sounds.perkSelect);
         settings.SetActive(false);
         about.SetActive(false);
         menu.SetActive(true);
@@ -31,6 +42,7 @@ public class Menu : MonoBehaviour
 
     public void AboutBack()
     {
+        source.PlayOneShot(sounds.perkSelect);
         about.SetActive(false);
         settings.SetActive(false);
         menu.SetActive(true);
@@ -38,6 +50,7 @@ public class Menu : MonoBehaviour
 
     public void Settings()
     {
+        source.PlayOneShot(sounds.perkSelect);
         menu.SetActive(false);
         about.SetActive(false);
         settings.SetActive(true);
@@ -46,6 +59,7 @@ public class Menu : MonoBehaviour
 
     public void About()
     {
+        source.PlayOneShot(sounds.perkSelect);
         menu.SetActive(false);
         settings.SetActive(false);
         about.SetActive(true);

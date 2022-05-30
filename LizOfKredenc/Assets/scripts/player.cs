@@ -13,6 +13,10 @@ public class player : MonoBehaviour
     GameObject manager;
     Manazer variables;
     [SerializeField]
+    GameObject audioManager;
+    AudioManager sounds;
+    AudioSource source;
+    [SerializeField]
     GameObject PerkUI;
     PerkSelecter perkS;
     [SerializeField]
@@ -53,7 +57,9 @@ public class player : MonoBehaviour
         t = GetComponent<Transform>();
         variables = manager.GetComponent<Manazer>();
         perkS = PerkUI.GetComponent<PerkSelecter>();
-        
+
+        sounds = audioManager.GetComponent<AudioManager>();
+        source = audioManager.GetComponent<AudioSource>();
 
 
 
@@ -574,6 +580,7 @@ public class player : MonoBehaviour
                         Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
                         variables.player1_mana -= variables.manaCost_projectile;
                         projectile.name = "ProjectilePlayer1";
+                        source.PlayOneShot(sounds.projectile);
                     }
                     projectile_time = 0;
                 }
@@ -588,6 +595,7 @@ public class player : MonoBehaviour
                         Instantiate(projectile, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
                         projectile.name = "ProjectilePlayer2";
                         variables.player2_mana -= variables.manaCost_projectile;
+                        source.PlayOneShot(sounds.projectile);
                     }
                     projectile_time = 0;
                 }
@@ -661,7 +669,7 @@ public class player : MonoBehaviour
                                 chc.enabled = false;
                                 t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                                 chc.enabled = true;
-                                //zvuk
+                                source.PlayOneShot(sounds.flash);
 
 
 
