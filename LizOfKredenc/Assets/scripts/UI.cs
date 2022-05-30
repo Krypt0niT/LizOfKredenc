@@ -19,19 +19,26 @@ public class UI : MonoBehaviour
     player Player2variables;
 
 
-    [SerializeField]
-    GameObject Summoner1_spell_BG;
+
     [SerializeField]
     GameObject Summoner1_spell_color;
 
     RectTransform summoner1_spell_Rect;
 
     [SerializeField]
-    GameObject Summoner2_spell_BG;
-    [SerializeField]
     GameObject Summoner2_spell_color;
 
     RectTransform summoner2_spell_Rect;
+
+    [SerializeField]
+    GameObject charge1_color;
+
+    RectTransform charge1_Rect;
+
+    [SerializeField]
+    GameObject charge2_color;
+
+    RectTransform charge2_Rect;
 
     [SerializeField]
     List<GameObject> perks1 = new List<GameObject>();
@@ -63,8 +70,11 @@ public class UI : MonoBehaviour
         summoner1_spell_Rect = Summoner1_spell_color.GetComponent<RectTransform>();
         summoner2_spell_Rect = Summoner2_spell_color.GetComponent<RectTransform>();
 
-       
-        
+        charge1_Rect = charge1_color.GetComponent<RectTransform>();
+        charge2_Rect = charge2_color.GetComponent<RectTransform>();
+
+
+
 
 
     }
@@ -388,6 +398,33 @@ public class UI : MonoBehaviour
                 {
                     Summoner2_spell_color.GetComponent<Image>().color = new Color32(0, 162, 211, 225);
                 }
+            }
+
+
+
+
+
+            charge1_Rect.localScale = new Vector2(Player1variables.charge_time / variables.cooldown_charge * 0.5f, charge1_Rect.localScale.y);
+
+
+            if (Player1variables.charge_time >= variables.cooldown_charge)
+            {
+                charge1_color.GetComponent<Image>().color = new Color32(40, 60, 255, 225);
+            }
+            else
+            {
+                charge1_color.GetComponent<Image>().color = new Color32(20, 40, 235, 225);
+            }
+            charge2_Rect.localScale = new Vector2(Player2variables.charge_time / variables.cooldown_charge * 0.5f, charge2_Rect.localScale.y);
+
+
+            if (Player2variables.charge_time >= variables.cooldown_charge)
+            {
+                charge2_color.GetComponent<Image>().color = new Color32(186, 0, 22, 225);
+            }
+            else
+            {
+                charge2_color.GetComponent<Image>().color = new Color32(166, 0, 2, 225);
             }
         }
     }

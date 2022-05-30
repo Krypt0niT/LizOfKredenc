@@ -27,6 +27,7 @@ public class player : MonoBehaviour
     GameObject projectile;
     [SerializeField]
     GameObject charge;
+   
     [SerializeField]
     private int playerIndex = 0;
 
@@ -41,6 +42,9 @@ public class player : MonoBehaviour
     [HideInInspector]
     public float speed_time = 0;
     float speed_lengh = 0;
+    [HideInInspector]
+    public float charge_time = 0;
+    
 
     Vector2 MoveInputVector = Vector2.zero;
     Vector2 RotateInputVector = Vector2.zero;
@@ -91,6 +95,11 @@ public class player : MonoBehaviour
             if (speed_time < variables.cooldown_speed)
             {
                 speed_time += Time.deltaTime;
+
+            }
+            if (charge_time < variables.cooldown_charge)
+            {
+                charge_time += Time.deltaTime;
 
             }
 
@@ -537,7 +546,21 @@ public class player : MonoBehaviour
     {
         if (variables.Game)
         {
-            Instantiate(charge, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+            if (GetPlayerIndex() == 0)
+            {
+                if (charge_time >= variables.cooldown_charge)
+                {
+                    if (variables.player1_mana >= variables.manaCost_charge)
+                    {
+                        Instantiate(charge, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                        charge_time = 0;
+                        variables.player1_mana -= variables.manaCost_charge;
+                    }
+                        
+
+                }
+            }
+                
 
         }
     }
@@ -566,13 +589,7 @@ public class player : MonoBehaviour
                         if (variables.player1_mana >= variables.manaCost_flash)
                         {
 
-                            Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-
-
-
-
-                            if (!Physics.Raycast(transform.position, novaPozicia, 10))
-                            {
+                           
                                 chc.enabled = false;
                                 t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                                 chc.enabled = true;
@@ -585,7 +602,7 @@ public class player : MonoBehaviour
 
                                 variables.player1_mana -= variables.manaCost_flash;
                                 flash_time = 0;
-                            }
+                            
 
 
 
@@ -613,10 +630,6 @@ public class player : MonoBehaviour
 
                        
 
-                                Vector3 novaPozicia = new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-
-                            if (!Physics.Raycast(transform.position, novaPozicia, 10))
-                            {
                                 chc.enabled = false;
                                 t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                                 chc.enabled = true;
@@ -627,7 +640,7 @@ public class player : MonoBehaviour
 
                                 variables.player2_mana -= variables.manaCost_flash;
                                 flash_time = 0;
-                            }
+                            
                         }
                     }
                 }

@@ -268,61 +268,65 @@ public class PerkSelecter : MonoBehaviour
         }
         if (index == 1)
         {
-            if (direction == "DOWN")
+            if (!variables.player2_perkSelected)
             {
-                player2Selected++;
-                if (player2Selected == 5)
+                if (direction == "DOWN")
                 {
-                    player2Selected = 0;
-                }
-                if (player2Selected == perks2.Count)
-                {
-                    player2Selected = perks2.Count / 2;
+                    player2Selected++;
+                    if (player2Selected == 5)
+                    {
+                        player2Selected = 0;
+                    }
+                    if (player2Selected == perks2.Count)
+                    {
+                        player2Selected = perks2.Count / 2;
 
+                    }
                 }
-            }
-            if (direction == "UP")
-            {
-                player2Selected--;
-                if (player2Selected < 0)
+                if (direction == "UP")
                 {
-                    player2Selected = 4;
+                    player2Selected--;
+                    if (player2Selected < 0)
+                    {
+                        player2Selected = 4;
+                    }
+                    else if (player2Selected == 4)
+                    {
+                        player2Selected = perks2.Count - 1;
+                    }
                 }
-                else if (player2Selected == 4)
+                if (direction == "RIGHT")
                 {
-                    player2Selected = perks2.Count - 1;
+                    player2Selected += 5;
+                    if (player2Selected > perks2.Count - 1)
+                    {
+                        player2Selected -= 10;
+                    }
                 }
-            }
-            if (direction == "RIGHT")
-            {
-                player2Selected += 5;
-                if (player2Selected > perks2.Count - 1)
+                if (direction == "LEFT")
                 {
-                    player2Selected -= 10;
+                    player2Selected -= 5;
+                    if (player2Selected < 0)
+                    {
+                        player2Selected += 10;
+                    }
                 }
-            }
-            if (direction == "LEFT")
-            {
-                player2Selected -= 5;
-                if (player2Selected < 0)
+                selector2.transform.position = new Vector2(perks2[player2Selected].transform.position.x, perks2[player2Selected].transform.position.y);
+                info2.color = new Color(1, 1, 1, 255);
+                info2.text = infotips[player2Selected];
+
+                source.PlayOneShot(move);
+
+
+                if (perks2[player2Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
                 {
-                    player2Selected += 10;
+                    info2.text = "You have to unlock previous to get this one";
+                    info2.color = new Color(0, 0, 1, 255);
                 }
+
             }
-            selector2.transform.position = new Vector2(perks2[player2Selected].transform.position.x, perks2[player2Selected].transform.position.y);
-            info2.color = new Color(1, 1, 1, 255);
-            info2.text = infotips[player2Selected];
-
-            source.PlayOneShot(move);
-
-
-            if (perks2[player2Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
-            {
-                info2.text = "You have to unlock previous to get this one";
-                info2.color = new Color(0, 0, 1, 255);
-            }
-
         }
+                
 
     }
     public void perkPick(int index)
