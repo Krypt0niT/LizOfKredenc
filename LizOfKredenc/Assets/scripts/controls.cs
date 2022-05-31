@@ -73,6 +73,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""LBB"",
+                    ""type"": ""Button"",
+                    ""id"": ""783de8b1-80a6-402f-a259-1bee63518447"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""cross"",
                     ""type"": ""Button"",
                     ""id"": ""caaeb8d5-7d0c-43a1-90e9-f9726843f9bb"",
@@ -248,6 +257,17 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""action"": ""left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a09f186e-8215-4372-8e59-27a0ba698c9d"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LBB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -273,6 +293,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         m_Gameplay_RB = m_Gameplay.FindAction("RB", throwIfNotFound: true);
         m_Gameplay_LB = m_Gameplay.FindAction("LB", throwIfNotFound: true);
         m_Gameplay_RBB = m_Gameplay.FindAction("RBB", throwIfNotFound: true);
+        m_Gameplay_LBB = m_Gameplay.FindAction("LBB", throwIfNotFound: true);
         m_Gameplay_cross = m_Gameplay.FindAction("cross", throwIfNotFound: true);
         m_Gameplay_circle = m_Gameplay.FindAction("circle", throwIfNotFound: true);
         m_Gameplay_up = m_Gameplay.FindAction("up", throwIfNotFound: true);
@@ -343,6 +364,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_RB;
     private readonly InputAction m_Gameplay_LB;
     private readonly InputAction m_Gameplay_RBB;
+    private readonly InputAction m_Gameplay_LBB;
     private readonly InputAction m_Gameplay_cross;
     private readonly InputAction m_Gameplay_circle;
     private readonly InputAction m_Gameplay_up;
@@ -358,6 +380,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         public InputAction @RB => m_Wrapper.m_Gameplay_RB;
         public InputAction @LB => m_Wrapper.m_Gameplay_LB;
         public InputAction @RBB => m_Wrapper.m_Gameplay_RBB;
+        public InputAction @LBB => m_Wrapper.m_Gameplay_LBB;
         public InputAction @cross => m_Wrapper.m_Gameplay_cross;
         public InputAction @circle => m_Wrapper.m_Gameplay_circle;
         public InputAction @up => m_Wrapper.m_Gameplay_up;
@@ -388,6 +411,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @RBB.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRBB;
                 @RBB.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRBB;
                 @RBB.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRBB;
+                @LBB.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLBB;
+                @LBB.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLBB;
+                @LBB.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLBB;
                 @cross.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCross;
                 @cross.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCross;
                 @cross.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnCross;
@@ -425,6 +451,9 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @RBB.started += instance.OnRBB;
                 @RBB.performed += instance.OnRBB;
                 @RBB.canceled += instance.OnRBB;
+                @LBB.started += instance.OnLBB;
+                @LBB.performed += instance.OnLBB;
+                @LBB.canceled += instance.OnLBB;
                 @cross.started += instance.OnCross;
                 @cross.performed += instance.OnCross;
                 @cross.canceled += instance.OnCross;
@@ -463,6 +492,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         void OnRB(InputAction.CallbackContext context);
         void OnLB(InputAction.CallbackContext context);
         void OnRBB(InputAction.CallbackContext context);
+        void OnLBB(InputAction.CallbackContext context);
         void OnCross(InputAction.CallbackContext context);
         void OnCircle(InputAction.CallbackContext context);
         void OnUp(InputAction.CallbackContext context);

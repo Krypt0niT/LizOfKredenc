@@ -82,6 +82,17 @@ public class PlayerInputHandler : MonoBehaviour
             }
         }
     }
+    public void OnLBB(CallbackContext context)
+    {
+        if (Player != null)
+        {
+            if (context.started)
+            {
+                Player.leftBackButton();
+
+            }
+        }
+    }
     public void OnUP(CallbackContext context)
     {
         if (Player != null)
