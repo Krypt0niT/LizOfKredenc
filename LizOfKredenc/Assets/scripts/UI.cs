@@ -113,6 +113,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(7))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(7);
                 }
             }
@@ -121,6 +122,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(8))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(8);
                 }
             }
@@ -129,6 +131,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(2))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(2);
                 }
             }
@@ -137,6 +140,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(3))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(3);
                 }
             }
@@ -145,6 +149,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(4))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(4);
                 }
             }
@@ -153,6 +158,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(0))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(0);
                 }
             }
@@ -161,6 +167,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(1))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(1);
                 }
             }
@@ -169,6 +176,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(9))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(9);
                 }
             }
@@ -177,6 +185,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(5))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(5);
                 }
             }
@@ -185,6 +194,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks1_poradie.Contains(6))
                 {
+                    if (perks1_poradie.Count < 9)
                         perks1_poradie.Add(6);
                 }
             }
@@ -241,6 +251,7 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(7))
                 {
+                    if (perks2_poradie.Count < 9)
                         perks2_poradie.Add(7);
                 }
             }
@@ -249,6 +260,8 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(8))
                 {
+                    if (perks2_poradie.Count < 9)
+
                         perks2_poradie.Add(8);
                 }
             }
@@ -257,6 +270,8 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(2))
                 {
+                    if (perks2_poradie.Count < 9)
+
                         perks2_poradie.Add(2);
                 }
             }
@@ -265,6 +280,8 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(3))
                 {
+                    if (perks2_poradie.Count < 9)
+
                         perks2_poradie.Add(3);
                 }
             }
@@ -273,6 +290,8 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(4))
                 {
+                    if (perks2_poradie.Count < 9)
+
                         perks2_poradie.Add(4);
                 }
             }
@@ -281,6 +300,8 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(0))
                 {
+                    if (perks2_poradie.Count < 9)
+
                         perks2_poradie.Add(0);
                 }
             }
@@ -289,6 +310,8 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(1))
                 {
+                    if (perks2_poradie.Count < 9)
+
                         perks2_poradie.Add(1);
                 }
             }
@@ -297,6 +320,8 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(9))
                 {
+                    if (perks2_poradie.Count < 9)
+
                         perks2_poradie.Add(9);
                 }
             }
@@ -305,6 +330,8 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(5))
                 {
+                    if (perks2_poradie.Count < 9)
+
                         perks2_poradie.Add(5);
                 }
             }
@@ -313,6 +340,8 @@ public class UI : MonoBehaviour
             {
                 if (!perks2_poradie.Contains(6))
                 {
+                    if (perks2_poradie.Count < 9)
+
                         perks2_poradie.Add(6);
                 }
             }

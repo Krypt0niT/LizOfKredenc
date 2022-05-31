@@ -73,6 +73,7 @@ public class player : MonoBehaviour
         flash_time = variables.cooldown_flash;
         charge_time = variables.cooldown_charge;
         blast_time = variables.cooldown_blast;
+        speed_time = variables.cooldown_speed;
 
 
 
@@ -920,9 +921,10 @@ public class player : MonoBehaviour
                                 chc.enabled = false;
                                 t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
                                 chc.enabled = true;
-                                //zvuk
+                                source.PlayOneShot(sounds.flash);
 
-                                flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+
+                            flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
                                 flash.Play();
 
                                 variables.player2_mana -= variables.manaCost_flash;
