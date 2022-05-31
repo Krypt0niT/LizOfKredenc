@@ -8359,7 +8359,7 @@ MonoBehaviour:
   cooldown_flash: 2
   manaCost_projectile: 20
   cooldown_projectile: 1.5
-  manaCost_blast: 50
+  manaCost_blast: 75
   cooldown_blast: 1
   cooldown_charge: 7
   manaCost_charge: 50
