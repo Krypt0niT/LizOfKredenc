@@ -16,6 +16,8 @@ public class Manazer : MonoBehaviour
     public float player1_speed = 5;
     public float player1_projectileDMG = 200;
     public float player1_chargeDMG = 350;
+    public float player1_blastDMG = 100;
+
 
 
     public string player1_summonerSpell = "speed";
@@ -53,6 +55,8 @@ public class Manazer : MonoBehaviour
     public float player2_speed = 5;
     public float player2_projectileDMG = 200;
     public float player2_chargeDMG = 350;
+    public float player2_blastDMG = 100;
+
 
 
     public string player2_summonerSpell = "flash";

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DlzkaZivota: 3
-  projectileSpeed: 15
+  projectileSpeed: 10
 --- !u!108 &8963501590204332473
 Light:
   m_ObjectHideFlags: 0

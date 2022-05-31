@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 705507994}
+  m_Sun: {fileID: 0}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -6196,7 +6196,7 @@ Transform:
   - {fileID: 1355706133}
   - {fileID: 1463159174}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &384856203
 GameObject:
@@ -6482,17 +6482,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 891586050}
-  audioManager: {fileID: 1677119403}
   PerkUI: {fileID: 901840351}
   flash: {fileID: 114165940}
   projectile: {fileID: 9138526412366840579, guid: 0edcac0097714734d9ac87d08a2d5cdd, type: 3}
   charge: {fileID: 7651990158230106650, guid: fe2ff07382d0afb4294a510e69032ee0, type: 3}
-  blast: {fileID: 0}
+  blast: {fileID: 2299275901969935079, guid: cbfd220573a308441a92a6c80d946e03, type: 3}
   playerIndex: 1
   projectile_time: 0
   flash_time: 0
   speed_time: 0
   charge_time: 0
+  blast_time: 0
 --- !u!143 &421782794
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6587,7 +6587,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &421782800
 Light:
@@ -7431,100 +7431,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643058039}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &705507993
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 705507995}
-  - component: {fileID: 705507994}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!108 &705507994
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705507993}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 1
-  m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 2
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 1
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1.39
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &705507995
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: -0.21003023, y: -0.7864626, z: 0.36673355, w: -0.4504113}
-  m_LocalPosition: {x: -14.21, y: 12.94, z: 11.27}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 50, y: -239.6, z: 0}
 --- !u!1 &706042427
 GameObject:
   m_ObjectHideFlags: 0
@@ -8402,8 +8308,9 @@ MonoBehaviour:
   player1_mana: 250
   player1_manaRegen: 35
   player1_speed: 5
-  player1_projectileDMG: 400
+  player1_projectileDMG: 250
   player1_chargeDMG: 1000
+  player1_blastDMG: 100
   player1_summonerSpell: flash
   player1_speedActive: 0
   player1_perk_lifesteal1: 0
@@ -8428,8 +8335,9 @@ MonoBehaviour:
   player2_mana: 250
   player2_manaRegen: 35
   player2_speed: 5
-  player2_projectileDMG: 400
+  player2_projectileDMG: 250
   player2_chargeDMG: 1000
+  player2_blastDMG: 100
   player2_summonerSpell: flash
   player2_speedActive: 0
   player2_perk_lifesteal1: 0
@@ -8448,11 +8356,13 @@ MonoBehaviour:
   player2_perk_bonusDMG2_avaiable: 0
   player2_perk_HealthIncrise2_avaiable: 0
   manaCost_flash: 50
+  cooldown_flash: 2
   manaCost_projectile: 20
   cooldown_projectile: 1.5
-  cooldown_charge: 10
+  manaCost_blast: 50
+  cooldown_blast: 1
+  cooldown_charge: 7
   manaCost_charge: 50
-  cooldown_flash: 2
   manaCost_speed: 100
   cooldown_speed: 10
   lengh_speed: 5
@@ -8642,7 +8552,7 @@ RectTransform:
   - {fileID: 315208371}
   - {fileID: 1403599818}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8664,7 +8574,6 @@ MonoBehaviour:
   player1: {fileID: 1166704231}
   player2: {fileID: 421782792}
   manager: {fileID: 891586050}
-  audioManager: {fileID: 1677119403}
   perks1:
   - {fileID: 1264336058}
   - {fileID: 395267274}
@@ -8722,7 +8631,7 @@ Transform:
   m_Children:
   - {fileID: 114165941}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &913131273
 GameObject:
@@ -9248,7 +9157,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014557778
 GameObject:
@@ -9729,17 +9638,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 891586050}
-  audioManager: {fileID: 1677119403}
   PerkUI: {fileID: 901840351}
   flash: {fileID: 114165940}
   projectile: {fileID: 9138526412366840579, guid: 761bb836cbdeddc4ba261c40b4e0fdfa, type: 3}
   charge: {fileID: 7651990158230106650, guid: b2addf9b28bd06645af751f95cef5df2, type: 3}
-  blast: {fileID: 4308342572698888885, guid: ca409efad4ea7234f982d48aa37bd53e, type: 3}
+  blast: {fileID: 2299275901969935079, guid: e7f28b3a64d7913448f33e88a80c40be, type: 3}
   playerIndex: 0
   projectile_time: 0
   flash_time: 0
   speed_time: 0
   charge_time: 0
+  blast_time: 0
 --- !u!143 &1166704233
 CharacterController:
   m_ObjectHideFlags: 0
@@ -9834,7 +9743,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1166704239
 Light:
@@ -11928,11 +11837,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645613750}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1677119403 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 164091588574528612, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
-  m_PrefabInstance: {fileID: 164091589057809359}
-  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1677119405 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 164091588574528609, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
@@ -12220,7 +12124,7 @@ Transform:
   - {fileID: 724050766}
   - {fileID: 935956363}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1734046987
 GameObject:
@@ -12583,7 +12487,7 @@ RectTransform:
   - {fileID: 960154327}
   - {fileID: 1409957860}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

@@ -14,12 +14,13 @@ public class blast : MonoBehaviour
     float projectileSpeed = 15;
 
 
-
-
+ 
     void Update()
     {
 
+
         transform.position += transform.forward * Time.deltaTime * projectileSpeed;
+        
 
 
         timeAlive += Time.deltaTime;

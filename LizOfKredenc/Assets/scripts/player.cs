@@ -47,7 +47,9 @@ public class player : MonoBehaviour
     float speed_lengh = 0;
     [HideInInspector]
     public float charge_time = 0;
-    
+    [HideInInspector]
+    public float blast_time = 0;
+
 
     Vector2 MoveInputVector = Vector2.zero;
     Vector2 RotateInputVector = Vector2.zero;
@@ -67,7 +69,10 @@ public class player : MonoBehaviour
 
 
 
-
+        projectile_time = variables.cooldown_projectile;
+        flash_time = variables.cooldown_flash;
+        charge_time = variables.cooldown_charge;
+        blast_time = variables.cooldown_blast;
 
 
 
@@ -109,6 +114,11 @@ public class player : MonoBehaviour
             if (charge_time < variables.cooldown_charge)
             {
                 charge_time += Time.deltaTime;
+
+            }
+            if (blast_time < variables.cooldown_blast)
+            {
+                blast_time += Time.deltaTime;
 
             }
 
@@ -363,6 +373,86 @@ public class player : MonoBehaviour
 
                     Destroy(other.gameObject);
                 }
+                if (other.name == "blastP2(Clone)")
+                {
+                    float critchance = 0;
+                    if (variables.player2_perk_critchance1)
+                    {
+                        critchance = 20;
+                    }
+                    if (variables.player2_perk_critchance2)
+                    {
+                        critchance = 30;
+                    }
+                    if (variables.player2_perk_critchance3)
+                    {
+                        critchance = 45;
+                    }
+                    if (!variables.player2_perk_critchance1 && !variables.player2_perk_critchance2 && !variables.player2_perk_critchance1)
+                    {
+                        critchance = 10;
+                    }
+
+
+
+                    float bonusDMG = 0;
+                    if (variables.player2_perk_bonusDMG1)
+                    {
+                        bonusDMG = variables.player1_blastDMG / 10;
+                    }
+                    if (variables.player2_perk_bonusDMG2)
+                    {
+                        bonusDMG = variables.player1_blastDMG / 5;
+                    }
+
+
+
+
+
+                    float random = Random.Range(0, 100);
+                    float CritBonusDMG = 0;
+                    if (random <= critchance)
+                    {
+                        CritBonusDMG = variables.player1_blastDMG;
+                    }
+
+
+
+                    //---------------------
+                    float total_damage = variables.player1_blastDMG + CritBonusDMG + bonusDMG;
+                    //-----------------------
+
+                    float lifesteal = 0;
+                    if (variables.player2_perk_lifesteal1)
+                    {
+                        lifesteal = total_damage / 3;
+                    }
+                    if (variables.player2_perk_lifesteal2)
+                    {
+                        lifesteal = total_damage / 2;
+                    }
+
+
+                    if (variables.player1_health >= total_damage)
+                    {
+                        variables.player1_health -= total_damage;
+
+
+
+                        if (variables.player2_health <= variables.player2_Maxhealth - lifesteal)
+                        {
+                            variables.player2_health += lifesteal;
+                        }
+                    }
+                    else
+                    {
+                        variables.player1_health = 0;
+                        variables.RoundEnd(this.name);
+                    }
+                    print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
+
+                    Destroy(other.gameObject);
+                }
             }
             if (this.name == "player2")
             {
@@ -446,10 +536,92 @@ public class player : MonoBehaviour
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
                 }
+                if (other.name == "blastP1(Clone)")
+                {
+                    float critchance = 0;
+                    if (variables.player1_perk_critchance1)
+                    {
+                        critchance = 20;
+                    }
+                    if (variables.player1_perk_critchance2)
+                    {
+                        critchance = 30;
+                    }
+                    if (variables.player1_perk_critchance3)
+                    {
+                        critchance = 45;
+                    }
+                    if (!variables.player1_perk_critchance1 && !variables.player1_perk_critchance2 && !variables.player1_perk_critchance1)
+                    {
+                        critchance = 10;
+                    }
 
 
 
-                 
+                    float bonusDMG = 0;
+                    if (variables.player1_perk_bonusDMG1)
+                    {
+                        bonusDMG = variables.player1_blastDMG / 10;
+                    }
+                    if (variables.player1_perk_bonusDMG2)
+                    {
+                        bonusDMG = variables.player1_blastDMG / 5;
+                    }
+
+
+
+
+
+                    float random = Random.Range(0, 100);
+                    float CritBonusDMG = 0;
+                    if (random <= critchance)
+                    {
+                        CritBonusDMG = variables.player1_blastDMG;
+                    }
+
+
+
+                    //---------------------
+                    float total_damage = variables.player1_blastDMG + CritBonusDMG + bonusDMG;
+                    //-----------------------
+
+                    float lifesteal = 0;
+                    if (variables.player1_perk_lifesteal1)
+                    {
+                        lifesteal = total_damage / 3;
+                    }
+                    if (variables.player1_perk_lifesteal2)
+                    {
+                        lifesteal = total_damage / 2;
+                    }
+
+
+                    if (variables.player2_health >= total_damage)
+                    {
+                        variables.player2_health -= total_damage;
+
+
+
+                        if (variables.player1_health <= variables.player1_Maxhealth - lifesteal)
+                        {
+                            variables.player1_health += lifesteal;
+                        }
+                    }
+                    else
+                    {
+                        variables.player2_health = 0;
+                        variables.RoundEnd(this.name);
+
+                    }
+                    print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
+                    Destroy(other.gameObject);
+                }
+
+
+
+
+
+
             }
         }
     }
@@ -505,7 +677,6 @@ public class player : MonoBehaviour
 
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
-                    print(":O");
                     Destroy(other.gameObject);
 
                 }
@@ -562,7 +733,6 @@ public class player : MonoBehaviour
 
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
-                    print(":O");
                     Destroy(other.gameObject);
 
                 }
@@ -650,8 +820,34 @@ public class player : MonoBehaviour
     {
         if (variables.Game)
         {
-            Instantiate(blast, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+            if (GetPlayerIndex() == 0)
+            {
 
+                if (blast_time >= variables.cooldown_blast)
+                {
+                    if (variables.player1_mana >= variables.manaCost_blast)
+                    {
+                        Instantiate(blast, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                        variables.player1_mana -= variables.manaCost_blast;
+                        source.PlayOneShot(sounds.blast);
+                    }
+                    blast_time = 0;
+                }
+            }
+            if (GetPlayerIndex() == 1)
+            {
+
+                if (blast_time >= variables.cooldown_blast)
+                {
+                    if (variables.player2_mana >= variables.manaCost_blast)
+                    {
+                        Instantiate(blast, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                        variables.player2_mana -= variables.manaCost_blast;
+                        source.PlayOneShot(sounds.blast);
+                    }
+                    blast_time = 0;
+                }
+            }
         }
 
     }
