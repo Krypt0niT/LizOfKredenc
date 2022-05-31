@@ -11931,6 +11931,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 164091588574528612, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
   m_PrefabInstance: {fileID: 164091589057809359}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1677119405 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 164091588574528609, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
+  m_PrefabInstance: {fileID: 164091589057809359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1684705403
 GameObject:
   m_ObjectHideFlags: 0
@@ -13403,6 +13408,10 @@ PrefabInstance:
       propertyPath: perkMove
       value: 
       objectReference: {fileID: 8300000, guid: 17247c014eaae80498973fb3f05bc18f, type: 3}
+    - target: {fileID: 164091588574528610, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1677119405}
     - target: {fileID: 164091588574528611, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
       propertyPath: m_RootOrder
       value: 1

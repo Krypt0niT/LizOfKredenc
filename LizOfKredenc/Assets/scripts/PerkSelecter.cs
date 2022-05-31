@@ -15,7 +15,7 @@ public class PerkSelecter : MonoBehaviour
     [SerializeField]
     GameObject manager;
     Manazer variables;
-    [SerializeField]
+
     GameObject audioManager;
     AudioManager sounds;
     AudioSource source;
@@ -60,6 +60,7 @@ public class PerkSelecter : MonoBehaviour
         Player2 = player2.GetComponent<player>();
         variables = manager.GetComponent<Manazer>();
 
+        audioManager = GameObject.Find("AudioManager");
         sounds = audioManager.GetComponent<AudioManager>();
         source = audioManager.GetComponent<AudioSource>();
 

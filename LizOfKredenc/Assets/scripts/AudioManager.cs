@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
+
+    [SerializeField]
+    Slider slider;
+    AudioSource audioSource;
     
 
 
@@ -21,6 +25,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
 
         DontDestroyOnLoad(gameObject);
 
@@ -34,6 +39,10 @@ public class AudioManager : MonoBehaviour
             return;
             
         }
-    
+    }
+
+    public void SliderChange()
+    {
+        audioSource.volume = slider.value;
     }
 }

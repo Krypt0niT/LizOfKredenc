@@ -12,7 +12,7 @@ public class player : MonoBehaviour
     [SerializeField]
     GameObject manager;
     Manazer variables;
-    [SerializeField]
+
     GameObject audioManager;
     AudioManager sounds;
     AudioSource source;
@@ -58,12 +58,15 @@ public class player : MonoBehaviour
         variables = manager.GetComponent<Manazer>();
         perkS = PerkUI.GetComponent<PerkSelecter>();
 
+       
+        audioManager = GameObject.Find("AudioManager");
         sounds = audioManager.GetComponent<AudioManager>();
         source = audioManager.GetComponent<AudioSource>();
 
 
 
-        
+
+
 
 
     }
@@ -74,7 +77,8 @@ public class player : MonoBehaviour
         if (variables.Game)
         {
 
-        
+
+
 
             if (RotateInputVector.x == 0 && RotateInputVector.y == 0)
             {
