@@ -28,6 +28,8 @@ public class player : MonoBehaviour
     GameObject projectile;
     [SerializeField]
     GameObject charge;
+    [SerializeField]
+    GameObject blast;
    
     [SerializeField]
     private int playerIndex = 0;
@@ -643,6 +645,15 @@ public class player : MonoBehaviour
 
 
         }
+    }
+    public void leftBackButton()
+    {
+        if (variables.Game)
+        {
+            Instantiate(blast, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+
+        }
+
     }
     public void leftButton()
     {

@@ -84,13 +84,20 @@ public class Manazer : MonoBehaviour
 
     //vseobecne pravidla hry
     public float manaCost_flash = 100;
+    public float cooldown_flash = 0.5f;
+
     public float manaCost_projectile = 20;
     public float cooldown_projectile = 3;
+
+    public float manaCost_blast = 50;
+    public float cooldown_blast = 3;
+
+
     public float cooldown_charge = 7;
     public float manaCost_charge = 50;
 
 
-    public float cooldown_flash = 0.5f;
+    
     public float manaCost_speed = 100;
     public float cooldown_speed = 10;
     public float lengh_speed = 5;

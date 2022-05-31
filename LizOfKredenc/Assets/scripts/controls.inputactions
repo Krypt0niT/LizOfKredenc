@@ -51,6 +51,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "LBB",
+                    "type": "Button",
+                    "id": "783de8b1-80a6-402f-a259-1bee63518447",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "cross",
                     "type": "Button",
                     "id": "caaeb8d5-7d0c-43a1-90e9-f9726843f9bb",
@@ -224,6 +233,17 @@
                     "processors": "",
                     "groups": "Joistick",
                     "action": "left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a09f186e-8215-4372-8e59-27a0ba698c9d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LBB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

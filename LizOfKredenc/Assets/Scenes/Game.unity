@@ -6487,6 +6487,7 @@ MonoBehaviour:
   flash: {fileID: 114165940}
   projectile: {fileID: 9138526412366840579, guid: 0edcac0097714734d9ac87d08a2d5cdd, type: 3}
   charge: {fileID: 7651990158230106650, guid: fe2ff07382d0afb4294a510e69032ee0, type: 3}
+  blast: {fileID: 0}
   playerIndex: 1
   projectile_time: 0
   flash_time: 0
@@ -9733,6 +9734,7 @@ MonoBehaviour:
   flash: {fileID: 114165940}
   projectile: {fileID: 9138526412366840579, guid: 761bb836cbdeddc4ba261c40b4e0fdfa, type: 3}
   charge: {fileID: 7651990158230106650, guid: b2addf9b28bd06645af751f95cef5df2, type: 3}
+  blast: {fileID: 4308342572698888885, guid: ca409efad4ea7234f982d48aa37bd53e, type: 3}
   playerIndex: 0
   projectile_time: 0
   flash_time: 0
