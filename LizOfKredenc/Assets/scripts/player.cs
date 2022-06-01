@@ -819,41 +819,6 @@ public class player : MonoBehaviour
     }
     public void leftBackButton()
     {
-        if (variables.Game)
-        {
-            if (GetPlayerIndex() == 0)
-            {
-
-                if (blast_time >= variables.cooldown_blast)
-                {
-                    if (variables.player1_mana >= variables.manaCost_blast)
-                    {
-                        Instantiate(blast, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
-                        variables.player1_mana -= variables.manaCost_blast;
-                        source.PlayOneShot(sounds.blast);
-                    }
-                    blast_time = 0;
-                }
-            }
-            if (GetPlayerIndex() == 1)
-            {
-
-                if (blast_time >= variables.cooldown_blast)
-                {
-                    if (variables.player2_mana >= variables.manaCost_blast)
-                    {
-                        Instantiate(blast, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
-                        variables.player2_mana -= variables.manaCost_blast;
-                        source.PlayOneShot(sounds.blast);
-                    }
-                    blast_time = 0;
-                }
-            }
-        }
-
-    }
-    public void leftButton()
-    {
 
         if (variables.Game)
         {
@@ -877,20 +842,20 @@ public class player : MonoBehaviour
                         if (variables.player1_mana >= variables.manaCost_flash)
                         {
 
-                           
-                                chc.enabled = false;
-                                t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-                                chc.enabled = true;
-                                source.PlayOneShot(sounds.flash);
+
+                            chc.enabled = false;
+                            t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                            chc.enabled = true;
+                            source.PlayOneShot(sounds.flash);
 
 
 
-                                flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-                                flash.Play();
+                            flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
+                            flash.Play();
 
-                                variables.player1_mana -= variables.manaCost_flash;
-                                flash_time = 0;
-                            
+                            variables.player1_mana -= variables.manaCost_flash;
+                            flash_time = 0;
+
 
 
 
@@ -916,20 +881,20 @@ public class player : MonoBehaviour
                         if (variables.player2_mana >= variables.manaCost_flash)
                         {
 
-                       
 
-                                chc.enabled = false;
-                                t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
-                                chc.enabled = true;
-                                source.PlayOneShot(sounds.flash);
+
+                            chc.enabled = false;
+                            t.position += new Vector3(-MoveInputVector.x * 3, 0, -MoveInputVector.y * 3);
+                            chc.enabled = true;
+                            source.PlayOneShot(sounds.flash);
 
 
                             flash.transform.position = new Vector3(t.position.x, t.position.y, t.position.z);
-                                flash.Play();
+                            flash.Play();
 
-                                variables.player2_mana -= variables.manaCost_flash;
-                                flash_time = 0;
-                            
+                            variables.player2_mana -= variables.manaCost_flash;
+                            flash_time = 0;
+
                         }
                     }
                 }
@@ -986,7 +951,42 @@ public class player : MonoBehaviour
 
             }
         }
-        
+    }
+    public void leftButton()
+    {
+
+        if (variables.Game)
+        {
+            if (GetPlayerIndex() == 0)
+            {
+
+                if (blast_time >= variables.cooldown_blast)
+                {
+                    if (variables.player1_mana >= variables.manaCost_blast)
+                    {
+                        Instantiate(blast, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                        variables.player1_mana -= variables.manaCost_blast;
+                        source.PlayOneShot(sounds.blast);
+                    }
+                    blast_time = 0;
+                }
+            }
+            if (GetPlayerIndex() == 1)
+            {
+
+                if (blast_time >= variables.cooldown_blast)
+                {
+                    if (variables.player2_mana >= variables.manaCost_blast)
+                    {
+                        Instantiate(blast, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
+                        variables.player2_mana -= variables.manaCost_blast;
+                        source.PlayOneShot(sounds.blast);
+                    }
+                    blast_time = 0;
+                }
+            }
+        }
+
     }
     public void cross()
     {
