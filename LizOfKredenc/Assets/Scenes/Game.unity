@@ -13780,6 +13780,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 164091588574528610, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
+      propertyPath: charge
+      value: 
+      objectReference: {fileID: 8300000, guid: d90f4b1be200ffd4091c2edd4735e779, type: 3}
+    - target: {fileID: 164091588574528610, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
       propertyPath: perkMove
       value: 
       objectReference: {fileID: 8300000, guid: 17247c014eaae80498973fb3f05bc18f, type: 3}
