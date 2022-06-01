@@ -120,8 +120,8 @@ public class Manazer : MonoBehaviour
 
 
 
-
-
+    [SerializeField]
+    GameObject deadscreen;
     [SerializeField]
     GameObject Player1;
     [SerializeField]
@@ -159,7 +159,9 @@ public class Manazer : MonoBehaviour
             Player2HB.SetActive(false);
             GameUI.SetActive(false);
             map.SetActive(false);
+            
             ground.color = new Color(0,0,0, 255);
+
 
             PerkUI.SetActive(true);
 
@@ -176,9 +178,10 @@ public class Manazer : MonoBehaviour
             map.SetActive(true);
             ground.color = new Color(0.31f, 0.31f, 0.31f, 255);
             PerkUI.SetActive(false);
+            deadscreen.SetActive(false);
 
-            
-            
+
+
 
 
 
