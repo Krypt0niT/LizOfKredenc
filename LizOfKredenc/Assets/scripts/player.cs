@@ -793,6 +793,7 @@ public class player : MonoBehaviour
                     {
                         Instantiate(charge, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
                         charge_time = 0;
+                        source.PlayOneShot(sounds.charge);
                         variables.player1_mana -= variables.manaCost_charge;
                     }
                         
@@ -807,6 +808,7 @@ public class player : MonoBehaviour
                     {
                         Instantiate(charge, new Vector3(t.position.x, t.position.y, t.position.z), t.rotation);
                         charge_time = 0;
+                        source.PlayOneShot(sounds.charge);
                         variables.player2_mana -= variables.manaCost_charge;
                     }
 
