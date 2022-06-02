@@ -113,13 +113,9 @@ public class Manazer : MonoBehaviour
     public bool player1_perkSelected = false;
     public bool player2_perkSelected = false;
 
-    public bool player1_sumSelected = false;
-    public bool player2_sumSelected = false;
-
 
     public bool Game = false;
     public bool GameOver = false;
-    public bool firstSelect = true;
 
 
 
@@ -145,8 +141,6 @@ public class Manazer : MonoBehaviour
     GameObject map;
     [SerializeField]
     Material ground;
-    [SerializeField]
-    GameObject SumUI;
 
     CharacterController Player1ch;
     CharacterController Player2ch;
@@ -162,36 +156,17 @@ public class Manazer : MonoBehaviour
     {
         if (!Game)
         {
-            if (firstSelect)
-            {
-                Player1.SetActive(true);
-                Player2.SetActive(true);
-                Player1HB.SetActive(false);
-                Player2HB.SetActive(false);
-                GameUI.SetActive(false);
-                map.SetActive(false);
-
-                ground.color = new Color(0, 0, 0, 255);
-
-
-                PerkUI.SetActive(false);
-                SumUI.SetActive(true);
-            }
-            else
-            {
-                Player1.SetActive(false);
-                Player2.SetActive(false);
-                Player1HB.SetActive(false);
-                Player2HB.SetActive(false);
-                GameUI.SetActive(false);
-                map.SetActive(false);
-
-                ground.color = new Color(0, 0, 0, 255);
-
-
-                PerkUI.SetActive(true);
-            }
+            Player1.SetActive(false);
+            Player2.SetActive(false);
+            Player1HB.SetActive(false);
+            Player2HB.SetActive(false);
+            GameUI.SetActive(false);
+            map.SetActive(false);
             
+            ground.color = new Color(0,0,0, 255);
+
+
+            PerkUI.SetActive(true);
 
         }
         else

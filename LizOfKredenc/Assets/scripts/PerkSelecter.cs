@@ -210,134 +210,126 @@ public class PerkSelecter : MonoBehaviour
     }
     public void IndexCalculator(string direction, int index)
     {
-        if (!variables.Game)
+        if (index == 0)
         {
-            if (!variables.firstSelect)
+            if (!variables.player1_perkSelected)
             {
-                if (index == 0)
+                if (direction == "DOWN")
                 {
-                    if (!variables.player1_perkSelected)
+                    player1Selected++;
+                    if (player1Selected == 5)
                     {
-                        if (direction == "DOWN")
-                        {
-                            player1Selected++;
-                            if (player1Selected == 5)
-                            {
-                                player1Selected = 0;
-                            }
-                            if (player1Selected == perks1.Count)
-                            {
-                                player1Selected = perks1.Count / 2;
-
-                            }
-                        }
-                        if (direction == "UP")
-                        {
-                            player1Selected--;
-                            if (player1Selected < 0)
-                            {
-                                player1Selected = 4;
-                            }
-                            else if (player1Selected == 4)
-                            {
-                                player1Selected = perks1.Count - 1;
-                            }
-                        }
-                        if (direction == "RIGHT")
-                        {
-                            player1Selected += 5;
-                            if (player1Selected > perks1.Count - 1)
-                            {
-                                player1Selected -= 10;
-                            }
-                        }
-                        if (direction == "LEFT")
-                        {
-                            player1Selected -= 5;
-                            if (player1Selected < 0)
-                            {
-                                player1Selected += 10;
-                            }
-                        }
-                        selector1.transform.position = new Vector2(perks1[player1Selected].transform.position.x, perks1[player1Selected].transform.position.y);
-                        info1.color = new Color(1, 1, 1, 255);
-                        info1.text = infotips[player1Selected];
-
-                        source.PlayOneShot(sounds.perkMove);
-
-
-                        if (perks1[player1Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
-                        {
-                            info1.text = "You have to unlock previous to get this one";
-                            info1.color = new Color(1, 0, 0, 255);
-                        }
+                        player1Selected = 0;
                     }
+                    if (player1Selected == perks1.Count)
+                    {
+                        player1Selected = perks1.Count / 2;
 
+                    }
                 }
-                if (index == 1)
+                if (direction == "UP")
                 {
-                    if (!variables.player2_perkSelected)
+                    player1Selected--;
+                    if (player1Selected < 0)
                     {
-                        if (direction == "DOWN")
-                        {
-                            player2Selected++;
-                            if (player2Selected == 5)
-                            {
-                                player2Selected = 0;
-                            }
-                            if (player2Selected == perks2.Count)
-                            {
-                                player2Selected = perks2.Count / 2;
-
-                            }
-                        }
-                        if (direction == "UP")
-                        {
-                            player2Selected--;
-                            if (player2Selected < 0)
-                            {
-                                player2Selected = 4;
-                            }
-                            else if (player2Selected == 4)
-                            {
-                                player2Selected = perks2.Count - 1;
-                            }
-                        }
-                        if (direction == "RIGHT")
-                        {
-                            player2Selected += 5;
-                            if (player2Selected > perks2.Count - 1)
-                            {
-                                player2Selected -= 10;
-                            }
-                        }
-                        if (direction == "LEFT")
-                        {
-                            player2Selected -= 5;
-                            if (player2Selected < 0)
-                            {
-                                player2Selected += 10;
-                            }
-                        }
-                        selector2.transform.position = new Vector2(perks2[player2Selected].transform.position.x, perks2[player2Selected].transform.position.y);
-                        info2.color = new Color(1, 1, 1, 255);
-                        info2.text = infotips[player2Selected];
-                        source.PlayOneShot(sounds.perkMove);
-
-
-
-                        if (perks2[player2Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
-                        {
-                            info2.text = "You have to unlock previous to get this one";
-                            info2.color = new Color(0, 0, 1, 255);
-                        }
-
+                        player1Selected = 4;
                     }
+                    else if (player1Selected == 4)
+                    {
+                        player1Selected = perks1.Count - 1;
+                    }
+                }
+                if (direction == "RIGHT")
+                {
+                    player1Selected += 5;
+                    if (player1Selected > perks1.Count - 1)
+                    {
+                        player1Selected -= 10;
+                    }
+                }
+                if (direction == "LEFT")
+                {
+                    player1Selected -= 5;
+                    if (player1Selected < 0)
+                    {
+                        player1Selected += 10;
+                    }
+                }
+                selector1.transform.position = new Vector2(perks1[player1Selected].transform.position.x, perks1[player1Selected].transform.position.y);
+                info1.color = new Color(1, 1, 1, 255);
+                info1.text = infotips[player1Selected];
+
+                source.PlayOneShot(sounds.perkMove);
+
+
+                if (perks1[player1Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
+                {
+                    info1.text = "You have to unlock previous to get this one";
+                    info1.color = new Color(1, 0, 0, 255);
                 }
             }
             
         }
-        
+        if (index == 1)
+        {
+            if (!variables.player2_perkSelected)
+            {
+                if (direction == "DOWN")
+                {
+                    player2Selected++;
+                    if (player2Selected == 5)
+                    {
+                        player2Selected = 0;
+                    }
+                    if (player2Selected == perks2.Count)
+                    {
+                        player2Selected = perks2.Count / 2;
+
+                    }
+                }
+                if (direction == "UP")
+                {
+                    player2Selected--;
+                    if (player2Selected < 0)
+                    {
+                        player2Selected = 4;
+                    }
+                    else if (player2Selected == 4)
+                    {
+                        player2Selected = perks2.Count - 1;
+                    }
+                }
+                if (direction == "RIGHT")
+                {
+                    player2Selected += 5;
+                    if (player2Selected > perks2.Count - 1)
+                    {
+                        player2Selected -= 10;
+                    }
+                }
+                if (direction == "LEFT")
+                {
+                    player2Selected -= 5;
+                    if (player2Selected < 0)
+                    {
+                        player2Selected += 10;
+                    }
+                }
+                selector2.transform.position = new Vector2(perks2[player2Selected].transform.position.x, perks2[player2Selected].transform.position.y);
+                info2.color = new Color(1, 1, 1, 255);
+                info2.text = infotips[player2Selected];
+                source.PlayOneShot(sounds.perkMove);
+
+
+
+                if (perks2[player2Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
+                {
+                    info2.text = "You have to unlock previous to get this one";
+                    info2.color = new Color(0, 0, 1, 255);
+                }
+
+            }
+        }
                 
 
     }
@@ -345,274 +337,270 @@ public class PerkSelecter : MonoBehaviour
     {
         if (!variables.Game)
         {
-            if (!variables.firstSelect)
+            if (index == 0)
             {
-                if (index == 0)
+                if (!variables.player1_perkSelected)
                 {
-                    if (!variables.player1_perkSelected)
+
+
+                    switch (player1Selected)
                     {
+                        case 0:
+                            if (!variables.player1_perk_bonusDMG1)
+                            {
+                                variables.player1_perk_bonusDMG1 = true;
+                                variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
 
+                            }
 
-                        switch (player1Selected)
-                        {
-                            case 0:
-                                if (!variables.player1_perk_bonusDMG1)
+                            break;
+                        case 1:
+                            if (!variables.player1_perk_bonusDMG2)
+                            {
+                                if (variables.player1_perk_bonusDMG2_avaiable)
                                 {
-                                    variables.player1_perk_bonusDMG1 = true;
+                                    variables.player1_perk_bonusDMG2 = true;
                                     variables.player1_perkSelected = true;
                                     source.PlayOneShot(sounds.perkSelect);
 
                                 }
+                            }
+                            
+                            break;
+                        case 2:
+                            if (!variables.player1_perk_critchance1)
+                            {
+                                variables.player1_perk_critchance1 = true;
+                                variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
 
-                                break;
-                            case 1:
-                                if (!variables.player1_perk_bonusDMG2)
+                            }
+
+                            break;
+                        case 3:
+                            if (!variables.player1_perk_critchance2)
+                            {
+                                if (variables.player1_perk_critchance2_avaiable)
                                 {
-                                    if (variables.player1_perk_bonusDMG2_avaiable)
-                                    {
-                                        variables.player1_perk_bonusDMG2 = true;
-                                        variables.player1_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-                                break;
-                            case 2:
-                                if (!variables.player1_perk_critchance1)
-                                {
-                                    variables.player1_perk_critchance1 = true;
+                                    variables.player1_perk_critchance2 = true;
                                     variables.player1_perkSelected = true;
                                     source.PlayOneShot(sounds.perkSelect);
 
                                 }
-
-                                break;
-                            case 3:
-                                if (!variables.player1_perk_critchance2)
+                            }
+                            
+                            
+                            break;
+                        case 4:
+                            if (!variables.player1_perk_critchance3)
+                            {
+                                if (variables.player1_perk_critchance3_avaiable)
                                 {
-                                    if (variables.player1_perk_critchance2_avaiable)
-                                    {
-                                        variables.player1_perk_critchance2 = true;
-                                        variables.player1_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-
-                                break;
-                            case 4:
-                                if (!variables.player1_perk_critchance3)
-                                {
-                                    if (variables.player1_perk_critchance3_avaiable)
-                                    {
-                                        variables.player1_perk_critchance3 = true;
-                                        variables.player1_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-                                break;
-                            case 5:
-                                if (!variables.player1_perk_HealthIncrise1)
-                                {
-                                    variables.player1_perk_HealthIncrise1 = true;
+                                    variables.player1_perk_critchance3 = true;
                                     variables.player1_perkSelected = true;
                                     source.PlayOneShot(sounds.perkSelect);
 
                                 }
+                            }
+                            
+                            break;
+                        case 5:
+                            if (!variables.player1_perk_HealthIncrise1)
+                            {
+                                variables.player1_perk_HealthIncrise1 = true;
+                                variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
 
-                                break;
-                            case 6:
-                                if (!variables.player1_perk_HealthIncrise2)
+                            }
+
+                            break;
+                        case 6:
+                            if (!variables.player1_perk_HealthIncrise2)
+                            {
+                                if (variables.player1_perk_HealthIncrise2_avaiable)
                                 {
-                                    if (variables.player1_perk_HealthIncrise2_avaiable)
-                                    {
-                                        variables.player1_perk_HealthIncrise2 = true;
-                                        variables.player1_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-
-                                break;
-                            case 7:
-                                if (!variables.player1_perk_lifesteal1)
-                                {
-                                    variables.player1_perk_lifesteal1 = true;
+                                    variables.player1_perk_HealthIncrise2 = true;
                                     variables.player1_perkSelected = true;
                                     source.PlayOneShot(sounds.perkSelect);
 
                                 }
+                            }
+                            
+                            
+                            break;
+                        case 7:
+                            if (!variables.player1_perk_lifesteal1)
+                            {
+                                variables.player1_perk_lifesteal1 = true;
+                                variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
 
-                                break;
-                            case 8:
-                                if (!variables.player1_perk_lifesteal2)
+                            }
+
+                            break;
+                        case 8:
+                            if (!variables.player1_perk_lifesteal2)
+                            {
+                                if (variables.player1_perk_lifesteal2_avaiable)
                                 {
-                                    if (variables.player1_perk_lifesteal2_avaiable)
-                                    {
-                                        variables.player1_perk_lifesteal2 = true;
-                                        variables.player1_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-
-                                break;
-                            case 9:
-                                if (!variables.player1_perk_speed)
-                                {
-                                    variables.player1_perk_speed = true;
+                                    variables.player1_perk_lifesteal2 = true;
                                     variables.player1_perkSelected = true;
                                     source.PlayOneShot(sounds.perkSelect);
 
                                 }
+                            }
+                            
+                            
+                            break;
+                        case 9:
+                            if (!variables.player1_perk_speed)
+                            {
+                                variables.player1_perk_speed = true;
+                                variables.player1_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
 
-                                break;
+                            }
+
+                            break;
 
 
-                        }
                     }
-
                 }
-                if (index == 1)
-                {
-                    if (!variables.player2_perkSelected)
-                    {
-
-
-                        switch (player2Selected)
-                        {
-                            case 0:
-                                if (!variables.player2_perk_bonusDMG1)
-                                {
-                                    variables.player2_perk_bonusDMG1 = true;
-                                    variables.player2_perkSelected = true;
-                                    source.PlayOneShot(sounds.perkSelect);
-
-                                }
-
-                                break;
-                            case 1:
-                                if (!variables.player2_perk_bonusDMG2)
-                                {
-                                    if (variables.player2_perk_bonusDMG2_avaiable)
-                                    {
-                                        variables.player2_perk_bonusDMG2 = true;
-                                        variables.player2_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-                                break;
-                            case 2:
-                                if (!variables.player2_perk_critchance1)
-                                {
-                                    variables.player2_perk_critchance1 = true;
-                                    variables.player2_perkSelected = true;
-                                    source.PlayOneShot(sounds.perkSelect);
-
-                                }
-
-                                break;
-                            case 3:
-                                if (!variables.player2_perk_critchance2)
-                                {
-                                    if (variables.player2_perk_critchance2_avaiable)
-                                    {
-                                        variables.player2_perk_critchance2 = true;
-                                        variables.player2_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-
-                                break;
-                            case 4:
-                                if (!variables.player2_perk_critchance3)
-                                {
-                                    if (variables.player2_perk_critchance3_avaiable)
-                                    {
-                                        variables.player2_perk_critchance3 = true;
-                                        variables.player2_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-                                break;
-                            case 5:
-                                if (!variables.player2_perk_HealthIncrise1)
-                                {
-                                    variables.player2_perk_HealthIncrise1 = true;
-                                    variables.player2_perkSelected = true;
-                                    source.PlayOneShot(sounds.perkSelect);
-
-                                }
-
-                                break;
-                            case 6:
-                                if (!variables.player2_perk_HealthIncrise2)
-                                {
-                                    if (variables.player2_perk_HealthIncrise2_avaiable)
-                                    {
-                                        variables.player2_perk_HealthIncrise2 = true;
-                                        variables.player2_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-
-                                break;
-                            case 7:
-                                if (!variables.player2_perk_lifesteal1)
-                                {
-                                    variables.player2_perk_lifesteal1 = true;
-                                    variables.player2_perkSelected = true;
-                                    source.PlayOneShot(sounds.perkSelect);
-
-                                }
-
-                                break;
-                            case 8:
-                                if (!variables.player2_perk_lifesteal2)
-                                {
-                                    if (variables.player2_perk_lifesteal2_avaiable)
-                                    {
-                                        variables.player2_perk_lifesteal2 = true;
-                                        variables.player2_perkSelected = true;
-                                        source.PlayOneShot(sounds.perkSelect);
-
-                                    }
-                                }
-
-
-                                break;
-                            case 9:
-                                if (!variables.player2_perk_speed)
-                                {
-                                    variables.player2_perk_speed = true;
-                                    variables.player2_perkSelected = true;
-                                    source.PlayOneShot(sounds.perkSelect);
-
-                                }
-
-                                break;
-
-
-                        }
-                    }
-
-                }
-            }
                 
+            }
+            if (index == 1)
+            {
+                if (!variables.player2_perkSelected)
+                {
+
+
+                    switch (player2Selected)
+                    {
+                        case 0:
+                            if (!variables.player2_perk_bonusDMG1)
+                            {
+                                variables.player2_perk_bonusDMG1 = true;
+                                variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
+                            }
+
+                            break;
+                        case 1:
+                            if (!variables.player2_perk_bonusDMG2)
+                            {
+                                if (variables.player2_perk_bonusDMG2_avaiable)
+                                {
+                                    variables.player2_perk_bonusDMG2 = true;
+                                    variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
+                                }
+                            }
+
+                            break;
+                        case 2:
+                            if (!variables.player2_perk_critchance1)
+                            {
+                                variables.player2_perk_critchance1 = true;
+                                variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
+                            }
+
+                            break;
+                        case 3:
+                            if (!variables.player2_perk_critchance2)
+                            {
+                                if (variables.player2_perk_critchance2_avaiable)
+                                {
+                                    variables.player2_perk_critchance2 = true;
+                                    variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
+                                }
+                            }
+
+
+                            break;
+                        case 4:
+                            if (!variables.player2_perk_critchance3)
+                            {
+                                if (variables.player2_perk_critchance3_avaiable)
+                                {
+                                    variables.player2_perk_critchance3 = true;
+                                    variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
+                                }
+                            }
+
+                            break;
+                        case 5:
+                            if (!variables.player2_perk_HealthIncrise1)
+                            {
+                                variables.player2_perk_HealthIncrise1 = true;
+                                variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
+                            }
+
+                            break;
+                        case 6:
+                            if (!variables.player2_perk_HealthIncrise2)
+                            {
+                                if (variables.player2_perk_HealthIncrise2_avaiable)
+                                {
+                                    variables.player2_perk_HealthIncrise2 = true;
+                                    variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
+                                }
+                            }
+
+
+                            break;
+                        case 7:
+                            if (!variables.player2_perk_lifesteal1)
+                            {
+                                variables.player2_perk_lifesteal1 = true;
+                                variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
+                            }
+
+                            break;
+                        case 8:
+                            if (!variables.player2_perk_lifesteal2)
+                            {
+                                if (variables.player2_perk_lifesteal2_avaiable)
+                                {
+                                    variables.player2_perk_lifesteal2 = true;
+                                    variables.player2_perkSelected = true;
+                                    source.PlayOneShot(sounds.perkSelect);
+
+                                }
+                            }
+
+
+                            break;
+                        case 9:
+                            if (!variables.player2_perk_speed)
+                            {
+                                variables.player2_perk_speed = true;
+                                variables.player2_perkSelected = true;
+                                source.PlayOneShot(sounds.perkSelect);
+
+                            }
+
+                            break;
+
+
+                    }
+                }
+
+            }
         }
         
 
