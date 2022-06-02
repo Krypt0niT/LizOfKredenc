@@ -82,19 +82,24 @@ public class summonerSellect : MonoBehaviour
                 selector1.transform.position = sums1[player1selected].transform.position;
                 if (index == 1)
                 {
-                    if (player2selected == 0)
+                    if (!variables.player2_sumSelected)
                     {
-                        player2selected = 1;
-                        info2.text = speedInfo;
+                        if (player2selected == 0)
+                        {
+                            player2selected = 1;
+                            info2.text = speedInfo;
 
+                        }
+                        else
+                        {
+                            player2selected = 0;
+                            info2.text = flashInfo;
+                        }
                     }
-                    else
-                    {
-                        player2selected = 0;
-                        info2.text = flashInfo;
-                    }
+                    selector2.transform.position = sums2[player2selected].transform.position;
                 }
-                selector2.transform.position = sums2[player2selected].transform.position;
+
+                        
             }
         }
         

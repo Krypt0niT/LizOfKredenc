@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -1059,7 +1060,7 @@ public class player : MonoBehaviour
     {
         if (variables.GameOver)
         {
-            print("zmen senu");
+            SceneManager.LoadScene("Menu");
         }
         //zmen scenu 
     }
