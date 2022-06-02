@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-
 
 public class Manazer : MonoBehaviour
 {
@@ -116,7 +114,6 @@ public class Manazer : MonoBehaviour
 
 
     public bool Game = false;
-    public bool GameOver = false;
 
 
 
@@ -125,8 +122,6 @@ public class Manazer : MonoBehaviour
 
     [SerializeField]
     GameObject deadscreen;
-    [SerializeField]
-    TMP_Text deadText;
     [SerializeField]
     GameObject Player1;
     [SerializeField]
@@ -191,38 +186,6 @@ public class Manazer : MonoBehaviour
 
 
         }
-        if (player1_SCORE > 4)
-        {
-            Player1.SetActive(false);
-            Player2.SetActive(false);
-            Player1HB.SetActive(false);
-            Player2HB.SetActive(false);
-            GameUI.SetActive(false);
-            map.SetActive(false);
-            PerkUI.SetActive(false);
-            deadscreen.SetActive(true);
-            deadText.text = "Player1 won!";
-            ground.color = new Color(0, 0, 0, 255);
-
-            GameOver = true;
-
-        }
-        if (player2_SCORE > 4)
-        {
-            Player1.SetActive(false);
-            Player2.SetActive(false);
-            Player1HB.SetActive(false);
-            Player2HB.SetActive(false);
-            GameUI.SetActive(false);
-            map.SetActive(false);
-            PerkUI.SetActive(false);
-            deadscreen.SetActive(true);
-            deadText.text = "Player2 won!";
-            ground.color = new Color(0, 0, 0, 255);
-
-            GameOver = true;
-
-        }
     }
     public void RoundEnd(string player)
     {
@@ -235,18 +198,6 @@ public class Manazer : MonoBehaviour
         {
             player1_SCORE++;
         }
-        player1_health = player1_Maxhealth;
-        player1_mana = player1_Maxmana;
-        Player1.GetComponent<player>().flash_time = cooldown_flash;
-        Player1.GetComponent<player>().speed_time = cooldown_speed;
-        Player1.GetComponent<player>().charge_time = cooldown_charge;
-
-        player2_health = player2_Maxhealth;
-        player2_mana = player2_Maxmana;
-        Player2.GetComponent<player>().flash_time = cooldown_flash;
-        Player2.GetComponent<player>().speed_time = cooldown_speed;
-        Player2.GetComponent<player>().charge_time = cooldown_charge;
-
 
         Game = false;
 
