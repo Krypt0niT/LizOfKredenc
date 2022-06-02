@@ -979,6 +979,7 @@ public class player : MonoBehaviour
 
 
                             speed_time = 0;
+                            gameObject.GetComponent<ParticleSystem>().Play();
                             variables.player1_speedActive = true;
                             variables.player1_mana -= variables.manaCost_speed;
                         }
@@ -1002,6 +1003,7 @@ public class player : MonoBehaviour
 
 
                             speed_time = 0;
+                            gameObject.GetComponent<ParticleSystem>().Play();
                             variables.player2_speedActive = true;
                             variables.player2_mana -= variables.manaCost_speed;
                         }
