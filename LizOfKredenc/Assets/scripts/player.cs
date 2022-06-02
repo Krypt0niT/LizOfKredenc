@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -959,7 +958,6 @@ public class player : MonoBehaviour
 
 
                             speed_time = 0;
-                            gameObject.GetComponent<ParticleSystem>().Play();
                             variables.player1_speedActive = true;
                             variables.player1_mana -= variables.manaCost_speed;
                         }
@@ -983,7 +981,6 @@ public class player : MonoBehaviour
 
 
                             speed_time = 0;
-                            gameObject.GetComponent<ParticleSystem>().Play();
                             variables.player2_speedActive = true;
                             variables.player2_mana -= variables.manaCost_speed;
                         }
@@ -1038,9 +1035,9 @@ public class player : MonoBehaviour
     {
         if (variables.GameOver)
         {
-            SceneManager.LoadScene("Menu");
+            print("zmen senu");
         }
-        
+        //zmen scenu 
     }
     public void SetMoveInputVector(Vector2 direction)
     {
