@@ -71,17 +71,6 @@ public class PlayerInputHandler : MonoBehaviour
         }
             
     }
-    public void OnCircle(CallbackContext context)
-    {
-        if (Player != null)
-        {
-            if (context.started)
-            {
-                Player.circle();
-            }
-        }
-
-    }
     public void OnRBB(CallbackContext context)
     {
         if (Player != null)

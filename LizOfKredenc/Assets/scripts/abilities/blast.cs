@@ -16,13 +16,21 @@ public class blast : MonoBehaviour
     GameObject manazer;
     Manazer variables;
 
-
+    private void Start()
+    {
+        manazer = GameObject.Find("Manager");
+        variables = manazer.GetComponent<Manazer>();
+    }
     void Update()
     {
 
 
         transform.position += transform.forward * Time.deltaTime * projectileSpeed;
-  
+        if (!variables.Game)
+        {
+            Destroy(gameObject);
+
+        }
 
 
         timeAlive += Time.deltaTime;

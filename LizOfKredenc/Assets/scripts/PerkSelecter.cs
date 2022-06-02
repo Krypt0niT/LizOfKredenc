@@ -210,130 +210,126 @@ public class PerkSelecter : MonoBehaviour
     }
     public void IndexCalculator(string direction, int index)
     {
-        if (!variables.Game)
+        if (index == 0)
         {
-            if (index == 0)
+            if (!variables.player1_perkSelected)
             {
-                if (!variables.player1_perkSelected)
+                if (direction == "DOWN")
                 {
-                    if (direction == "DOWN")
+                    player1Selected++;
+                    if (player1Selected == 5)
                     {
-                        player1Selected++;
-                        if (player1Selected == 5)
-                        {
-                            player1Selected = 0;
-                        }
-                        if (player1Selected == perks1.Count)
-                        {
-                            player1Selected = perks1.Count / 2;
-
-                        }
+                        player1Selected = 0;
                     }
-                    if (direction == "UP")
+                    if (player1Selected == perks1.Count)
                     {
-                        player1Selected--;
-                        if (player1Selected < 0)
-                        {
-                            player1Selected = 4;
-                        }
-                        else if (player1Selected == 4)
-                        {
-                            player1Selected = perks1.Count - 1;
-                        }
-                    }
-                    if (direction == "RIGHT")
-                    {
-                        player1Selected += 5;
-                        if (player1Selected > perks1.Count - 1)
-                        {
-                            player1Selected -= 10;
-                        }
-                    }
-                    if (direction == "LEFT")
-                    {
-                        player1Selected -= 5;
-                        if (player1Selected < 0)
-                        {
-                            player1Selected += 10;
-                        }
-                    }
-                    selector1.transform.position = new Vector2(perks1[player1Selected].transform.position.x, perks1[player1Selected].transform.position.y);
-                    info1.color = new Color(1, 1, 1, 255);
-                    info1.text = infotips[player1Selected];
+                        player1Selected = perks1.Count / 2;
 
-                    source.PlayOneShot(sounds.perkMove);
-
-
-                    if (perks1[player1Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
-                    {
-                        info1.text = "You have to unlock previous to get this one";
-                        info1.color = new Color(1, 0, 0, 255);
                     }
                 }
+                if (direction == "UP")
+                {
+                    player1Selected--;
+                    if (player1Selected < 0)
+                    {
+                        player1Selected = 4;
+                    }
+                    else if (player1Selected == 4)
+                    {
+                        player1Selected = perks1.Count - 1;
+                    }
+                }
+                if (direction == "RIGHT")
+                {
+                    player1Selected += 5;
+                    if (player1Selected > perks1.Count - 1)
+                    {
+                        player1Selected -= 10;
+                    }
+                }
+                if (direction == "LEFT")
+                {
+                    player1Selected -= 5;
+                    if (player1Selected < 0)
+                    {
+                        player1Selected += 10;
+                    }
+                }
+                selector1.transform.position = new Vector2(perks1[player1Selected].transform.position.x, perks1[player1Selected].transform.position.y);
+                info1.color = new Color(1, 1, 1, 255);
+                info1.text = infotips[player1Selected];
 
+                source.PlayOneShot(sounds.perkMove);
+
+
+                if (perks1[player1Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
+                {
+                    info1.text = "You have to unlock previous to get this one";
+                    info1.color = new Color(1, 0, 0, 255);
+                }
             }
-            if (index == 1)
+            
+        }
+        if (index == 1)
+        {
+            if (!variables.player2_perkSelected)
             {
-                if (!variables.player2_perkSelected)
+                if (direction == "DOWN")
                 {
-                    if (direction == "DOWN")
+                    player2Selected++;
+                    if (player2Selected == 5)
                     {
-                        player2Selected++;
-                        if (player2Selected == 5)
-                        {
-                            player2Selected = 0;
-                        }
-                        if (player2Selected == perks2.Count)
-                        {
-                            player2Selected = perks2.Count / 2;
-
-                        }
+                        player2Selected = 0;
                     }
-                    if (direction == "UP")
+                    if (player2Selected == perks2.Count)
                     {
-                        player2Selected--;
-                        if (player2Selected < 0)
-                        {
-                            player2Selected = 4;
-                        }
-                        else if (player2Selected == 4)
-                        {
-                            player2Selected = perks2.Count - 1;
-                        }
-                    }
-                    if (direction == "RIGHT")
-                    {
-                        player2Selected += 5;
-                        if (player2Selected > perks2.Count - 1)
-                        {
-                            player2Selected -= 10;
-                        }
-                    }
-                    if (direction == "LEFT")
-                    {
-                        player2Selected -= 5;
-                        if (player2Selected < 0)
-                        {
-                            player2Selected += 10;
-                        }
-                    }
-                    selector2.transform.position = new Vector2(perks2[player2Selected].transform.position.x, perks2[player2Selected].transform.position.y);
-                    info2.color = new Color(1, 1, 1, 255);
-                    info2.text = infotips[player2Selected];
-                    source.PlayOneShot(sounds.perkMove);
+                        player2Selected = perks2.Count / 2;
 
-
-
-                    if (perks2[player2Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
-                    {
-                        info2.text = "You have to unlock previous to get this one";
-                        info2.color = new Color(0, 0, 1, 255);
                     }
-
                 }
+                if (direction == "UP")
+                {
+                    player2Selected--;
+                    if (player2Selected < 0)
+                    {
+                        player2Selected = 4;
+                    }
+                    else if (player2Selected == 4)
+                    {
+                        player2Selected = perks2.Count - 1;
+                    }
+                }
+                if (direction == "RIGHT")
+                {
+                    player2Selected += 5;
+                    if (player2Selected > perks2.Count - 1)
+                    {
+                        player2Selected -= 10;
+                    }
+                }
+                if (direction == "LEFT")
+                {
+                    player2Selected -= 5;
+                    if (player2Selected < 0)
+                    {
+                        player2Selected += 10;
+                    }
+                }
+                selector2.transform.position = new Vector2(perks2[player2Selected].transform.position.x, perks2[player2Selected].transform.position.y);
+                info2.color = new Color(1, 1, 1, 255);
+                info2.text = infotips[player2Selected];
+                source.PlayOneShot(sounds.perkMove);
+
+
+
+                if (perks2[player2Selected].GetComponent<Image>().color == new Color(0.2f, 0.2f, 0.2f, 255))
+                {
+                    info2.text = "You have to unlock previous to get this one";
+                    info2.color = new Color(0, 0, 1, 255);
+                }
+
             }
         }
-        
                 
 
     }
