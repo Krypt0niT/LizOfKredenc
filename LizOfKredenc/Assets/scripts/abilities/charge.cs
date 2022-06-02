@@ -48,11 +48,11 @@ public class charge : MonoBehaviour
         {
             if (this.name == "ChargeP1(Clone)")
             {
-                material.SetColor("_EmissionColor", new Color(0.2f, 0.2f, charger, 255));
+                material.SetColor("_EmissionColor", new Color(0.5f, 0.5f, charger, 255));
             }
             if (this.name == "ChargeP2(Clone)")
             {
-                material.SetColor("_EmissionColor", new Color(charger, 0.2f, 0.2f, 255));
+                material.SetColor("_EmissionColor", new Color(charger, 0.5f, 0.5f, 255));
             }
 
             damage = true;

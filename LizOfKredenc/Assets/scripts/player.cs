@@ -1031,6 +1031,14 @@ public class player : MonoBehaviour
         perkS.perkPick(GetPlayerIndex());
         
     }
+    public void circle()
+    {
+        if (variables.GameOver)
+        {
+            print("zmen senu");
+        }
+        //zmen scenu 
+    }
     public void SetMoveInputVector(Vector2 direction)
     {
         MoveInputVector = direction;

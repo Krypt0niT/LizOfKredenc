@@ -8566,12 +8566,14 @@ MonoBehaviour:
   manaCost_speed: 100
   cooldown_speed: 10
   lengh_speed: 5
-  player1_SCORE: 0
+  player1_SCORE: 4
   player2_SCORE: 0
   player1_perkSelected: 0
   player2_perkSelected: 0
   Game: 1
+  GameOver: 0
   deadscreen: {fileID: 1755502616}
+  deadText: {fileID: 1924273420}
   Player1: {fileID: 1166704231}
   Player2: {fileID: 421782792}
   Player1HB: {fileID: 1730130651}
