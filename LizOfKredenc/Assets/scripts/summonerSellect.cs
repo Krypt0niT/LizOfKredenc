@@ -60,6 +60,7 @@ public class summonerSellect : MonoBehaviour
         {
             if (!variables.Game)
             {
+                source.PlayOneShot(sounds.perkMove);
                 if (index == 0)
                 {
                     if (!variables.player1_sumSelected)
@@ -101,7 +102,7 @@ public class summonerSellect : MonoBehaviour
     }
     public void sumPick(int index)
     {
-
+        source.PlayOneShot(sounds.perkSelect);
         if (index == 0)
         {
             if (player1selected == 0)

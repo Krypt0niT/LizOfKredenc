@@ -5759,7 +5759,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 19331ff8a15dec240b4c91a4631ae0e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8934,7 +8934,7 @@ MonoBehaviour:
   manaCost_speed: 100
   cooldown_speed: 10
   lengh_speed: 5
-  player1_SCORE: 4
+  player1_SCORE: 0
   player2_SCORE: 0
   player1_perkSelected: 0
   player2_perkSelected: 0
@@ -13705,7 +13705,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 19331ff8a15dec240b4c91a4631ae0e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
