@@ -995,6 +995,13 @@ public class player : MonoBehaviour
         perkS.perkPick(GetPlayerIndex());
         
     }
+    public void circle()
+    {
+        //zmena sceny
+        if (variables.GameOver)
+            print("zmena sceny");
+
+    }
     public void SetMoveInputVector(Vector2 direction)
     {
         MoveInputVector = direction;
