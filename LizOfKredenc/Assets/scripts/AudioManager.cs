@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    [SerializeField]
+    
     Slider slider;
     AudioSource audioSource;
     
@@ -25,7 +26,15 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
+        print(SceneManager.GetActiveScene().name);
         audioSource = GetComponent<AudioSource>();
+        if(SceneManager.GetActiveScene().name == "Menu")
+        {
+            slider = GameObject.Find("EffectsVolume").GetComponent<Slider>();
+            
+
+        }
+
 
         DontDestroyOnLoad(gameObject);
 
