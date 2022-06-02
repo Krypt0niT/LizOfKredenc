@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GameObject.Find("AudioManager").GetComponent<AudioSource>();
 
         DontDestroyOnLoad(gameObject);
 
