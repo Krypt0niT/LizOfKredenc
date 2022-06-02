@@ -6581,6 +6581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 891586050}
   PerkUI: {fileID: 901840351}
+  playerMaterial: {fileID: 2100000, guid: 21499259656ba364aaac35a29b3bf9cc, type: 2}
   flash: {fileID: 114165940}
   projectile: {fileID: 9138526412366840579, guid: 0edcac0097714734d9ac87d08a2d5cdd, type: 3}
   charge: {fileID: 7651990158230106650, guid: fe2ff07382d0afb4294a510e69032ee0, type: 3}
@@ -8559,7 +8560,7 @@ MonoBehaviour:
   manaCost_projectile: 20
   cooldown_projectile: 1.5
   manaCost_blast: 50
-  cooldown_blast: 1
+  cooldown_blast: 0.5
   cooldown_charge: 7
   manaCost_charge: 50
   manaCost_speed: 100
@@ -8570,6 +8571,7 @@ MonoBehaviour:
   player1_perkSelected: 0
   player2_perkSelected: 0
   Game: 1
+  GameOver: 0
   deadscreen: {fileID: 1755502616}
   deadText: {fileID: 1924273420}
   Player1: {fileID: 1166704231}
@@ -9939,6 +9941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 891586050}
   PerkUI: {fileID: 901840351}
+  playerMaterial: {fileID: 2100000, guid: 79745963fd05bce409d9ce6b7e7fb072, type: 2}
   flash: {fileID: 114165940}
   projectile: {fileID: 9138526412366840579, guid: 761bb836cbdeddc4ba261c40b4e0fdfa, type: 3}
   charge: {fileID: 7651990158230106650, guid: b2addf9b28bd06645af751f95cef5df2, type: 3}
