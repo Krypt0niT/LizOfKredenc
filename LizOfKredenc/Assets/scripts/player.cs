@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 
 public class player : MonoBehaviour
 {
@@ -22,6 +21,9 @@ public class player : MonoBehaviour
     PerkSelecter perkS;
     [SerializeField]
     ParticleSystem flash;
+    [SerializeField]
+    GameObject SumUI;
+    summonerSellect Sum;
 
 
 
@@ -68,8 +70,10 @@ public class player : MonoBehaviour
         t = GetComponent<Transform>();
         variables = manager.GetComponent<Manazer>();
         perkS = PerkUI.GetComponent<PerkSelecter>();
+        Sum = SumUI.GetComponent<summonerSellect>();
 
-       
+
+
         audioManager = GameObject.Find("AudioManager");
         sounds = audioManager.GetComponent<AudioManager>();
         source = audioManager.GetComponent<AudioSource>();
@@ -959,7 +963,6 @@ public class player : MonoBehaviour
 
 
                             speed_time = 0;
-                            gameObject.GetComponent<ParticleSystem>().Play();
                             variables.player1_speedActive = true;
                             variables.player1_mana -= variables.manaCost_speed;
                         }
@@ -983,7 +986,6 @@ public class player : MonoBehaviour
 
 
                             speed_time = 0;
-                            gameObject.GetComponent<ParticleSystem>().Play();
                             variables.player2_speedActive = true;
                             variables.player2_mana -= variables.manaCost_speed;
                         }
@@ -1032,15 +1034,16 @@ public class player : MonoBehaviour
     public void cross()
     {
         perkS.perkPick(GetPlayerIndex());
+        Sum.sumPick(GetPlayerIndex());
         
     }
     public void circle()
     {
         if (variables.GameOver)
         {
-            SceneManager.LoadScene("Menu");
+            print("zmen senu");
         }
-        
+        //zmen scenu 
     }
     public void SetMoveInputVector(Vector2 direction)
     {
@@ -1054,10 +1057,12 @@ public class player : MonoBehaviour
     public void ArrowDirection(string direction)
     {
          perkS.IndexCalculator(direction, GetPlayerIndex());
+         Sum.IndexCalculator(direction, GetPlayerIndex());
+
 
 
     }
- 
+
 
 
 

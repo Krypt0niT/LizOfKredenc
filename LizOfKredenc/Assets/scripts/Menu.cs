@@ -11,7 +11,7 @@ public class Menu : MonoBehaviour
     GameObject settings;
     [SerializeField]
     GameObject about;
-    
+    [SerializeField]
     GameObject audioManager;
     AudioManager sounds;
     AudioSource source;
@@ -22,7 +22,6 @@ public class Menu : MonoBehaviour
     {
         settings.SetActive(false);
         about.SetActive(false);
-        audioManager = GameObject.Find("AudioManager");
         sounds = audioManager.GetComponent<AudioManager>();
         source = audioManager.GetComponent<AudioSource>();
 
