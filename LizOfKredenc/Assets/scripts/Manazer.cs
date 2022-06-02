@@ -229,7 +229,7 @@ public class Manazer : MonoBehaviour
             ground.color = new Color(0, 0, 0, 255);
 
             deadscreen.SetActive(true);
-            deadText.text = "Player1 won!";
+            deadText.text = "PLAYER1 WON!";
 
         }
         if (player2_SCORE > 4)
@@ -247,7 +247,7 @@ public class Manazer : MonoBehaviour
             ground.color = new Color(0, 0, 0, 255);
 
             deadscreen.SetActive(true);
-            deadText.text = "Player2 won!";
+            deadText.text = "PLAYER2 WON!";
 
         }
     }

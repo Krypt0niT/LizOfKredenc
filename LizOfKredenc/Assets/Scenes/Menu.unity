@@ -2729,7 +2729,7 @@ PrefabInstance:
     - target: {fileID: 164091588574528610, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
       propertyPath: charge
       value: 
-      objectReference: {fileID: 8300000, guid: d90f4b1be200ffd4091c2edd4735e779, type: 3}
+      objectReference: {fileID: 8300000, guid: f1e7dc31945f1a844be2e0d5e4c08ea0, type: 3}
     - target: {fileID: 164091588574528610, guid: 94b7f05850c90f04687df7196e24c0d7, type: 3}
       propertyPath: slider
       value: 
