@@ -21,6 +21,9 @@ public class player : MonoBehaviour
     PerkSelecter perkS;
     [SerializeField]
     ParticleSystem flash;
+    [SerializeField]
+    GameObject SumUI;
+    summonerSellect Sum;
 
 
 
@@ -67,8 +70,10 @@ public class player : MonoBehaviour
         t = GetComponent<Transform>();
         variables = manager.GetComponent<Manazer>();
         perkS = PerkUI.GetComponent<PerkSelecter>();
+        Sum = SumUI.GetComponent<summonerSellect>();
 
-       
+
+
         audioManager = GameObject.Find("AudioManager");
         sounds = audioManager.GetComponent<AudioManager>();
         source = audioManager.GetComponent<AudioSource>();
@@ -1029,6 +1034,7 @@ public class player : MonoBehaviour
     public void cross()
     {
         perkS.perkPick(GetPlayerIndex());
+        Sum.sumPick(GetPlayerIndex());
         
     }
     public void circle()
@@ -1051,10 +1057,12 @@ public class player : MonoBehaviour
     public void ArrowDirection(string direction)
     {
          perkS.IndexCalculator(direction, GetPlayerIndex());
+         Sum.IndexCalculator(direction, GetPlayerIndex());
+
 
 
     }
- 
+
 
 
 
