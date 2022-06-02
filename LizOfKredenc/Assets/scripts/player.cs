@@ -30,6 +30,9 @@ public class player : MonoBehaviour
     GameObject charge;
     [SerializeField]
     GameObject blast;
+
+    [SerializeField]
+    Material playerMaterial;
    
     [SerializeField]
     private int playerIndex = 0;
@@ -37,6 +40,9 @@ public class player : MonoBehaviour
 
     float casMana = 0;
     float casHealth = 0;
+
+    float casHIT = 0;
+    bool HIT = false;
 
     [HideInInspector]
     public float projectile_time = 0;
@@ -85,7 +91,28 @@ public class player : MonoBehaviour
         if (variables.Game)
         {
 
+            if (HIT)
+            {
+                if (this.name == "player1")
+                {
+                    playerMaterial.color = Color.red;
 
+                }
+                else
+                {
+                    playerMaterial.color = Color.blue;
+                }
+                casHIT += Time.deltaTime;
+                if (casHIT > 0.15f)
+                {
+                    HIT = false;
+                    casHIT = 0;
+                }
+            }
+            else
+            {
+                playerMaterial.color = Color.white;
+            }
 
 
             if (RotateInputVector.x == 0 && RotateInputVector.y == 0)
@@ -373,6 +400,7 @@ public class player : MonoBehaviour
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
 
                     Destroy(other.gameObject);
+                    HIT = true;
                 }
                 if (other.name == "blastP2(Clone)")
                 {
@@ -453,6 +481,8 @@ public class player : MonoBehaviour
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
 
                     Destroy(other.gameObject);
+                    HIT = true;
+
                 }
             }
             if (this.name == "player2")
@@ -536,6 +566,8 @@ public class player : MonoBehaviour
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
+                    HIT = true;
+
                 }
                 if (other.name == "blastP1(Clone)")
                 {
@@ -616,6 +648,8 @@ public class player : MonoBehaviour
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
+                    HIT = true;
+
                 }
 
 
@@ -679,6 +713,7 @@ public class player : MonoBehaviour
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
+                    HIT = true;
 
                 }
 
@@ -735,6 +770,7 @@ public class player : MonoBehaviour
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
+                    HIT = true;
 
                 }
 
