@@ -367,6 +367,10 @@ public class player : MonoBehaviour
                     if (random <= critchance)
                     {
                         CritBonusDMG = variables.player2_projectileDMG ;
+                        if(CritBonusDMG > 0)
+                        {
+                            HIT = true;
+                        }
                     }
 
 
@@ -405,7 +409,7 @@ public class player : MonoBehaviour
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
 
                     Destroy(other.gameObject);
-                    HIT = true;
+                    
                 }
                 if (other.name == "blastP2(Clone)")
                 {
@@ -448,6 +452,10 @@ public class player : MonoBehaviour
                     if (random <= critchance)
                     {
                         CritBonusDMG = variables.player1_blastDMG;
+                        if (CritBonusDMG > 0)
+                        {
+                            HIT = true;
+                        }
                     }
 
 
@@ -486,7 +494,7 @@ public class player : MonoBehaviour
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
 
                     Destroy(other.gameObject);
-                    HIT = true;
+                    
 
                 }
             }
@@ -533,6 +541,10 @@ public class player : MonoBehaviour
                     if (random <= critchance)
                     {
                         CritBonusDMG = variables.player1_projectileDMG;
+                        if (CritBonusDMG > 0)
+                        {
+                            HIT = true;
+                        }
                     }
 
 
@@ -571,7 +583,7 @@ public class player : MonoBehaviour
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
-                    HIT = true;
+                    
 
                 }
                 if (other.name == "blastP1(Clone)")
@@ -615,6 +627,10 @@ public class player : MonoBehaviour
                     if (random <= critchance)
                     {
                         CritBonusDMG = variables.player1_blastDMG;
+                        if (CritBonusDMG > 0)
+                        {
+                            HIT = true;
+                        }
                     }
 
 
@@ -653,7 +669,7 @@ public class player : MonoBehaviour
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
-                    HIT = true;
+                    
 
                 }
 
@@ -718,7 +734,7 @@ public class player : MonoBehaviour
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
-                    HIT = true;
+                    
 
                 }
 
@@ -775,7 +791,7 @@ public class player : MonoBehaviour
                     }
                     print("HIT\t to: " + this.name + "\tDMG: " + total_damage + "\theal: " + lifesteal);
                     Destroy(other.gameObject);
-                    HIT = true;
+                    
 
                 }
 
