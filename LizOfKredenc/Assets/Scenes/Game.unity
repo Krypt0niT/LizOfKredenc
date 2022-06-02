@@ -6581,6 +6581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 891586050}
   PerkUI: {fileID: 901840351}
+  playerMaterial: {fileID: 2100000, guid: 21499259656ba364aaac35a29b3bf9cc, type: 2}
   flash: {fileID: 114165940}
   projectile: {fileID: 9138526412366840579, guid: 0edcac0097714734d9ac87d08a2d5cdd, type: 3}
   charge: {fileID: 7651990158230106650, guid: fe2ff07382d0afb4294a510e69032ee0, type: 3}
@@ -8559,7 +8560,7 @@ MonoBehaviour:
   manaCost_projectile: 20
   cooldown_projectile: 1.5
   manaCost_blast: 50
-  cooldown_blast: 1
+  cooldown_blast: 0.5
   cooldown_charge: 7
   manaCost_charge: 50
   manaCost_speed: 100
@@ -8570,7 +8571,9 @@ MonoBehaviour:
   player1_perkSelected: 0
   player2_perkSelected: 0
   Game: 1
+  GameOver: 0
   deadscreen: {fileID: 1755502616}
+  deadText: {fileID: 1924273420}
   Player1: {fileID: 1166704231}
   Player2: {fileID: 421782792}
   Player1HB: {fileID: 1730130651}
@@ -9938,6 +9941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 891586050}
   PerkUI: {fileID: 901840351}
+  playerMaterial: {fileID: 2100000, guid: 79745963fd05bce409d9ce6b7e7fb072, type: 2}
   flash: {fileID: 114165940}
   projectile: {fileID: 9138526412366840579, guid: 761bb836cbdeddc4ba261c40b4e0fdfa, type: 3}
   charge: {fileID: 7651990158230106650, guid: b2addf9b28bd06645af751f95cef5df2, type: 3}
@@ -13023,7 +13027,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1755502617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13508,7 +13512,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You are dead :D
+  m_text: Player won
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13541,7 +13545,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
